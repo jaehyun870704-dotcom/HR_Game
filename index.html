@@ -321,6 +321,40 @@ button:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
 }
 .panel-btn.secondary{ background:transparent; border:2px solid var(--path-tan-dark); color:var(--ink); border-bottom:none;}
 .panel-btn.danger{ background:var(--ember); color:#fff; border-bottom-color:var(--ember-dark);}
+
+/* ---------- 네트워킹 신청(DB 수집) 폼 ---------- */
+.lead-panel{ text-align:left; }
+.lead-title{ text-align:center; font-size:17px; font-weight:900; color:var(--ink); margin:0 0 6px; }
+.lead-lead{ text-align:center; font-size:11.5px; color:#6b5a42; line-height:1.65; margin-bottom:16px; }
+.lead-field{ margin-bottom:10px; }
+.lead-field label{ display:block; font-size:11.5px; font-weight:900; color:var(--ink); margin-bottom:5px; }
+.lead-field .req{ color:var(--ember); margin-left:2px; }
+.lead-field input{
+  width:100%; padding:11px 12px; font-size:14px; font-family:'Noto Sans KR',sans-serif; color:var(--ink);
+  background:#fff9ec; border:2px solid var(--parchment-dark); border-radius:8px; outline:none;
+  transition:border-color .15s, background .15s;
+}
+.lead-field input::placeholder{ color:#b6a684; }
+.lead-field input:focus{ border-color:var(--mustard-dark); background:#fff; }
+.lead-field input.err{ border-color:var(--ember); background:#fbe9e5; }
+.lead-msg{ font-size:10.5px; font-weight:700; color:var(--ember); margin-top:4px; display:none; }
+.lead-msg.show{ display:block; }
+.hp-trap{ position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+
+.consent-box{ border:2px solid var(--parchment-dark); border-radius:10px; background:#fff9ec; padding:11px 12px; margin:14px 0 4px; }
+.consent-row{ display:flex; align-items:flex-start; gap:8px; font-size:11.5px; line-height:1.55; color:var(--ink); }
+.consent-row + .consent-row{ margin-top:9px; }
+.consent-row input[type="checkbox"]{ width:18px; height:18px; margin:1px 0 0; accent-color:var(--moss-dark); flex-shrink:0; cursor:pointer; }
+.consent-row label{ flex:1; cursor:pointer; }
+.consent-all{ font-weight:900; border-bottom:1px dashed var(--parchment-dark); padding-bottom:10px; margin-bottom:2px; }
+.tag-req{ color:var(--ember); font-weight:900; }
+.tag-opt{ color:#8a7758; font-weight:900; }
+.detail-toggle{ display:inline-block; background:none; padding:0; margin-left:2px; font-size:10.5px; color:#8a7758; text-decoration:underline; font-family:inherit; }
+.detail-body{ display:none; margin-top:7px; padding:10px 11px; background:#f2e5c6; border-radius:8px; font-size:10.5px; line-height:1.7; color:#5f5039; white-space:pre-line; max-height:180px; overflow-y:auto; }
+.detail-body.show{ display:block; }
+.lead-note{ font-size:10px; color:#8a7758; text-align:center; line-height:1.6; margin-top:10px; }
+.lead-btns{ text-align:center; margin-top:14px; }
+.panel-btn[disabled]{ opacity:.55; cursor:default; }
 </style>
 </head>
 <body>
@@ -830,11 +864,30 @@ function renderTitle(){
     <div class="title-sub">숲 속에 숨은 HR 괴물들과 퀴즈로 맞서라<br>채용부터 피플 애널리틱스까지, 8가지 주제</div>
     <button class="btn-primary" id="startBtn">모험 시작하기</button>
     <button class="btn-secondary" id="howBtn">게임 방법 보기</button>
+    <button class="btn-secondary" id="leadBtn">📮 네트워킹 행사 소식 받기</button>
     <div class="topic-list">
       ${Object.values(TOPIC_META).map(t=>`<div class="topic-chip">${t.icon} ${t.name}</div>`).join('')}
     </div>
   </div>`;
-  document.getElementById('startBtn').onclick=()=>{ newGame(); startAct(1); };
+  document.getElementById('startBtn').onclick=()=>{
+    maybeLeadForm({
+      title:'📮 네트워킹 행사 소식 받기',
+      lead:'HR 실무자들이 모이는 네트워킹 행사와<br>세미나 소식을 가장 먼저 받아보세요.<br>지금 신청하지 않아도 모험은 바로 시작됩니다.',
+      cta:'신청하기',
+      source:'game_start'
+    }, ()=>{ newGame(); startAct(1); });
+  };
+  document.getElementById('leadBtn').onclick=()=>{
+    if(leadDone()){
+      showPanel({
+        title:'✅ 이미 신청하셨어요',
+        desc:'네트워킹 행사 소식을 입력하신 이메일로 보내드릴게요.',
+        buttons:[{label:'확인', cls:'panel-btn', onClick:closePanel}]
+      });
+      return;
+    }
+    openLeadForm({source:'title', allowSkip:true});
+  };
   document.getElementById('howBtn').onclick=()=>{
     showPanel({
       title:'게임 방법',
@@ -1033,7 +1086,15 @@ function onBossDefeated(){
     showPanel({
       title:'1막 클리어!',
       desc:'채용왕 오크를 물리쳤습니다.<br>최대 HP가 15 증가했습니다.',
-      buttons:[{label:'2막으로', cls:'panel-btn', onClick:()=>{closePanel(); startAct(2);}}]
+      buttons:[{label:'2막으로', cls:'panel-btn', onClick:()=>{
+        closePanel();
+        maybeLeadForm({
+          title:'📮 1막 돌파 기념, 네트워킹 초대',
+          lead:'채용왕 오크를 잡은 실력이라면<br>HR 실무자 네트워킹에서 만나고 싶습니다.<br>행사·세미나 소식을 보내드릴게요.',
+          cta:'초대 신청하기',
+          source:'act1_clear'
+        }, ()=>startAct(2));
+      }}]
     });
   } else if(G.act===2){
     G.player.maxHp+=15; G.player.hp=Math.min(G.player.maxHp, G.player.hp+15);
@@ -1043,10 +1104,25 @@ function onBossDefeated(){
       buttons:[{label:'3막으로', cls:'panel-btn', onClick:()=>{closePanel(); startAct(3);}}]
     });
   } else {
+    const restart = ()=>{ closePanel(); newGame(); renderTitle(); };
+    const btns = [];
+    if(!leadDone()){
+      btns.push({label:'📮 네트워킹 초대받기', cls:'panel-btn', onClick:()=>{
+        closePanel();
+        openLeadForm({
+          title:'🏅 HR 마스터 등극!',
+          lead:'완주를 축하드립니다.<br>같은 고민을 하는 HR 실무자들이 모이는<br>네트워킹 행사에 초대해 드릴게요.',
+          cta:'초대 신청하기',
+          source:'final_clear',
+          onDone: ()=>{ newGame(); renderTitle(); }
+        });
+      }});
+    }
+    btns.push({label:'처음으로', cls: btns.length?'panel-btn secondary':'panel-btn', onClick:restart});
     showPanel({
       title:'🎉 소소의 모험, 완주!',
       desc:'이직률 드래곤을 물리치고<br>진정한 HR 마스터가 되었습니다!',
-      buttons:[{label:'처음으로', cls:'panel-btn', onClick:()=>{closePanel(); newGame(); renderTitle();}}]
+      buttons:btns
     });
   }
 }
@@ -1438,10 +1514,23 @@ function handleDefeatCheck(){
     return;
   }
   clearInterval(G.battle.timer);
+  const gbtns = [{label:'처음부터', cls:'panel-btn danger', onClick:()=>{ closePanel(); newGame(); renderTitle(); }}];
+  if(!leadDone()){
+    gbtns.push({label:'📮 행사 소식 받기', cls:'panel-btn secondary', onClick:()=>{
+      closePanel();
+      openLeadForm({
+        title:'📮 다음엔 오프라인에서',
+        lead:'HR 실무자 네트워킹 행사와 세미나 소식을<br>가장 먼저 받아보세요.',
+        cta:'신청하기',
+        source:'game_over',
+        onDone: ()=>{ newGame(); renderTitle(); }
+      });
+    }});
+  }
   showPanel({
     title:'💀 소소, 쓰러지다',
     desc:'HR 괴물들에게 패배했습니다.<br>다시 도전해볼까요?',
-    buttons:[{label:'처음부터', cls:'panel-btn danger', onClick:()=>{ closePanel(); newGame(); renderTitle(); }}]
+    buttons:gbtns
   });
 }
 
@@ -1898,6 +1987,227 @@ function drawSosoToken(ctx){
   ctx.restore();
   ctx.strokeStyle=P.outline; ctx.lineWidth=2.5;
   ctx.beginPath(); ctx.arc(17,17,15.5,0,Math.PI*2); ctx.stroke();
+}
+
+
+/* =========================================================
+   네트워킹 DB 수집 모듈 (좋은인재연구소)
+   ※ 아래 GTI 설정값 3가지만 채우면 바로 동작합니다.
+   ========================================================= */
+const GTI = {
+  org: '좋은인재연구소',
+  endpoint: 'https://script.google.com/macros/s/AKfycbxrOsi0fFPvzx6OMZ4zYy1Z4i_oEaYxrT0NDVQI2wLCF7MXZZxq4y2jALN0FuX6raIMKg/exec',  // Google Apps Script 웹앱 URL
+  contactEmail: 'help@gti.co.kr',     // ← 개인정보 문의·철회 담당 이메일
+  retention: '3년',                   // 보유·이용 기간
+  storeKey: 'gti_lead_v1'
+};
+
+const CONSENT_TEXT = {
+  privacy:
+`1. 수집 항목 : 회사명, 이름, 연락처(휴대전화번호), 이메일 주소
+2. 수집·이용 목적 : ${GTI.org}이 주최·주관하는 네트워킹 행사 및 세미나 안내, 교육·컨설팅 서비스 정보 제공, 참가자 확인 및 문의 응대
+3. 보유·이용 기간 : 수집일로부터 ${GTI.retention} 또는 동의 철회 시까지 (관계 법령에 따라 보존이 필요한 경우 해당 기간까지 보관)
+4. 동의 거부 권리 및 불이익 : 개인정보 수집·이용에 동의하지 않을 권리가 있으며, 동의하지 않는 경우 행사 안내 및 정보 제공 서비스 이용이 제한됩니다.
+5. 만 14세 이상만 신청할 수 있습니다.
+6. 문의 및 동의 철회 : ${GTI.contactEmail}`,
+  marketing:
+`${GTI.org}은 「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제50조에 따라 동의하신 분께 아래와 같이 광고성 정보를 전송합니다.
+
+· 전송 내용 : 네트워킹 행사·세미나·교육 과정 안내, 신규 콘텐츠 및 혜택 안내
+· 전송 방법 : 이메일, 문자메시지(SMS/카카오톡), 전화
+· 전송 기간 : 동의일로부터 수신 거부 의사를 밝히기 전까지
+
+동의하지 않아도 신청은 가능하나, 행사 초대장과 혜택 안내를 받지 못할 수 있습니다.
+수신 동의는 언제든지 ${GTI.contactEmail} 로 철회할 수 있습니다.`
+};
+
+/* ---- 제출 이력(중복 노출 방지용, 브라우저 로컬) ---- */
+function leadState(){
+  try{ return JSON.parse(localStorage.getItem(GTI.storeKey)) || {done:false, skip:0}; }
+  catch(e){ return {done:false, skip:0}; }
+}
+function saveLeadState(s){
+  try{ localStorage.setItem(GTI.storeKey, JSON.stringify(s)); }catch(e){}
+}
+function leadDone(){ return leadState().done; }
+
+/* ---- 서버 전송 ---- */
+async function sendLead(payload){
+  if(!GTI.endpoint){
+    try{
+      const box = JSON.parse(localStorage.getItem(GTI.storeKey+'_rows') || '[]');
+      box.push(payload);
+      localStorage.setItem(GTI.storeKey+'_rows', JSON.stringify(box));
+    }catch(e){}
+    console.warn('[GTI] endpoint 미설정 — 브라우저에만 임시 저장되었습니다.', payload);
+    return true;
+  }
+  await fetch(GTI.endpoint, {
+    method:'POST',
+    mode:'no-cors',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify(payload)
+  });
+  return true;
+}
+
+/* ---- 신청 폼 열기 ---- */
+function openLeadForm(opt={}){
+  const {
+    title = '📮 네트워킹 초대 신청',
+    lead  = 'HR 실무자 네트워킹 행사와 세미나 소식을<br>가장 먼저 받아보세요.',
+    cta   = '신청하기',
+    allowSkip = true,
+    source = 'title',
+    onDone = null
+  } = opt;
+
+  const html = `
+  <div class="lead-panel">
+    <h2 class="lead-title">${title}</h2>
+    <div class="lead-lead">${lead}</div>
+
+    <div class="lead-field">
+      <label for="ld_company">회사명<span class="req">*</span></label>
+      <input id="ld_company" type="text" autocomplete="organization" placeholder="예) 좋은인재연구소" maxlength="60">
+    </div>
+    <div class="lead-field">
+      <label for="ld_name">이름<span class="req">*</span></label>
+      <input id="ld_name" type="text" autocomplete="name" placeholder="예) 홍길동" maxlength="30">
+    </div>
+    <div class="lead-field">
+      <label for="ld_phone">연락처<span class="req">*</span></label>
+      <input id="ld_phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="010-1234-5678" maxlength="14">
+    </div>
+    <div class="lead-field">
+      <label for="ld_email">이메일<span class="req">*</span></label>
+      <input id="ld_email" type="email" inputmode="email" autocomplete="email" placeholder="hr@company.com" maxlength="80">
+    </div>
+    <input class="hp-trap" id="ld_hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <div class="consent-box">
+      <div class="consent-row consent-all">
+        <input type="checkbox" id="ld_all">
+        <label for="ld_all">아래 내용에 모두 동의합니다</label>
+      </div>
+      <div class="consent-row">
+        <input type="checkbox" id="ld_privacy">
+        <label for="ld_privacy">
+          <span class="tag-req">[필수]</span> 개인정보 수집·이용에 동의합니다
+          <button type="button" class="detail-toggle" data-target="ld_privacy_d">전문 보기</button>
+          <div class="detail-body" id="ld_privacy_d">${CONSENT_TEXT.privacy}</div>
+        </label>
+      </div>
+      <div class="consent-row">
+        <input type="checkbox" id="ld_mkt">
+        <label for="ld_mkt">
+          <span class="tag-opt">[선택]</span> 행사·교육 등 광고성 정보 수신에 동의합니다
+          <button type="button" class="detail-toggle" data-target="ld_mkt_d">전문 보기</button>
+          <div class="detail-body" id="ld_mkt_d">${CONSENT_TEXT.marketing}</div>
+        </label>
+      </div>
+    </div>
+    <div class="lead-msg" id="ld_err"></div>
+    <div class="lead-note">입력하신 정보는 ${GTI.org}의 행사 안내 목적으로만 사용되며,<br>동의 철회 시 즉시 파기됩니다.</div>
+
+    <div class="lead-btns">
+      <button class="panel-btn" id="ld_submit">${cta}</button>
+      ${allowSkip ? '<button class="panel-btn secondary" id="ld_skip">다음에 할게요</button>' : ''}
+    </div>
+  </div>`;
+
+  let ov = document.getElementById('overlayPanel');
+  if(ov) ov.remove();
+  ov = document.createElement('div');
+  ov.className = 'overlay'; ov.id = 'overlayPanel';
+  ov.innerHTML = `<div class="panel">${html}</div>`;
+  document.body.appendChild(ov);
+
+  const $ = id => document.getElementById(id);
+  const finish = () => { closePanel(); if(onDone) onDone(); };
+
+  ov.querySelectorAll('.detail-toggle').forEach(btn=>{
+    btn.onclick = (e)=>{
+      e.preventDefault(); e.stopPropagation();
+      const box = $(btn.dataset.target);
+      box.classList.toggle('show');
+      btn.textContent = box.classList.contains('show') ? '접기' : '전문 보기';
+    };
+  });
+
+  const boxes = [$('ld_privacy'), $('ld_mkt')];
+  $('ld_all').onchange = e => boxes.forEach(b => b.checked = e.target.checked);
+  boxes.forEach(b => b.onchange = () => { $('ld_all').checked = boxes.every(x => x.checked); });
+
+  $('ld_phone').oninput = e => {
+    let v = e.target.value.replace(/[^0-9]/g,'').slice(0,11);
+    if(v.length>7) v = v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7);
+    else if(v.length>3) v = v.slice(0,3)+'-'+v.slice(3);
+    e.target.value = v;
+  };
+
+  const showErr = (msg, focusId) => {
+    const el = $('ld_err');
+    el.textContent = msg; el.classList.add('show');
+    ov.querySelectorAll('input').forEach(i=>i.classList.remove('err'));
+    if(focusId){ $(focusId).classList.add('err'); $(focusId).focus(); }
+  };
+
+  if(allowSkip && $('ld_skip')){
+    $('ld_skip').onclick = () => {
+      const s = leadState(); s.skip = (s.skip||0)+1; saveLeadState(s);
+      finish();
+    };
+  }
+
+  $('ld_submit').onclick = async () => {
+    const company = $('ld_company').value.trim();
+    const name    = $('ld_name').value.trim();
+    const phone   = $('ld_phone').value.trim();
+    const email   = $('ld_email').value.trim();
+
+    if($('ld_hp').value) return finish();                       // 봇 차단
+    if(!company)                    return showErr('회사명을 입력해 주세요.', 'ld_company');
+    if(name.length < 2)             return showErr('이름을 2자 이상 입력해 주세요.', 'ld_name');
+    if(!/^01[0-9]-\d{3,4}-\d{4}$/.test(phone))
+                                    return showErr('연락처를 010-1234-5678 형식으로 입력해 주세요.', 'ld_phone');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email))
+                                    return showErr('이메일 주소를 정확히 입력해 주세요.', 'ld_email');
+    if(!$('ld_privacy').checked)    return showErr('개인정보 수집·이용(필수)에 동의해 주세요.');
+
+    const btn = $('ld_submit');
+    btn.disabled = true; btn.textContent = '전송 중...';
+    const payload = {
+      company, name, phone, email,
+      agreePrivacy: 'Y',
+      agreeMarketing: $('ld_mkt').checked ? 'Y' : 'N',
+      source,
+      act: (typeof G !== 'undefined' && G.act) ? G.act : '',
+      submittedAt: new Date().toISOString()
+    };
+    try{
+      await sendLead(payload);
+      saveLeadState({done:true, skip:leadState().skip||0, at:payload.submittedAt});
+      closePanel();
+      showPanel({
+        title:'✅ 신청 완료',
+        desc:`${name}님, 신청해 주셔서 감사합니다.<br>${GTI.org}의 네트워킹 행사 소식을<br>입력하신 이메일로 보내드릴게요.`,
+        buttons:[{label:'계속하기', cls:'panel-btn', onClick:()=>{ closePanel(); if(onDone) onDone(); }}]
+      });
+    }catch(err){
+      btn.disabled = false; btn.textContent = cta;
+      showErr('전송에 실패했습니다. 잠시 후 다시 시도해 주세요.');
+    }
+  };
+
+  setTimeout(()=>{ const c=$('ld_company'); if(c) c.focus({preventScroll:true}); }, 120);
+}
+
+/* ---- 이미 신청했거나 2번 거절했으면 건너뛰고 다음 단계로 ---- */
+function maybeLeadForm(opt, next){
+  const s = leadState();
+  if(s.done || (s.skip||0) >= 2){ next(); return; }
+  openLeadForm(Object.assign({}, opt, {onDone: next}));
 }
 
 /* =========================================================
