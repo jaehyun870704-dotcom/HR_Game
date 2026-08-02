@@ -397,308 +397,168 @@ const ACT_TOPICS = { 1:['recruit','ld'], 2:['perf','comp','culture'], 3:['labor'
 const SOSO_IMG = "data:image/jpeg;base64,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";
 const ACT_TIME = {1:30, 2:30, 3:30};
 
-/* ---- 문제 은행 (140) : [id, topic, q, [보기4], 정답idx, 해설] ---- */
+/* ---- 문제 은행 (160, 국내 실무 중심 8개 주제 x 20문) : [id, topic, q, [보기4], 정답idx, 해설] ---- */
 const QUESTIONS = [
-["Q001","recruit","채용공고에 \"남성만 지원 가능\"이라고 명시해도 직무 특성상 필요하다면 법적으로 문제없다?",["그렇다","아니다","회사 재량이다","공고에만 적으면 된다"],1,"남녀고용평등법상 모집·채용의 성차별은 원칙적으로 금지됩니다."],
-["Q002","recruit","JD(Job Description)는 무엇을 정리한 문서인가?",["직무 내용과 요구 자격","연봉 테이블","조직도","평가 기준표"],0,"직무의 역할·과업·자격요건을 담습니다."],
-["Q003","recruit","ATS는 무엇의 약자인가?",["Applicant Tracking System","Annual Talent Summary","Active Time Sheet","Automated Training System"],0,"지원자 관리 시스템입니다."],
-["Q004","recruit","내부 채용의 일반적 장점은?",["조직 적응 기간이 짧다","인재 풀이 더 넓다","항상 비용이 더 든다","외부 시각이 유입된다"],0,"문화·프로세스를 이미 알아 온보딩 비용이 낮습니다."],
-["Q005","recruit","채용절차법상 지원자에게 물어선 안 되는 것은?",["직무 경력","직계존비속의 재산","보유 자격증","희망 연봉"],1,"직무와 무관한 개인정보 요구는 채용절차법 위반입니다."],
-["Q006","recruit","채용 요청 승인부터 오퍼 수락까지의 기간을 뜻하는 지표는?",["Time to Hire","Cost per Hire","Offer Acceptance Rate","Yield Ratio"],0,"Time to Fill과 시작점이 다른 점에 유의하세요."],
-["Q007","recruit","잠재 후보자를 발굴해 지원자 풀을 만드는 활동은?",["소싱(Sourcing)","스크리닝","온보딩","오프보딩"],0,"채용 퍼널의 가장 앞단입니다."],
-["Q008","recruit","학벌 하나가 뛰어나 나머지 항목까지 높게 평가했다면?",["대비 효과","후광 효과","관대화 경향","중심화 경향"],1,"하나의 인상이 전체 평가를 지배하는 오류입니다."],
-["Q009","recruit","행동 기반 면접 STAR에서 A는?",["Attitude","Action","Ability","Assessment"],1,"Situation-Task-Action-Result 입니다."],
-["Q010","recruit","레퍼런스 체크는 지원자 동의 없이 진행해도 된다?",["그렇다","아니다","공공기관만 예외","합격자만 예외"],1,"제3자 개인정보 수집이므로 본인 동의가 필요합니다."],
-["Q011","recruit","채용 브랜딩이 영향을 주는 것은?",["지원자 수와 질 모두","연봉 테이블","퇴직금","근로시간"],0,"평판이 좋을수록 우수 인재의 지원 유입이 늘어납니다."],
-["Q012","recruit","입사 후 조기 퇴사를 줄이기 위해 직무의 부정적 측면까지 솔직히 알리는 기법은?",["RJP(현실적 직무 소개)","헤드헌팅","블라인드 채용","레퍼럴"],0,"기대와 현실의 격차를 줄여 초기 이직을 낮춥니다."],
-["Q013","recruit","오퍼 제시 대비 실제 수락 비율을 뜻하는 용어는?",["Offer Acceptance Rate","Quality of Hire","Time to Fill","Span of Control"],0,""],
-["Q014","recruit","일반적으로 예측타당도가 가장 낮다고 알려진 선발 방법은?",["구조화 면접","작업표본 검사","비구조화 면접","인지능력 검사"],2,"질문·기준이 면접관마다 달라 신뢰도가 낮습니다."],
-["Q015","recruit","구조화 면접의 특징은?",["모든 지원자에 동일 질문·기준 적용","면접관 재량으로 자유롭게 진행","기준 없이 인상 평가","서류전형을 대체함"],0,""],
-["Q016","recruit","채용 단계별 다음 단계 진입 비율을 뜻하는 지표는?",["Yield Ratio","Turnover Rate","Compa-ratio","Span of Control"],0,""],
-["Q017","recruit","수시 채용이 더 적합한 방식은?",["직무 중심 채용","연공서열 채용","대규모 신입 공채","정기 순환 채용"],0,""],
-["Q018","recruit","채용절차법상 서류 반환 대상은?",["지원한 모든 사람","반환 청구한 최종 불합격자","최종 합격자","서류전형 통과자 전원"],1,""],
-["Q019","recruit","근로계약서는 실제 근무 시작 후 작성해도 된다?",["그렇다","아니다","합의만 있으면 된다","1개월 이내면 된다"],1,"근로조건은 계약 체결 시 서면 명시·교부해야 합니다."],
-["Q020","recruit","Quality of Hire 측정 지표로 보기 어려운 것은?",["입사 1년 내 이직률","수습 통과율","첫해 성과평가 등급","채용공고 조회수"],3,"조회수는 유입 지표일 뿐 채용 결과의 질과 무관합니다."],
-["Q021","ld","ADDIE 교수설계 모형의 올바른 순서는?",["분석-설계-개발-실행-평가","분석-개발-설계-실행-평가","설계-분석-개발-평가-실행","분석-설계-실행-개발-평가"],0,""],
-["Q022","ld","커크패트릭 4단계 평가의 1단계는?",["반응(Reaction)","학습(Learning)","행동(Behavior)","결과(Results)"],0,""],
-["Q023","ld","70:20:10 모델에서 '70'이 뜻하는 것은?",["형식 교육","실제 업무 경험","멘토링","자격증 취득"],1,"20이 관계(피드백·멘토링), 10이 형식 교육입니다."],
-["Q024","ld","OJT란?",["실제 업무 현장에서 일하며 배우는 것","외부 위탁 교육","온라인 집합 교육","자격증 취득 지원"],0,""],
-["Q025","ld","교육에서 배운 것을 실제 업무에 적용하는 것을 뜻하는 개념은?",["학습 전이","학습 곡선","망각 곡선","성인학습"],0,""],
-["Q026","ld","교육 니즈 분석의 3가지 수준이 아닌 것은?",["조직 분석","직무 분석","개인 분석","경쟁사 분석"],3,""],
-["Q027","ld","IDP는 무엇의 약자인가?",["Individual Development Plan","Internal Data Process","Immediate Decision Point","Industry Development Program"],0,""],
-["Q028","ld","코칭의 핵심 초점은?",["질문으로 스스로 답을 찾게 하는 것","정답을 직접 알려주는 것","성과 등급을 매기는 것","징계 여부를 판단하는 것"],0,""],
-["Q029","ld","멘토링과 코칭의 차이로 적절한 것은?",["멘토링은 경험 전수, 코칭은 잠재력 발현 중심","코칭은 항상 장기 운영된다","멘토링은 외부 전문가만 가능","코칭은 평가 등급 산정용이다"],0,""],
-["Q030","ld","5~10분 내외 짧은 단위로 학습하는 방식은?",["마이크로러닝","액션러닝","블렌디드러닝","플립러닝"],0,""],
-["Q031","ld","에빙하우스 망각곡선에 따르면 망각이 가장 빠른 시점은?",["학습 직후","1주일 후","1개월 후","6개월 후"],0,"그래서 학습 직후 복습 설계가 중요합니다."],
-["Q032","ld","실제 조직 과제를 팀이 함께 해결하며 학습하는 방식은?",["액션러닝","시뮬레이션","강의법","도제식 훈련"],0,""],
-["Q033","ld","역량 모델은 보통 무엇을 기반으로 도출하는가?",["고성과자의 행동 특성","전 직원 평균 역량","경쟁사 벤치마킹","재무 지표"],0,""],
-["Q034","ld","커크패트릭 모형에 필립스가 추가한 5단계는?",["ROI","만족도","태도","전이"],0,""],
-["Q035","ld","온·오프라인 학습을 결합한 방식은?",["블렌디드 러닝","마이크로러닝","액션러닝","OJT"],0,""],
-["Q036","ld","승계 계획(Succession Planning)의 핵심 목적은?",["핵심 직책의 공백 리스크 관리","교육 예산 절감","이직률 통계 산출","JD 표준화"],0,""],
-["Q037","ld","교육 만족도가 높으면 업무 성과 향상도 보장된다?",["그렇다","아니다","항상 비례한다","조사와 무관하다"],1,"반응(1단계)과 결과(4단계)의 상관은 생각보다 약합니다."],
-["Q038","ld","성인학습(Andragogy)의 특징이 아닌 것은?",["자기 경험을 학습 자원으로 활용","자기주도 학습","즉시 적용 가능한 학습 선호","교사 중심 일방적 전달 선호"],3,""],
-["Q039","ld","학습 전이를 높이는 데 중요한 것은?",["교육 후 현업 상사의 후속 지원","교육 장소의 쾌적함","강사의 인지도","교재의 두께"],0,""],
-["Q040","ld","직무 순환(Job Rotation)의 목적으로 보기 어려운 것은?",["다기능 인재 육성","매너리즘 방지","후계자 육성","인건비 절감"],3,""],
-["Q041","perf","팀장이 팀원 10명 전원에게 B등급을 부여했다면 의심할 오류는?",["후광 효과","중심화 경향","대비 효과","최근 효과"],1,"갈등을 피해 중간 등급에 몰아주는 전형적 패턴입니다."],
-["Q042","perf","OKR에서 KR이 갖춰야 할 조건은?",["측정 가능한 결과 지표","실행 활동의 나열","100% 달성 가능한 수준","정성적 방향 서술"],0,"'블로그 20건'은 활동, '재방문율 15→25%'가 결과입니다."],
-["Q043","perf","MBO(목표관리)의 핵심 특징은?",["상사가 목표를 일방적으로 하달","상사·부하가 함께 목표 설정 후 평가","목표 없이 행동만 관찰","동료가 서로 목표를 대신 설정"],1,""],
-["Q044","perf","균형성과표(BSC)의 4관점이 아닌 것은?",["재무","고객","내부 프로세스","경쟁사"],3,"네 번째는 학습과 성장 관점입니다."],
-["Q045","perf","강제 배분(상대평가)의 흔한 부작용은?",["협업 위축과 정치적 행동 증가","관대화 경향 심화","등급 간 격차 소멸","변별력 저하"],0,""],
-["Q046","perf","1년 내내 부진하다 12월에 큰 성과를 내 A등급을 받았다면?",["초두 효과","최근 효과","상동적 태도","유사성 오류"],1,""],
-["Q047","perf","360도 다면평가 도입 시 가장 주의할 점은?",["초기엔 보상과 즉시 연동한다","평가자를 실명 공개한다","초기에는 육성 목적으로 활용한다","동료 평가만 반영한다"],2,"도입 초기 보상 연동은 담합·보복 우려를 낳습니다."],
-["Q048","perf","평가 조정회의(Calibration)의 핵심 목적은?",["평가자 간 기준 편차 축소","정규분포 강제 달성","저성과자 조기 선별","평가 시간 단축"],0,""],
-["Q049","perf","9 Box Grid의 두 축은?",["성과 × 잠재력","성과 × 근속연수","역량 × 직급","잠재력 × 연봉"],0,""],
-["Q050","perf","PIP(성과향상계획) 운영의 적절한 접근은?",["해고 근거 확보가 주목적","구체적 목표·지원·기간 명시 후 실제 코칭","대상자 비공개 관찰","기간 없이 지속"],1,""],
-["Q051","perf","성과 면담에서 피해야 할 행동은?",["구체적 사실 기반 대화","성격·태도를 일반화해 지적","다음 기간 기대치 합의","자기평가 먼저 청취"],1,""],
-["Q052","perf","조직 목표를 상위→하위로 연결하는 것은?",["캐스케이딩","캘리브레이션","벤치마킹","세그멘테이션"],0,""],
-["Q053","perf","평가자의 관대화 경향을 완화하는 가장 효과적 방법은?",["평가 항목 수 축소","구체적 행동기준척도(BARS) 제공","평가 기간 연장","평가자 익명 처리"],1,""],
-["Q054","perf","OKR과 KPI의 차이로 적절한 것은?",["OKR은 도전적 정렬, KPI는 상시 모니터링에 강점","OKR은 정량만, KPI는 정성만 다룬다","KPI는 분기, OKR은 연 단위만 운영","OKR은 반드시 100% 달성해야 한다"],0,""],
-["Q055","perf","상시 피드백으로 전환하는 주된 이유는?",["등급 산출 자동화","행동과 피드백 시점 간격 축소","관리자 부담 감소","데이터 수집 간소화"],1,""],
-["Q056","perf","평가-보상 연계 시 유의할 점은?",["등급별 차등 폭을 사전에 투명 공개","기준을 비공개로 운영","하위 등급엔 보상 없음","재원 확정 후 기준을 정함"],0,""],
-["Q057","perf","상대평가→절대평가 전환 시 가장 먼저 대비할 리스크는?",["등급 상향 쏠림으로 변별력 약화","평가 항목 증가","시스템 구축 비용","참여율 저하"],0,""],
-["Q058","comp","연봉 5,400만원, 페이밴드 중간값 6,000만원일 때 Compa-ratio는?",["0.90","1.11","0.60","1.00"],0,"5,400÷6,000=0.90"],
-["Q059","comp","직무급(Job-based Pay)의 핵심 원리는?",["근속 연수에 따라 상승","직무 가치에 따라 결정","개인 역량 수준으로만 결정","회사 이익에 따라 재산정"],1,""],
-["Q060","comp","동종 업계 대비 급여 수준의 적절성은 어떤 공정성인가?",["내부 공정성","외부 공정성","절차 공정성","개인 공정성"],1,""],
-["Q061","comp","총보상(Total Rewards)에 포함되지 않는 것은?",["기본급·성과급","복리후생·학습 기회","인정과 커리어 성장","경쟁사의 급여 수준"],3,""],
-["Q062","comp","페이밴드 설계 시 밴드 간 중첩을 두는 이유는?",["승진 없이도 숙련 보상 여지를 주기 위해","인건비 총액 축소","직급 체계 단순화","평가 등급 세분화"],0,""],
-["Q063","comp","신입 초봉만 계속 올려 3~5년차와 격차가 사라졌다면?",["임금 압축(Pay Compression)","임금 피크제","브로드밴딩","레드 서클"],0,"방치하면 중간 연차 이직률이 급등합니다."],
-["Q064","comp","임금피크제의 일반적 목적은?",["고용 보장과 임금 조정을 맞바꾸는 것","신입 초봉 인상","성과급 비중 확대","직무급 전환"],0,""],
-["Q065","comp","직무평가 방법 중 요소별 점수를 합산하는 계량적 방식은?",["서열법","분류법","점수법","관찰법"],2,""],
-["Q066","comp","보상 전략을 '시장 P75 수준'으로 정했다는 의미는?",["시장 상위 25% 수준으로 지급","시장 하위 25% 수준으로 지급","시장 평균의 75%만 지급","인건비 비중을 매출의 75%로"],0,""],
-["Q067","comp","통상임금과 평균임금의 차이로 옳은 것은?",["통상임금은 연장·야간·휴일수당 산정 기준","평균임금이 통상임금을 대체한다","통상임금은 퇴직금에만 쓰인다","두 개념은 항상 동일하다"],0,"평균임금은 퇴직 전 3개월 임금총액÷총일수로, 퇴직금 산정 기준입니다."],
-["Q068","comp","STI와 LTI의 차이로 옳은 것은?",["STI는 단기 인센티브, LTI는 장기(주식 등) 인센티브","STI는 임원 전용","STI는 현금, LTI는 항상 복리후생","둘 다 기본급의 일부"],0,""],
-["Q069","comp","스톡옵션과 RSU의 핵심 차이는?",["스톡옵션은 매수권리, RSU는 조건 충족시 주식 부여","스톡옵션은 상장사 전용","RSU는 주가 하락시 가치 0","스톡옵션은 세금이 없다"],0,""],
-["Q070","comp","애덤스 공정성 이론에서 불공정을 느끼는 시점은?",["투입 대비 산출 비율을 타인과 비교해 차이를 느낄 때","절대 급여가 생계비 미만일 때","리더십이 부족할 때","승진 기회가 없을 때"],0,""],
-["Q071","comp","허즈버그 2요인 이론에서 급여는 일반적으로?",["동기 요인","위생 요인","자아실현 요인","해당 없음"],1,"부족하면 불만이지만 충족만으로 동기가 오르진 않습니다."],
-["Q072","comp","Range Penetration이 계산하는 것은?",["밴드 내 개인 급여의 위치","급여÷밴드 중간값","인건비÷매출","밴드 간 중첩 비율"],0,""],
-["Q073","comp","핵심 인재가 경쟁사 오퍼로 연봉 인상을 요구할 때 신중해야 할 이유는?",["카운터오퍼 관행화 시 오퍼가 인상의 경로가 됨","오퍼는 법적으로 확인 불가","인상하면 이직을 100% 막는다","연봉 인상은 취업규칙 불이익 변경이다"],0,""],
-["Q074","comp","보상 커뮤니케이션에서 가장 중요한 원칙은?",["결정의 기준과 근거를 설명하는 것","전 직원 연봉 공개","인상률 사전 예고 금지","재무팀이 안내하는 것"],0,""],
-["Q075","culture","샤인의 조직문화 3수준을 얕은 층부터 나열하면?",["인공물→표방가치→기본가정","기본가정→표방가치→인공물","표방가치→인공물→기본가정","인공물→기본가정→표방가치"],0,""],
-["Q076","culture","추천자 50%, 중립 30%, 비추천 20%일 때 eNPS는?",["+50","+30","+20","-20"],1,"추천율-비추천율=50-20=30"],
-["Q077","culture","직원 몰입과 만족의 차이로 적절한 것은?",["몰입은 자발적 헌신 포함, 만족은 현 상태 수용에 가까움","만족이 높으면 몰입도 반드시 높다","몰입은 복리후생 수준으로만 측정","둘은 같은 개념이다"],0,""],
-["Q078","culture","심리적 안전감이 높은 팀의 특징은?",["갈등이 전혀 없다","실수·반대 의견을 말해도 불이익이 없다고 믿는다","성과 목표를 낮게 잡는다","리더가 모든 결정을 직접 내린다"],1,""],
-["Q079","culture","경쟁가치모형(CVF) 4유형에 해당하지 않는 것은?",["관계 지향","혁신 지향","시장 지향","성과 지향"],3,"네 번째는 위계 지향입니다."],
-["Q080","culture","Stay Interview의 목적은?",["퇴사 사유를 사후 파악","재직 중인 직원이 남는·떠날 이유를 미리 확인","신입 온보딩 만족도 측정","부진자 선별"],1,""],
-["Q081","culture","부서 간 사일로 현상에 가장 효과적인 대응은?",["부서별 KPI를 더 세분화","공동 목표와 상호 의존 지표 설계","부서 간 회의 횟수 증가","조직도 잦은 개편"],1,""],
-["Q082","culture","코터의 변화관리 8단계 중 첫 번째는?",["위기감 조성","변화 비전 수립","단기 성과 창출","변화의 제도화"],0,""],
-["Q083","culture","문화 서베이 후 결과 공유·후속조치가 없으면?",["다음 서베이 응답률·신뢰도 하락","자발적 개선 활동 증가","솔직도 상승","지표가 자연 개선"],0,""],
-["Q084","culture","호프스테드 '권력 거리'가 큰 조직의 특징은?",["상하 위계에 따른 권한 격차를 자연스럽게 수용","개인 자율성을 최우선","불확실성을 적극 감수","단기 성과보다 장기 관계 중시"],0,""],
-["Q085","culture","온보딩이 조직문화에 중요한 이유는?",["초기 경험이 잔류 의사에 오래 영향을 줌","온보딩 비용이 채용 비용보다 큼","온보딩 기간엔 평가를 안 함","법적 의무이기 때문"],0,""],
-["Q086","culture","조직문화 진단에 서베이만으론 부족한 이유는?",["기본가정은 응답자 스스로 인식 못함","서베이 비용이 비쌈","응답률이 항상 50% 미만","익명 처리가 불가능함"],0,""],
-["Q087","culture","핵심가치를 실질적으로 내재화하는 가장 효과적 방법은?",["슬로건을 벽에 크게 게시","승진·평가·채용 기준에 가치 행동 반영","연 1회 워크숍 개최","뉴스레터에 매주 소개"],1,""],
-["Q088","culture","조직문화에 리더 영향이 큰 근본 이유는?",["리더가 실제 보상·눈감는 기준이 됨","문화 담당자로 지정되어서","근속 연수가 길어서","예산을 집행해서"],0,""],
-["Q089","culture","원격·하이브리드 확대의 대표적 문화 리스크는?",["비공식 정보 교류(weak ties) 감소","근무 시간 총량 감소","급여 수준 하락","채용 대상 지역 축소"],0,""],
-["Q090","culture","건강한 갈등과 파괴적 갈등을 가르는 핵심 기준은?",["갈등의 대상이 과업인가 사람인가","갈등의 빈도","참여 인원 수","공개 여부"],0,""],
-["Q091","labor","근로기준법상 법정근로+연장근로 최대 합계 시간은?",["40시간","48시간","52시간","68시간"],2,"법정 40시간+연장 12시간(5인 이상 사업장)"],
-["Q092","labor","1년간 80% 이상 출근한 근로자의 연차유급휴가 일수는?",["10일","12일","15일","20일"],2,""],
-["Q093","labor","계속근로 3년 이상 근로자의 연차 가산 규정은?",["매년 1일씩 무제한 가산","최초 1년 초과 매 2년마다 1일, 총 25일 한도","15일로 고정","5년마다 3일씩 가산"],1,""],
-["Q094","labor","해고 시 원칙적으로 지켜야 할 예고 기간은?",["7일 전","14일 전","30일 전","60일 전"],2,"미예고 시 30일분 이상 통상임금 지급 의무가 있습니다."],
-["Q095","labor","부당해고 구제신청을 노동위원회에 낼 수 있는 기간은?",["1개월 이내","3개월 이내","6개월 이내","기간 제한 없음"],1,""],
-["Q096","labor","퇴직급여 지급 대상 요건으로 옳은 것은?",["계속근로 1년 이상, 4주 평균 1주 15시간 이상","계속근로 6개월 이상이면 무조건","정규직에게만 지급","5인 이상 사업장에만 적용"],0,""],
-["Q097","labor","취업규칙 작성·신고 의무가 발생하는 사업장 기준은?",["상시 5명 이상","상시 10명 이상","상시 30명 이상","전 사업장"],1,""],
-["Q098","labor","취업규칙을 불리하게 변경할 때 필요한 것은?",["근로자 과반수(노조)의 동의","근로자 과반수의 의견 청취","고용노동부 사전 승인","노사협의회 보고"],0,"유리한 변경은 '의견 청취', 불이익 변경은 '동의'입니다."],
-["Q099","labor","5인 미만 사업장에 적용되지 않는 항목은?",["최저임금","퇴직급여","연차유급휴가","주휴수당"],2,""],
-["Q100","labor","수습 근로자 최저임금 감액 적용 요건은?",["계약 1년 이상·수습 3개월 이내·10% 감액","계약기간 무관 6개월 20% 감액","전 직종 3개월 30% 감액","감액은 절대 불가"],0,"단순노무업무 종사자는 감액 대상에서 제외됩니다."],
-["Q101","labor","임금채권의 소멸시효 기간은?",["1년","2년","3년","5년"],2,""],
-["Q102","labor","직장 내 괴롭힘 신고 접수 시 사용자의 의무는?",["지체없이 객관적 조사 및 피해자 보호조치","신고인 요청시에만 조사","가해자가 임원이면 조사 면제","결과를 전 직원에 공개"],0,""],
-["Q103","labor","출산전후휴가의 법정 기간은(단태아)?",["60일","90일","120일","180일"],1,"출산 후 45일 이상이 확보되어야 합니다."],
-["Q104","labor","육아휴직에 관한 설명으로 옳은 것은?",["만 8세 이하 또는 초2 이하 자녀 양육 위해 신청 가능","여성만 신청 가능","계속근로기간과 무관하게 언제나 가능","기간은 근속에서 제외된다"],0,""],
-["Q105","labor","5인 이상 사업장 연장근로 법정 가산율은?",["25% 이상","50% 이상","75% 이상","100% 이상"],1,"야간(22시~06시)도 50%, 휴일 8시간 초과분은 100%."],
-["Q106","labor","정기상여금의 통상임금 해당 여부, 최근 판례 경향은?",["재직조건이 있으면 무조건 부정된다","재직조건이 있어도 소정근로 대가면 인정될 수 있다","상여금은 항상 통상임금이 아니다","항상 평균임금에서 제외된다"],1,"2024.12 대법원 전원합의체가 '고정성' 요건을 폐기하는 취지로 판단을 변경했습니다."],
-["Q107","labor","근로조건 서면 명시·교부 의무 위반 시 제재는?",["과태료 없음","500만원 이하 벌금","3년 이하 징역","시정 권고에 그침"],1,""],
-["Q108","org","매트릭스 조직의 가장 큰 구조적 리스크는?",["이중 보고로 인한 권한 충돌·의사결정 지연","전문성 축적이 어려움","인건비 급증","부서 간 소통 단절"],0,""],
-["Q109","org","통제 범위(Span of Control)를 넓게 가져갈 수 있는 조건은?",["업무 표준화·숙련도가 높을 때","업무가 비정형적일 때","신입 비중이 높을 때","분산 근무일 때"],0,""],
-["Q110","org","기능 조직과 사업부제의 차이로 옳은 것은?",["기능은 전문성, 사업부제는 시장 대응 속도에 유리","사업부제는 중복 기능이 없다","기능 조직은 손익 책임이 명확","사업부제는 소규모에 유리"],0,""],
-["Q111","org","갈브레이스 Star Model 5요소가 아닌 것은?",["전략","구조","프로세스","브랜드"],3,"나머지는 보상, 인재입니다."],
-["Q112","org","RACI 매트릭스에서 'A'의 의미는?",["실무 수행자","최종 책임자(승인권자)","자문 대상자","정보 공유 대상자"],1,"원칙적으로 A는 1명이어야 합니다."],
-["Q113","org","\"구조는 전략을 따른다\"는 챈들러 명제의 시사점은?",["개편을 먼저 하고 전략을 맞춘다","전략이 먼저 정의된 뒤 구조를 설계한다","구조와 전략은 무관하다","구조는 매년 바꿔야 한다"],1,""],
-["Q114","org","콘웨이의 법칙이 시사하는 바는?",["시스템 구조는 조직의 커뮤니케이션 구조를 닮는다","조직 규모가 크면 생산성이 낮다","관리자는 부하 수에 비례해 늘어난다","조직은 7년마다 재설계해야 한다"],0,""],
-["Q115","org","스포티파이 모델에서 '챕터(Chapter)'의 역할은?",["동일 직군의 전문성·역량 개발","제품 단위 실행","자발적 관심사 커뮤니티","여러 스쿼드를 묶는 사업 단위"],0,""],
-["Q116","org","해크만·올드햄 직무특성모형 5차원이 아닌 것은?",["기술 다양성","과업 정체성","자율성","직무 난이도"],3,"나머지는 과업 중요성, 피드백입니다."],
-["Q117","org","기술다양성6·정체성5·중요성7·자율성4·피드백3(7점척도)일 때 MPS는?",["25","72","144","360"],1,"((6+5+7)/3)×4×3 = 6×12 = 72"],
-["Q118","org","의사결정 권한 분권화의 가장 큰 이점은?",["현장 대응 속도 향상","전사 통일성 강화","중복 투자 제거","통제 비용 감소"],0,""],
-["Q119","org","그라이너의 조직 성장 모델이 설명하는 것은?",["단계마다 고유한 위기를 겪고 해결하며 다음 단계로 감","조직은 규모와 무관하게 동일 구조 유지","성장은 인원 수에만 비례","5년마다 반드시 분사해야 함"],0,""],
-["Q120","org","울리히 HR 3축 모델에서 HRBP의 핵심 역할은?",["사업 과제를 인사 솔루션으로 연결하는 파트너","급여·행정 처리","인사 제도 설계 전문가 조직","채용 공고 게시"],0,"나머지 두 축은 CoE와 Shared Service입니다."],
-["Q121","org","계층 축소(Delayering) 시 가장 주의할 점은?",["관리자만 줄고 업무량은 그대로여서 부하 급증","인건비가 오히려 증가","조직도가 복잡해짐","승진 기회 증가"],0,""],
-["Q122","org","조직 재설계 후 성과가 안 나는 가장 흔한 원인은?",["구조만 바꾸고 프로세스·평가·보상을 안 바꿔서","조직도를 자주 공개해서","신규 채용을 안 해서","좌석 배치를 안 바꿔서"],0,""],
-["Q123","org","프로세스 오너십이 불명확할 때 흔한 증상은?",["부서 경계 업무가 반복적으로 누락·지연","업무량이 균등해짐","의사결정 속도가 빨라짐","조직도가 단순해짐"],0,""],
-["Q124","org","조직 개편 실행 전 HR이 가장 중요하게 점검할 사항은?",["근로조건 변경 여부와 법적 절차","새 조직도의 디자인 통일성","개편 발표일 요일","부서명 영문 표기"],0,""],
-["Q125","analytics","연간 퇴사자 24명, 평균 재직 200명일 때 연간 이직률은?",["8%","12%","16%","24%"],1,"24÷200×100=12%"],
-["Q126","analytics","이직률 분석 시 자발적·비자발적을 구분해야 하는 이유는?",["두 유형은 원인·대응이 완전히 다르기 때문","법적 구분 보고 의무","자발적 이직은 비용이 없음","비자발적은 통계 제외 대상"],0,""],
-["Q127","analytics","인당 매출(Revenue per Employee) 지표의 한계는?",["외주·자동화 비중이 다른 기업 간 비교가 어려움","계산이 불가능함","매출 없으면 모든 기업에 부적합","인건비를 이중 계산함"],0,""],
-["Q128","analytics","외부채용 3,000만원+내부채용 1,500만원으로 15명 채용시 Cost per Hire는?",["200만원","250만원","300만원","450만원"],2,"(3,000+1,500)÷15=300만원"],
-["Q129","analytics","\"원격근무 비율 높은 팀의 이직률이 낮다\"는 결과 해석은?",["즉시 전사 확대한다","상관일 뿐이므로 교란 변수를 함께 검토한다","표본이 크면 상관은 곧 인과다","유의하면 인과가 증명된 것이다"],1,""],
-["Q130","analytics","분석 성숙도 4단계 순서는?",["서술적→진단적→예측적→처방적","진단적→서술적→처방적→예측적","예측적→서술적→진단적→처방적","서술적→예측적→진단적→처방적"],0,""],
-["Q131","analytics","6개월 내 퇴사 여부(퇴사/잔류) 예측에 적합한 기법은?",["로지스틱 회귀분석","단순 이동평균","요인분석","군집분석"],0,""],
-["Q132","analytics","생존분석(Survival Analysis)을 HR에 적용하면 얻는 정보는?",["시점별 이탈 위험이 언제 높아지는지","직원별 시장 대비 급여 위치","부서별 인건비 총액","채용공고 전환율"],0,""],
-["Q133","analytics","퇴사자 설문 응답률 30%로 이직 원인을 결론지을 때 주의점은?",["응답자와 무응답자의 특성이 다를 수 있음(무응답 편향)","30%면 항상 통계적으로 유효","응답률은 결과에 영향 없음","응답률 낮을수록 신뢰도가 높음"],0,""],
-["Q134","analytics","선발도구의 차별적 영향을 판단하는 4/5(80%) 규칙은?",["소수집단 합격률이 최다집단의 80% 미만이면 차별을 의심","지원자의 80% 이상을 면접해야 함","합격자 80%가 동일집단이면 문제","평가항목 80%가 정량이어야 함"],0,""],
-["Q135","analytics","분석 결과 p<0.05가 나왔을 때 올바른 해석은?",["우연일 가능성이 낮다는 뜻이지 효과 크기와는 별개","가설이 95% 확률로 참","효과 크기가 5% 이상","인과관계가 입증됨"],0,""],
-["Q136","analytics","People Analytics에서 개인정보를 다룰 때 기본 원칙은?",["목적을 특정해 필요한 최소 정보만 수집·이용","인사팀 내부용이면 동의 불필요","익명화하면 무제한 수집 가능","분석 목적이면 민감정보도 자유 활용"],0,""],
-["Q137","analytics","매출100억, 총비용80억(인건비30억)일 때 HC ROI는?",["1.25","1.67","2.50","3.33"],1,"(100-50)÷30≈1.67"],
-["Q138","analytics","경영진용 HR 대시보드 설계의 가장 중요한 원칙은?",["의사결정에 직결되는 소수 지표에 집중","가능한 모든 지표를 한 화면에","지표마다 다른 차트로 다양성을 줌","원본 데이터를 그대로 노출"],0,""],
-["Q139","analytics","서베이 응답률이 계속 하락 중이라면 가장 근본적인 점검 항목은?",["이전 조사 결과에 따른 실제 변화가 있었는지","문항 수가 홀수인지 짝수인지","조사 시행 요일","설문 UI 색상"],0,""],
-["Q140","analytics","이직 예측 모델 도입 시 반드시 고려할 윤리적 이슈는?",["예측이 낙인·불이익으로 이어지지 않도록 활용 범위를 제한","모델 정확도를 100%로 만드는 것","예측 대상자에게 결과를 즉시 통보","예측 결과를 성과평가에 반영"],0,""],
-["Q141","recruit","구조화 면접(Structured Interview)의 특징으로 옳은 것은?",["모든 지원자에게 동일한 질문과 평가기준을 적용한다","면접관 재량으로 질문을 자유롭게 바꾼다","평가기준 없이 인상만으로 판단한다","지원자마다 다른 질문지를 사용해야 신뢰도가 높다"],0,"질문과 채점기준을 표준화해 신뢰도와 타당도를 높이는 방식입니다."],
-["Q142","recruit","비구조화 면접의 대표적 단점은?",["면접관의 주관·편향이 개입되기 쉽다","시간이 지나치게 짧다","평가기준이 지나치게 세분화된다","모든 지원자가 동일 질문을 받아 지루하다"],0,""],
-["Q143","recruit","블라인드 채용의 핵심 목적은?",["출신·학력 등 직무와 무관한 정보로 인한 편견을 줄이는 것","지원자 수를 줄이는 것","서류전형을 없애는 것","면접관 수를 늘리는 것"],0,""],
-["Q144","recruit","채용절차법상 채용서류의 반환에 대한 설명으로 옳은 것은?",["구직자가 요구하면 일정 기간 내 채용서류를 반환해야 한다","제출된 서류는 회사가 영구 보관해야 한다","반환 의무는 대기업에만 적용된다","반환 요구는 합격자만 할 수 있다"],0,""],
-["Q145","recruit","Cost per Hire 산정 시 포함되는 항목으로 적절한 것은?",["채용광고비, 서치펌 수수료 등 채용에 든 총비용","입사자의 첫 달 급여","입사자의 향후 3년 예상 연봉","면접에 참여한 임직원의 개인 실적"],0,""],
-["Q146","recruit","Time to Fill이 측정하는 기간은?",["채용 공고 게시부터 입사 확정까지","입사일부터 수습 종료까지","서류 접수부터 서류 합격 발표까지","면접 시작부터 면접 종료까지"],0,""],
-["Q147","recruit","Yield Ratio(합격 비율)가 의미하는 것은?",["각 채용 단계를 통과해 다음 단계로 넘어가는 지원자의 비율","최종 입사자의 근속연수","채용 담당자 1인당 처리 인원","연간 채용 목표 인원"],0,""],
-["Q148","recruit","Offer Acceptance Rate 계산식으로 옳은 것은?",["오퍼 수락자 수 ÷ 오퍼 제시 수 × 100","최종합격자 수 ÷ 지원자 수 × 100","입사자 수 ÷ 재직자 수 × 100","이직자 수 ÷ 평균 재직인원 × 100"],0,""],
-["Q149","recruit","레퍼런스 체크(평판조회)를 진행할 때 반드시 지켜야 할 것은?",["대상자 본인의 동의를 받아야 한다","동의 없이도 자유롭게 진행할 수 있다","현직 회사에만 문의해야 한다","조회 결과를 지원자에게 공개할 의무는 전혀 없다"],0,""],
-["Q150","recruit","수습근로자에 대한 설명으로 옳은 것은?",["수습기간이라도 근로계약 해지에는 정당한 이유가 필요하다","수습기간 중에는 어떠한 사유로도 자유롭게 해고할 수 있다","수습근로자는 최저임금 적용을 받지 않는다","수습기간은 법적으로 반드시 3개월이어야 한다"],0,""],
-["Q151","recruit","내부공모제(Internal Job Posting)의 장점으로 가장 적절한 것은?",["기존 인력의 경력개발 기회를 제공하고 온보딩 비용을 줄인다","반드시 외부채용보다 비용이 더 든다","조직 내 정보 비대칭을 심화시킨다","직무 이해도가 낮은 인력을 배치하게 된다"],0,""],
-["Q152","recruit","Quality of Hire를 판단하는 근거로 적절하지 않은 것은?",["입사자의 학교 소재지","입사 후 성과평가 결과","조기 이탈 여부","현업 관리자의 만족도"],0,""],
-["Q153","recruit","지원자경험(Candidate Experience) 관리가 중요한 이유는?",["떨어진 지원자도 기업 이미지에 영향을 미쳐 향후 채용·고객 관계에 영향을 준다","합격자에게만 영향을 미치기 때문이다","법적 의무사항이기 때문이다","채용 비용을 늘리기 위해서다"],0,""],
-["Q154","recruit","채용 과정에서 지원자에게 요구할 수 없는 정보로 옳은 것은?",["직계가족의 재산 및 직업","보유 자격증","최종 학력","희망 근무지"],0,""],
-["Q155","recruit","고령자고용법의 취지와 가장 가까운 것은?",["연령을 이유로 한 채용 차별을 방지하고 고령자 고용을 촉진한다","일정 연령 이상은 채용을 금지한다","정년을 폐지해야 한다는 규정이다","고령자에게만 지원 자격을 준다"],0,""],
-["Q156","recruit","경력단절여성 재고용 지원제도의 목적은?",["출산·육아 등으로 경력이 단절된 여성의 노동시장 복귀를 지원한다","신입 채용을 축소하기 위함이다","여성 채용을 제한하기 위함이다","정규직 전환을 금지하기 위함이다"],0,""],
-["Q157","recruit","역량기반면접(BEI)에서 자주 활용되는 답변 구조는?",["STAR(상황-과제-행동-결과)","SWOT","PDCA","OKR"],0,""],
-["Q158","recruit","그룹토론면접(GD)을 통해 주로 평가하고자 하는 역량은?",["의사소통·협업·논리적 사고","타이핑 속도","암기력","필기 속도"],0,""],
-["Q159","recruit","화상면접의 특징으로 옳은 것은?",["지리적 제약 없이 지원자 풀을 넓힐 수 있다","반드시 대면면접보다 평가가 정확하다","네트워크 문제가 평가에 전혀 영향을 주지 않는다","질문 구조화가 불필요하다"],0,""],
-["Q160","recruit","AI 채용도구(이력서 스크리닝 등) 도입 시 가장 유의해야 할 점은?",["학습 데이터에 내재된 편향이 차별로 이어질 수 있다","도입만 하면 채용속도가 무조건 빨라진다","면접관을 완전히 대체할 수 있다","법적 규제와 무관하게 자유롭게 활용 가능하다"],0,""],
-["Q161","recruit","채용절차법상 채용 여부 확정 통지에 대한 설명으로 옳은 것은?",["구직자가 요청하면 채용 여부를 알려야 할 의무가 있다","통지 의무는 전혀 없다","합격자에게만 결과를 알리면 된다","서류전형은 통지 대상이 아니다"],0,""],
-["Q162","recruit","최소자격요건(Minimum Qualification)과 우대사항의 차이는?",["최소자격요건은 지원 자격의 필수 기준, 우대사항은 가산 요소다","우대사항이 없으면 지원이 불가하다","최소자격요건은 참고사항일 뿐이다","둘은 동일한 의미로 쓰인다"],0,""],
-["Q163","recruit","공개채용(공채)과 상시채용의 차이에 대한 설명으로 옳은 것은?",["공채는 정기적으로 대규모 인원을 한 번에 선발하고, 상시채용은 결원·수요 발생 시 수시로 채용한다","상시채용은 반드시 연 1회만 가능하다","공채는 경력직에만 적용된다","둘의 채용 절차는 법적으로 완전히 동일해야 한다"],0,""],
-["Q164","recruit","채용 브랜딩(Employer Branding)의 목적은?",["잠재 지원자에게 매력적인 고용주 이미지를 형성해 우수 인재를 유치한다","광고비를 아예 쓰지 않기 위함이다","기존 직원의 급여를 낮추기 위함이다","경쟁사 정보를 수집하기 위함이다"],0,""],
-["Q165","recruit","인적성검사의 '신뢰도(Reliability)'가 의미하는 것은?",["동일 조건에서 반복 측정해도 결과가 일관되게 나오는 정도","검사가 측정하려는 것을 실제로 측정하는 정도","검사 문항 수가 많은 정도","검사 소요 시간이 짧은 정도"],0,""],
-["Q166","recruit","인적성검사의 '타당도(Validity)'가 의미하는 것은?",["검사가 측정하고자 하는 특성을 실제로 얼마나 잘 측정하는가","검사 결과가 매번 똑같이 나오는가","검사 문항이 몇 개인가","검사 시간이 얼마나 걸리는가"],0,""],
-["Q167","recruit","채용 과정에서 발생할 수 있는 '후광효과'란?",["한 가지 두드러진 특성이 다른 평가 항목에도 긍정적·부정적으로 전이되는 현상","모든 지원자에게 같은 점수를 주는 현상","시간이 지날수록 평가가 엄격해지는 현상","점수를 중간값에 몰아주는 현상"],0,""],
-["Q168","recruit","채용 담당자가 여러 지원자를 평가할 때 점수를 극단값 없이 중간으로 몰아주는 오류는?",["중심화 경향","관대화 경향","최근효과","대비효과"],0,""],
-["Q169","recruit","온보딩과 채용을 연계해서 관리해야 하는 이유로 가장 타당한 것은?",["초기 이탈을 방지하고 채용에 들인 투자를 성과로 연결하기 위해서다","온보딩은 채용팀 업무가 아니기 때문이다","온보딩 비용은 채용 비용에 포함되지 않기 때문이다","입사 후에는 관리할 필요가 없기 때문이다"],0,""],
-["Q170","recruit","채용 시 성별을 이유로 모집·채용 조건을 달리하는 것에 대한 설명으로 옳은 것은?",["남녀고용평등법상 원칙적으로 금지된다","직무와 무관하게 회사가 자유롭게 정할 수 있다","비공식적으로는 허용된다","공공기관에만 금지 규정이 적용된다"],0,""],
-["Q171","ld","커크패트릭(Kirkpatrick) 교육평가 4단계 모델의 순서로 옳은 것은?",["반응→학습→행동→결과","학습→반응→결과→행동","결과→행동→학습→반응","행동→결과→반응→학습"],0,""],
-["Q172","ld","70:20:10 학습모델에서 '70'이 의미하는 학습 방식은?",["실무 경험을 통한 학습","공식 교육과정을 통한 학습","타인과의 피드백·코칭을 통한 학습","독서를 통한 학습"],0,""],
-["Q173","ld","OJT(On the Job Training)의 특징으로 옳은 것은?",["실제 업무 현장에서 직무를 수행하며 배우는 방식이다","강의실에서만 진행되는 교육이다","반드시 외부 강사가 진행해야 한다","이론 중심의 집합교육을 뜻한다"],0,""],
-["Q174","ld","멘토링과 코칭의 차이에 대한 설명으로 가장 적절한 것은?",["멘토링은 장기적 관계와 경력개발에, 코칭은 특정 목표·과제 달성에 더 초점을 둔다","멘토링과 코칭은 완전히 동일한 개념이다","코칭은 반드시 외부 전문가만 할 수 있다","멘토링은 신입에게만 적용된다"],0,""],
-["Q175","ld","승계계획(Succession Planning)의 목적은?",["핵심 포지션의 공백에 대비해 후임자를 미리 육성·확보하는 것","모든 직원을 동일하게 육성하는 것","저성과자를 퇴출하기 위한 절차","채용 비용을 절감하기 위한 절차"],0,""],
-["Q176","ld","교육 ROI를 측정할 때 가장 필요한 정보는?",["교육으로 인한 성과 개선 효과와 투입 비용","교육 참석자의 인원수","교육장 대여 비용만","강사의 경력"],0,""],
-["Q177","ld","블렌디드 러닝(Blended Learning)이란?",["온라인과 오프라인 학습 방식을 결합한 교육 형태","오직 온라인으로만 진행하는 교육","현장실습만으로 구성된 교육","1:1 개인 과외 방식만을 의미"],0,""],
-["Q178","ld","리더십 파이프라인(Leadership Pipeline)의 핵심 개념은?",["직급·역할이 바뀔 때마다 요구되는 리더십 역량도 달라진다는 것","모든 리더는 동일한 역량만 있으면 된다는 것","리더십은 타고나는 것이라 교육이 불필요하다는 것","리더십 교육은 임원에게만 필요하다는 것"],0,""],
-["Q179","ld","학습전이(Transfer of Learning)가 의미하는 것은?",["교육에서 배운 내용을 실제 업무에 적용하는 정도","교육생이 다른 부서로 전보되는 것","교육 자료를 온라인으로 옮기는 것","교육 일정을 변경하는 것"],0,""],
-["Q180","ld","액션러닝(Action Learning)의 특징은?",["실제 현업 과제를 팀으로 해결하며 학습하는 방식이다","강의만 듣고 끝나는 방식이다","개인이 혼자 온라인 강의를 수강하는 방식이다","시험으로만 평가하는 방식이다"],0,""],
-["Q181","ld","교육 니즈 분석(TNA, Training Needs Analysis)을 가장 먼저 해야 하는 이유는?",["실제 역량 격차를 파악해야 효과적인 교육을 설계할 수 있기 때문","예산을 최대한 많이 쓰기 위해서","모든 직원에게 같은 교육을 주기 위해서","외부 강사를 섭외하기 쉬워서"],0,""],
-["Q182","ld","직무순환(Job Rotation)의 기대 효과로 가장 적절한 것은?",["다양한 직무 경험을 통해 시야를 넓히고 역량을 다각화한다","한 직무에만 전문성을 극대화한다","인건비를 절감한다","퇴사율을 높인다"],0,""],
-["Q183","ld","HRD(인적자원개발)와 HRM(인적자원관리)의 관계에 대한 설명으로 가장 적절한 것은?",["HRD는 교육·육성에, HRM은 채용·평가·보상 등 전반적 관리에 초점을 둔다","HRD와 HRM은 완전히 무관한 개념이다","HRD가 HRM보다 상위 개념으로 모든 것을 포괄한다","HRM은 교육을 전혀 다루지 않는다"],0,""],
-["Q184","ld","역량모델링(Competency Modeling)이란?",["직무 성과에 필요한 지식·기술·태도를 정의하는 작업이다","연봉 테이블을 설계하는 작업이다","조직도를 그리는 작업이다","근태 규정을 만드는 작업이다"],0,""],
-["Q185","ld","사내강사(Internal Trainer) 제도의 장점은?",["현업 맥락을 잘 아는 인력이 실무형 교육을 제공할 수 있다","항상 외부강사보다 전문성이 높다","교육 준비가 전혀 필요 없다","비용이 항상 더 많이 든다"],0,""],
-["Q186","ld","신입사원 온보딩 커리큘럼 설계 시 가장 중요하게 고려할 요소는?",["조직 적응과 직무 이해를 단계적으로 돕는 구성","최대한 많은 정보를 첫날 전달하는 것","교육을 최소화해 바로 실무에 투입하는 것","온보딩은 인사팀 혼자 진행하는 것"],0,""],
-["Q187","ld","LMS(Learning Management System)의 주요 기능이 아닌 것은?",["급여 계산","교육 과정 등록 및 이수 관리","학습 콘텐츠 제공","수강 이력 추적"],0,""],
-["Q188","ld","역량평가센터(Assessment Center)의 특징은?",["여러 평가기법(시뮬레이션, 역할연기 등)을 종합해 역량을 다면적으로 평가한다","한 가지 필기시험만으로 평가한다","오직 상사의 주관적 평가에만 의존한다","교육 이수 여부만 확인한다"],0,""],
-["Q189","ld","마이크로러닝(Micro-learning)의 특징으로 옳은 것은?",["짧은 시간에 핵심 내용만 학습할 수 있도록 설계된 콘텐츠 형태다","반드시 8시간 이상 진행되는 교육이다","오프라인 집합교육만을 의미한다","자격증 시험만을 위한 교육이다"],0,""],
-["Q190","ld","조직 내 지식경영(Knowledge Management)의 목적은?",["구성원의 암묵지를 형식지로 전환해 조직 전체가 공유·활용하도록 하는 것","개인의 지식을 절대 공유하지 않는 것","교육 예산을 삭감하는 것","퇴사자의 지식을 폐기하는 것"],0,""],
-["Q191","ld","자기주도학습(Self-Directed Learning)을 촉진하기 위한 방법으로 적절한 것은?",["개인별 학습경로 설계와 다양한 학습 콘텐츠 제공","모든 교육을 필수 강제 이수로만 운영","학습선택권을 최소화","평가와 무관하게 교육을 진행하지 않음"],0,""],
-["Q192","ld","교육 후 설문(만족도 조사)이 커크패트릭 모델의 어느 단계에 해당하는가?",["1단계 반응(Reaction)","2단계 학습(Learning)","3단계 행동(Behavior)","4단계 결과(Results)"],0,""],
-["Q193","ld","교육 이수 후 실제 업무 성과 변화를 측정하는 것은 커크패트릭 모델의 어느 단계인가?",["4단계 결과(Results)","1단계 반응(Reaction)","2단계 학습(Learning)","해당 없음"],0,""],
-["Q194","ld","사내대학·기업대학(Corporate University)의 목적은?",["조직의 전략과 연계된 체계적 인재육성 체계를 구축하는 것","외부 대학 학위를 대신 발급하는 것","신입사원 채용을 대행하는 것","급여를 지급하는 기능"],0,""],
-["Q195","ld","코호트(Cohort) 교육 방식의 특징은?",["같은 시기에 입과한 학습자 그룹이 함께 과정을 이수하는 방식이다","개인별로 전혀 다른 일정으로 진행되는 방식이다","1회성 특강만을 의미한다","평가가 전혀 없는 교육이다"],0,""],
-["Q196","ld","부트캠프형 교육의 특징으로 옳은 것은?",["짧은 기간에 집중적으로 실무 역량을 끌어올리는 몰입형 과정이다","1년 이상 장기간 진행되는 학위과정이다","이론 강의만으로 구성된다","평가 없이 수료증만 준다"],0,""],
-["Q197","ld","자격증 취득 지원제도를 운영하는 주된 목적은?",["직무 전문성 향상과 구성원의 자기계발을 지원하기 위해서","채용 비용을 줄이기 위해서","퇴사를 유도하기 위해서","법적 의무이기 때문에"],0,""],
-["Q198","ld","러닝저니(Learning Journey) 설계의 특징은?",["단발성 교육이 아니라 일정 기간에 걸친 연속적 학습 경험을 설계하는 것","하루짜리 특강만을 의미한다","교육 신청서 양식을 뜻한다","급여명세서 양식이다"],0,""],
-["Q199","ld","인재육성위원회 운영의 목적으로 가장 적절한 것은?",["핵심인재 선정과 육성 방향에 대해 조직 차원에서 논의·의사결정하는 것","단순 친목 모임을 위한 것","급여 인상률을 결정하는 기구","노사협의체를 대체하는 기구"],0,""],
-["Q200","ld","사내공모형 프로젝트 학습(사내 챌린지)의 기대 효과는?",["실무 문제 해결 경험을 통해 실질적 역량을 키울 수 있다","전 직원의 급여를 동일하게 만든다","교육 예산을 전혀 쓰지 않아도 된다","조직도를 단순화한다"],0,""],
-["Q201","perf","OKR에서 KR(Key Result)이 갖춰야 할 특징으로 가장 적절한 것은?",["측정 가능하고 구체적인 결과 지표여야 한다","반드시 정성적으로만 서술해야 한다","목표(Objective)와 무관해도 된다","연 1회만 설정하면 된다"],0,""],
-["Q202","perf","MBO(목표관리)의 핵심 특징은?",["상하급자가 합의하여 목표를 설정하고 그 달성도로 평가한다","목표 없이 결과만으로 평가한다","목표는 경영진이 일방적으로 통보한다","목표는 익명으로 설정된다"],0,""],
-["Q203","perf","캘리브레이션(Calibration) 회의를 실시하는 이유는?",["평가자 간 기준 차이를 줄이고 평가의 일관성을 확보하기 위해","평가 결과를 비공개로 처리하기 위해","평가 자체를 생략하기 위해","급여를 즉시 확정하기 위해"],0,""],
-["Q204","perf","강제배분법(Forced Distribution)의 특징은?",["평가등급별 인원 비율을 사전에 정해두고 그에 맞춰 등급을 배분한다","모든 인원에게 최고 등급을 줄 수 있다","등급 없이 서술형으로만 평가한다","평가자가 비율 제한 없이 자유롭게 등급을 준다"],0,""],
-["Q205","perf","성과평가에서 평가자가 최근에 있었던 사건 위주로 평가하는 오류는?",["최근효과(Recency Effect)","중심화 경향","관대화 경향","대비효과"],0,""],
-["Q206","perf","360도 다면평가의 특징으로 옳은 것은?",["상사, 동료, 부하 등 다양한 관점에서 평가를 수집한다","오직 상사 한 명만 평가한다","익명이 보장되지 않는다","연봉 결정에만 활용된다"],0,""],
-["Q207","perf","상대평가와 절대평가의 차이에 대한 설명으로 옳은 것은?",["상대평가는 등급별 비율이 정해져 있고, 절대평가는 정해진 기준 충족 여부로 평가한다","절대평가는 반드시 순위를 매긴다","상대평가는 개별 기준만 본다","둘은 동일한 방식이다"],0,""],
-["Q208","perf","SMART 목표 설정 기법에서 'M'이 의미하는 것은?",["측정 가능한(Measurable)","동기부여된(Motivated)","다양한(Multiple)","관리형(Managed)"],0,""],
-["Q209","perf","효과적인 성과면담의 특징으로 옳은 것은?",["구체적 사실과 행동에 기반한 양방향 대화로 진행된다","일방적으로 평가결과만 통보한다","연 1회, 서면으로만 진행되어야 한다","면담 없이 등급만 시스템에 입력하면 된다"],0,""],
-["Q210","perf","상시(수시) 성과관리(Continuous Performance Management)를 도입하는 이유는?",["연 1회 평가보다 적시성 있는 피드백으로 성과 개선을 돕기 위해","평가 횟수를 줄여 관리 부담을 없애기 위해","평가 자체를 폐지하기 위해","보상과 완전히 분리하기 위해"],0,""],
-["Q211","perf","9박스(나인박스) 평가 모델이 활용하는 두 축은?",["성과와 잠재력(역량)","연차와 급여","출근율과 학력","나이와 직급"],0,""],
-["Q212","perf","저성과자 관리 프로그램(PIP, Performance Improvement Plan)의 목적은?",["구체적 개선 목표와 기한을 제시해 성과 향상 기회를 주는 것","경고 없이 즉시 퇴사시키기 위한 절차","우수 성과자에게 보너스를 주기 위한 절차","채용 절차의 일부"],0,""],
-["Q213","perf","목표 캐스케이딩(Goal Cascading)이란?",["조직 목표를 하위 조직·개인 목표로 단계적으로 연계시키는 과정","개인 목표를 조직 목표와 무관하게 세우는 것","목표를 매일 변경하는 것","평가 결과를 공개하는 것"],0,""],
-["Q214","perf","계량 지표와 비계량 지표에 대한 설명으로 옳은 것은?",["계량 지표는 수치로 측정 가능하고, 비계량 지표는 정성적 판단이 필요하다","계량 지표는 항상 부정확하다","비계량 지표는 성과평가에 쓸 수 없다","둘은 같은 개념이다"],0,""],
-["Q215","perf","관대화 경향(Leniency Error)이란?",["평가자가 실제보다 후하게 점수를 주는 경향","평가자가 실제보다 박하게 점수를 주는 경향","점수를 중간에 몰아주는 경향","최근 사건에만 집중하는 경향"],0,""],
-["Q216","perf","성과평가 결과를 보상과 연계할 때 유의할 점으로 가장 적절한 것은?",["평가기준의 공정성과 투명성을 사전에 명확히 공유해야 한다","평가기준을 비공개로 유지해야 신뢰를 얻는다","연계하지 않는 것이 항상 바람직하다","보상은 평가와 무관하게 결정해야 한다"],0,""],
-["Q217","comp","직무급(Job-based Pay) 체계의 특징은?",["직무의 난이도·책임 크기에 따라 임금을 결정한다","근속연수에 따라서만 임금이 오른다","개인 역량과 무관하게 나이로만 결정된다","전 직원이 동일한 임금을 받는다"],0,""],
-["Q218","comp","연공급(Seniority-based Pay)의 특징은?",["근속연수·연령에 따라 임금이 상승하는 체계다","직무가치에 따라서만 결정된다","성과에 따라서만 결정된다","시장임금에 따라 매년 재산정된다"],0,""],
-["Q219","comp","개인 연봉이 6,000만원이고 해당 직급의 시장 중간값(Market Median)이 5,000만원이라면 Compa-ratio는?",["1.2","0.83","1.0","0.5"],0,"6,000÷5,000=1.2"],
-["Q220","comp","임금피크제(Salary Peak System)란?",["일정 연령 이후 임금을 조정하는 대신 고용을 연장하는 제도","모든 직원의 임금을 동일하게 맞추는 제도","신입사원 임금만 높이는 제도","임금을 매년 자동으로 인상하는 제도"],0,""],
-["Q221","comp","통상임금과 평균임금의 차이에 대한 설명으로 옳은 것은?",["통상임금은 정기적·일률적·고정적으로 지급되는 임금이고, 평균임금은 일정기간 지급된 임금총액을 그 기간 총일수로 나눈 것이다","통상임금과 평균임금은 완전히 동일한 개념이다","평균임금은 연장근로수당 산정 기준으로만 쓰인다","통상임금은 퇴직금 산정에만 쓰인다"],0,""],
-["Q222","comp","연장근로수당 산정의 기준이 되는 임금은?",["통상임금","평균임금","최저임금","실수령액"],0,""],
-["Q223","comp","최저임금 산입범위에 대한 일반적 설명으로 옳은 것은?",["매월 정기적으로 지급되는 임금 중 일정 범위가 산입되며, 일부 복리후생·상여는 단계적으로 포함된다","최저임금은 기본급 외 어떤 항목도 포함하지 않는다","모든 상여금은 무조건 산입 대상에서 제외된다","최저임금은 연봉제에는 적용되지 않는다"],0,""],
-["Q224","comp","스톡옵션(Stock Option)의 특징으로 옳은 것은?",["정해진 가격으로 미래에 회사 주식을 매수할 수 있는 권리를 부여하는 것이다","즉시 현금으로 지급되는 보너스다","반드시 모든 직원에게 동일 수량이 지급된다","근속과 무관하게 즉시 행사할 수 있다"],0,""],
-["Q225","comp","RSU(양도제한조건부주식)의 특징은?",["일정 조건(근속 등) 충족 시 실제 주식을 무상으로 부여받는 방식이다","주식을 살 수 있는 권리만 주는 것이다","현금으로만 지급되는 성과급이다","입사 즉시 매도 제한 없이 처분 가능하다"],0,""],
-["Q226","comp","총보상(Total Rewards)의 개념에 포함되지 않는 것은?",["사무실 청소 용역업체 계약서","기본급·성과급 등 금전적 보상","복리후생","경력개발·인정 등 비금전적 요소"],0,""],
-["Q227","comp","급여 밴드(Pay Band)·그레이드 체계를 운영하는 목적은?",["직무·직급별 임금 범위를 설정해 내부 형평성과 예측가능성을 확보하기 위해","모든 직원의 급여를 동일하게 만들기 위해","급여 정보를 완전히 비공개로 유지하기 위해","연봉협상을 없애기 위해"],0,""],
-["Q228","comp","페이믹스(Pay Mix)란?",["기본급과 변동급(성과급 등)의 구성 비율","4대보험 구성 비율","근무시간과 휴게시간의 비율","정규직과 계약직의 비율"],0,""],
-["Q229","comp","법정 복리후생에 해당하는 것은?",["4대 사회보험(국민연금·건강보험·고용보험·산재보험)","사내 동호회 지원비","경조사 지원금","사택 제공"],0,""],
-["Q230","comp","법정외(임의) 복리후생에 해당하는 것은?",["사내 동호회·자기계발비 지원","국민연금","산재보험","고용보험"],0,""],
-["Q231","comp","Pay Equity(임금 형평성) 점검이 필요한 이유는?",["동일가치노동에 대한 불합리한 격차를 파악하고 개선하기 위해","임금을 무조건 하향 평준화하기 위해","모든 직원의 급여를 공개하기 위해서만","성과평가를 없애기 위해"],0,""],
-["Q232","comp","브로드밴딩(Broadbanding)이란?",["여러 개의 좁은 급여 등급을 소수의 넓은 밴드로 통합하는 방식이다","급여 등급을 세분화해 수십 단계로 나누는 방식이다","성과급을 없애는 제도다","호봉제를 강화하는 제도다"],0,""],
-["Q233","comp","성과연봉제 도입 시 발생할 수 있는 리스크로 가장 적절한 것은?",["단기 성과에만 치중해 협업이나 장기적 관점이 약화될 수 있다","반드시 이직률을 낮춘다","반드시 조직문화를 개선시킨다","평가 부담이 전혀 없다"],0,""],
-["Q234","culture","eNPS(Employee Net Promoter Score)가 측정하는 것은?",["동료에게 회사를 추천할 의향(직원 추천지수)","이직률","채용 성공률","교육 이수율"],0,""],
-["Q235","culture","조직문화 진단 설문을 정기적으로 실시하는 목적은?",["구성원 인식의 변화를 추적하고 개선 포인트를 찾기 위해","설문 결과를 아무도 보지 않기 때문에","법적 의무이기 때문에","채용 홍보용 자료를 만들기 위해"],0,""],
-["Q236","culture","핵심가치(Core Value)가 조직 내에서 제대로 작동하려면 가장 중요한 것은?",["선언에 그치지 않고 채용·평가·의사결정 등 실제 행동 기준으로 연결되어야 한다","벽에 액자로 걸어두기만 하면 충분하다","연 1회 공지만 하면 된다","경영진만 알고 있으면 된다"],0,""],
-["Q237","culture","심리적 안전감(Psychological Safety)이 높은 조직의 특징은?",["실수나 다른 의견을 말해도 비난받지 않을 것이라는 믿음이 있다","실수하면 즉시 불이익을 받는다","의견 제시가 금지되어 있다","상사의 지시에만 따라야 한다"],0,""],
-["Q238","culture","조직몰입(Organizational Commitment) 중 '정서적 몰입'이 의미하는 것은?",["조직에 대한 애착과 동일시에서 비롯된 몰입","이직 시 손실이 커서 어쩔 수 없이 남는 몰입","의무감·도리감에서 비롯된 몰입","급여 때문에만 남는 몰입"],0,""],
-["Q239","culture","경쟁가치모형(Competing Values Framework)에서 유연성과 내부지향을 강조하는 문화 유형은?",["관계지향(Clan) 문화","시장지향(Market) 문화","위계지향(Hierarchy) 문화","혁신지향(Adhocracy) 문화"],0,""],
-["Q240","culture","코터(Kotter)의 변화관리 8단계 중 가장 첫 단계는?",["위기의식(긴급성) 조성","단기성과 창출","변화 제도화","비전 수립"],0,""],
-["Q241","culture","직장 내 괴롭힘 금지 규정(근로기준법 76조의2)에 대한 설명으로 옳은 것은?",["직장에서의 지위·관계를 이용해 신체적·정신적 고통을 주는 행위를 금지한다","동료 간 모든 갈등을 금지하는 규정이다","고용주에게만 적용된다","형사처벌만 규정하고 있다"],0,""],
-["Q242","culture","직장 내 괴롭힘 발생 시 사용자의 조치 의무로 옳은 것은?",["지체 없이 사실 확인을 위한 조사를 실시해야 한다","신고자에게 불이익을 주어야 한다","가해자를 즉시 해고해야만 한다","조사 없이 종결할 수 있다"],0,""],
-["Q243","culture","DEI(다양성·형평성·포용)를 조직에서 추진하는 이유로 가장 적절한 것은?",["다양한 배경의 구성원이 공정하게 기여하고 성장할 수 있는 환경을 만들기 위해","특정 집단만 우대하기 위해","법적 처벌을 피하기 위한 형식적 목적으로만","채용 비용을 줄이기 위해"],0,""],
-["Q244","culture","'조용한 퇴사(Quiet Quitting)' 현상이 의미하는 것은?",["실제로는 퇴사하지 않지만 최소한의 역할만 수행하려는 태도","실제로 회사를 그만두는 것","비밀리에 이직을 준비하는 것만을 의미","성과급을 포기하는 것"],0,""],
-["Q245","culture","원격·하이브리드 근무 확산이 조직문화 관리에 던지는 과제로 가장 적절한 것은?",["대면 접촉이 줄어드는 만큼 의도적인 소통·연결 장치가 필요해진다","조직문화 관리가 더 이상 필요 없어진다","모든 직원을 반드시 사무실로 복귀시켜야 한다","커뮤니케이션 비용이 사라진다"],0,""],
-["Q246","culture","리더의 '롤모델링(Role Modeling)'이 조직문화에 미치는 영향으로 가장 적절한 것은?",["리더의 행동이 구성원들에게 암묵적 행동 기준으로 작용한다","리더의 행동은 문화에 영향을 주지 않는다","문화는 오직 제도로만 형성된다","리더는 문화와 무관하다"],0,""],
-["Q247","culture","펄스 서베이(Pulse Survey)의 특징은?",["짧은 주기로 간단한 문항을 반복 조사해 변화 흐름을 파악한다","연 1회만 실시하는 대규모 설문이다","익명성이 보장되지 않는다","결과를 절대 공유하지 않는다"],0,""],
-["Q248","culture","MZ세대 구성원과의 소통에서 흔히 강조되는 관리 포인트는?",["일의 의미와 성장 기회, 명확한 피드백에 대한 요구가 상대적으로 크다","일방적 지시만으로도 충분하다","연공서열을 최우선으로 여긴다","피드백을 원하지 않는다"],0,""],
-["Q249","culture","워라밸(일과 삶의 균형) 관리가 조직에 주는 이점으로 가장 적절한 것은?",["구성원의 소진(번아웃)을 줄이고 장기적 생산성과 유지에 기여한다","단기 매출을 즉시 증가시킨다","인건비를 줄여준다","평가제도를 대체한다"],0,""],
-["Q250","culture","조직 리추얼(정기적인 의식·행사)이 조직문화에 기여하는 방식은?",["공동의 경험을 통해 소속감과 공유가치를 강화한다","업무 생산성과는 전혀 무관하다","비용만 발생시키는 불필요한 행사다","반드시 전 직원 강제 참석이어야 효과가 있다"],0,""],
-["Q251","labor","근로기준법상 연차유급휴가의 기본 부여 요건은?",["1년간 80% 이상 출근한 근로자에게 15일을 부여한다","입사 즉시 연차와 무관하게 20일을 부여한다","1년 미만 근로자에게는 어떤 연차도 부여되지 않는다","연차는 정규직에게만 적용된다"],0,""],
-["Q252","labor","근로자를 해고하려는 경우 사용자의 원칙적 의무는?",["적어도 30일 전에 예고하거나 30일분의 통상임금(해고예고수당)을 지급해야 한다","예고 없이 즉시 해고할 수 있다","해고 사유를 알릴 필요가 없다","서면이 아닌 구두 통보만 하면 된다"],0,""],
-["Q253","labor","취업규칙 작성·신고 의무가 발생하는 기준은?",["상시 10인 이상 근로자를 사용하는 사업장","상시 1인 이상 사업장 모두","상시 100인 이상 사업장만","공공기관에만 해당"],0,""],
-["Q254","labor","4대 사회보험에 해당하지 않는 것은?",["자동차보험","국민연금","건강보험","고용보험"],0,""],
-["Q255","labor","통상임금에 대한 대법원 판례의 핵심 기준으로 옳은 것은?",["정기성·일률성·고정성을 갖추었는지가 판단 기준이 된다","임금 명칭이 '수당'이면 무조건 제외된다","1년에 한 번 지급되면 무조건 포함된다","근로자 개인의 희망 여부로 결정된다"],0,""],
-["Q256","labor","육아휴직의 일반적 요건에 대한 설명으로 옳은 것은?",["일정 연령 이하의 자녀를 양육하기 위해 신청할 수 있으며 육아휴직급여는 고용보험에서 지급된다","전액 회사가 급여를 부담해야 한다","남성 근로자는 신청할 수 없다","근속기간과 무관하게 누구나 즉시 사용 가능하며 요건이 전혀 없다"],0,""],
-["Q257","labor","출산전후휴가에 대한 설명으로 옳은 것은?",["출산 전후 총 90일(다태아 120일)이 부여되며 출산 후에 최소 45일(다태아 60일) 이상 확보되어야 한다","전체 기간을 출산 전에만 사용해야 한다","무급이 원칙이며 예외가 없다","5일만 부여된다"],0,""],
-["Q258","labor","최저임금 미만으로 임금을 지급한 사용자에 대한 제재로 옳은 것은?",["벌금 또는 징역 등 형사처벌의 대상이 될 수 있다","민사상 책임만 발생하고 형사처벌은 없다","시정 요구 없이 넘어간다","최저임금법은 처벌 규정이 없다"],0,""],
-["Q259","labor","근로기준법상 원칙적 근로시간과 연장근로 한도에 대한 설명으로 옳은 것은?",["1주 40시간을 기본으로 하고 당사자 합의 시 연장근로는 1주 12시간을 한도로 한다","1주 근로시간에는 상한이 없다","연장근로에는 어떠한 합의도 필요 없다","1일 근로시간은 무제한이다"],0,""],
-["Q260","labor","야간근로(22시~06시)에 대해 지급해야 하는 가산수당의 원칙적 비율은?",["통상임금의 50% 이상 가산","가산 없이 통상임금만 지급","2배 이상 가산이 항상 의무","가산수당은 관리자만 대상"],0,""],
-["Q261","labor","퇴직금 산정의 기본 원칙으로 옳은 것은?",["계속근로기간 1년에 대해 30일분 이상의 평균임금을 지급한다","근속과 무관하게 정액으로 지급한다","1주 소정근로시간과 관계없이 모든 근로자에게 동일하게 적용된다","퇴직금은 법적 의무가 아니라 회사 재량이다"],0,""],
-["Q262","labor","근로계약 체결 시 사용자의 의무로 옳은 것은?",["임금·근로시간 등 주요 근로조건을 서면으로 명시해 교부해야 한다","구두 계약만으로 충분하다","근로조건 명시는 정규직에게만 적용된다","계약서 교부는 근로자가 요청할 때만 하면 된다"],0,""],
-["Q263","labor","부당해고를 당했다고 판단한 근로자가 구제를 신청할 수 있는 기관은?",["노동위원회","공정거래위원회","금융감독원","특허청"],0,""],
-["Q264","labor","감시적·단속적 근로에 종사하는 근로자에 대한 근로시간 등 적용제외에 대한 설명으로 옳은 것은?",["고용노동부장관의 승인을 받은 경우 근로시간·휴게·휴일 규정의 적용을 제외할 수 있다","사용자가 임의로 승인 없이 적용을 제외할 수 있다","감시·단속적 근로자는 모든 노동법 적용에서 제외된다","해당 제도는 존재하지 않는다"],0,""],
-["Q265","labor","업무상 재해를 입은 근로자를 보호하기 위한 제도는?",["산업재해보상보험","국민연금","고용보험 실업급여","자동차보험"],0,""],
-["Q266","labor","기간제 근로자를 2년을 초과하여 사용한 경우 원칙적으로 발생하는 효과는?",["기간의 정함이 없는 근로자(무기계약직)로 전환된 것으로 본다","자동으로 근로관계가 종료된다","임금을 소급 지급할 의무만 발생한다","아무 효과도 발생하지 않는다"],0,""],
-["Q267","labor","직장 내 성희롱 예방교육에 대한 설명으로 옳은 것은?",["사업주는 매년 정기적으로 성희롱 예방교육을 실시해야 한다","교육 의무는 대기업에만 적용된다","1회 실시로 영구히 의무를 다한 것으로 본다","관리자만 교육을 받으면 된다"],0,""],
-["Q268","org","매트릭스 조직(Matrix Organization)의 특징으로 옳은 것은?",["기능조직과 사업부제(프로젝트) 조직을 결합해 이중 보고체계를 갖는다","보고체계가 단일 라인으로만 구성된다","프로젝트 단위 운영이 전혀 없다","기능별 전문성이 완전히 사라진다"],0,""],
-["Q269","org","매트릭스 조직의 대표적 단점은?",["이중 보고로 인한 역할·책임 혼선과 의사결정 지연이 발생할 수 있다","의사결정이 항상 더 빨라진다","자원 활용의 유연성이 떨어진다","전문성이 전혀 필요 없다"],0,""],
-["Q270","org","통제범위(Span of Control)가 넓다는 것은 무엇을 의미하는가?",["한 명의 관리자가 관리하는 부하 직원의 수가 많다는 것","조직의 위계 단계가 매우 많다는 것","의사결정 권한이 최상위에 집중된다는 것","부서 수가 적다는 것"],0,""],
-["Q271","org","수평적(Flat) 조직구조의 일반적 특징은?",["관리 계층이 적어 의사결정 속도가 빠른 편이다","계층 단계가 매우 많다","통제범위가 매우 좁다","의사결정에 시간이 오래 걸리는 편이다"],0,""],
-["Q272","org","애자일(Agile) 조직 운영의 특징으로 가장 적절한 것은?",["작은 자율적 팀 단위로 빠르게 실험·반복하며 일하는 방식을 지향한다","엄격한 위계와 결재 단계를 늘리는 방식이다","연간 단위 계획만으로 운영한다","팀 간 협업을 최소화한다"],0,""],
-["Q273","org","직무충실화(Job Enrichment)의 개념은?",["직무에 자율성·책임·의미를 더해 직무의 질적 깊이를 높이는 것","동일한 수준의 업무를 단순히 양적으로 늘리는 것","직무를 세분화해서 단순 반복화하는 것","직무를 없애는 것"],0,""],
-["Q274","org","직무확대(Job Enlargement)와 직무충실화의 차이는?",["직무확대는 수평적으로 과업의 수를 늘리는 것이고, 직무충실화는 수직적으로 권한·책임을 더하는 것이다","둘은 완전히 동일한 개념이다","직무확대는 권한을 늘리는 것이다","직무충실화는 과업 수만 늘리는 것이다"],0,""],
-["Q275","org","CoE(Center of Excellence) 모델을 HR 조직에 적용하는 목적은?",["채용·보상 등 전문영역별 깊이 있는 전문성을 집중적으로 확보하기 위해","모든 HR 기능을 현업 부서로 이관하기 위해","HR 조직을 완전히 없애기 위해","교육 예산을 삭감하기 위해"],0,""],
-["Q276","org","HRBP(HR Business Partner) 모델의 특징으로 옳은 것은?",["현업 조직에 밀착해 사업 전략과 연계된 인사 파트너 역할을 수행한다","급여계산 등 운영업무만 전담한다","현업과 접점 없이 본사에서만 근무한다","채용만 전담하는 조직이다"],0,""],
-["Q277","org","조직의 중앙집권화(Centralization)가 강할 때 나타나는 특징은?",["주요 의사결정 권한이 상위 계층에 집중된다","현장 실무자에게 대부분의 권한이 위임된다","의사결정이 분산되어 이루어진다","각 지사가 독립적으로 의사결정한다"],0,""],
-["Q278","org","조직 재설계(리스트럭처링) 시 인사 관점에서 가장 우선적으로 검토할 사항은?",["새로운 조직구조에서 요구되는 역할·책임과 필요 인력을 재정의하는 것","사무실 인테리어 변경","회사 로고 리뉴얼","주차공간 재배정"],0,""],
-["Q279","org","다운사이징(Downsizing) 진행 시 유의해야 할 인사적 고려사항으로 가장 적절한 것은?",["잔류 인력의 사기·생존자 증후군 관리와 법적 절차 준수가 중요하다","비용 절감만 고려하면 충분하다","법적 절차는 고려 대상이 아니다","잔류 인력 관리는 불필요하다"],0,""],
-["Q280","org","사업부제 조직(Divisional Structure)의 장점으로 옳은 것은?",["사업 단위별로 신속한 의사결정과 성과 책임 소재가 명확해진다","기능별 전문성이 항상 극대화된다","중복 자원이 전혀 발생하지 않는다","조직 전체가 단일 목표만 추구한다"],0,""],
-["Q281","org","아웃소싱(Outsourcing)과 인소싱(Insourcing)에 대한 설명으로 옳은 것은?",["아웃소싱은 외부 자원을 활용하고, 인소싱은 내부 자원으로 직접 수행하는 것이다","아웃소싱은 반드시 비용을 증가시킨다","인소싱은 항상 품질을 떨어뜨린다","둘은 동일한 개념이다"],0,""],
-["Q282","org","직급·그레이드 체계를 단순화할 때 기대되는 효과는?",["역할 중심의 유연한 인력 운영과 승진 압박 완화를 기대할 수 있다","위계질서를 더욱 강화한다","연봉 격차를 완전히 없앤다","조직도를 더 복잡하게 만든다"],0,""],
-["Q283","org","팀제(Team-based Structure) 도입의 목적으로 가장 적절한 것은?",["부서 간 경계를 낮추고 협업과 실행 속도를 높이기 위해","위계 단계를 늘리기 위해","개인별 성과만 극대화하기 위해","의사결정 권한을 최상위로 집중하기 위해"],0,""],
-["Q284","analytics","이직률(Turnover Rate) 계산식으로 옳은 것은?",["해당 기간 이직자 수 ÷ 평균 재직인원 × 100","입사자 수 ÷ 퇴사자 수 × 100","평균 재직인원 ÷ 이직자 수 × 100","이직자 수 ÷ 채용 인원 × 100"],0,""],
-["Q285","analytics","월 평균 재직인원이 200명이고 해당 월 이직자가 10명이라면 월 이직률은?",["5%","10%","20%","2%"],0,"10÷200×100=5%"],
-["Q286","analytics","결근율(Absenteeism Rate)이 측정하는 것은?",["일정 기간 대비 무단·유고 결근한 일수의 비율","이직자 비율","채용 성공률","교육 이수율"],0,""],
-["Q287","analytics","기술적 분석(Descriptive Analytics)과 예측적 분석(Predictive Analytics)의 차이는?",["기술적 분석은 과거·현재 현황을 요약하고, 예측적 분석은 미래 결과를 추정한다","기술적 분석은 항상 미래를 예측한다","예측적 분석은 과거 데이터를 전혀 쓰지 않는다","둘은 완전히 같은 개념이다"],0,""],
-["Q288","analytics","상관관계와 인과관계에 대한 설명으로 옳은 것은?",["두 변수가 상관관계가 있다고 해서 반드시 인과관계가 성립하는 것은 아니다","상관관계는 항상 인과관계를 의미한다","인과관계가 있으면 상관관계는 없다","둘은 동일한 통계 개념이다"],0,""],
-["Q289","analytics","HR 데이터 거버넌스(Data Governance)가 필요한 이유로 가장 적절한 것은?",["데이터의 정확성·보안·활용 기준을 체계적으로 관리하기 위해","데이터를 아무나 자유롭게 수정하게 하기 위해","데이터를 수집만 하고 활용하지 않기 위해","법적 규제를 회피하기 위해"],0,""],
-["Q290","analytics","표본편향(Sampling Bias)이 우려되는 상황은?",["설문 응답자가 특정 집단(예: 만족도가 매우 높거나 낮은 사람)에 치우친 경우","전체 인원이 100% 응답한 경우","무작위로 표본을 추출한 경우","표본 크기가 충분히 큰 경우"],0,""],
-["Q291","analytics","People Analytics 성숙도 모델에서 가장 초기 단계에 해당하는 것은?",["단순 현황 보고(Reporting) 중심 단계","전사 전략에 예측모델이 내재화된 단계","실시간 처방적 분석(Prescriptive) 단계","조직 전체 의사결정을 데이터가 자동화하는 단계"],0,""],
-["Q292","analytics","헤드카운트 플래닝(Headcount Planning) 시 고려해야 할 요소로 가장 적절한 것은?",["사업계획, 예산, 이직률 등을 종합적으로 반영한 인력 수요 예측","전년도 인원수만 그대로 유지","경쟁사 인원수만 참고","현재 인원의 절반으로 무조건 축소"],0,""],
-["Q293","analytics","채용 퍼널(Recruiting Funnel)에서 전환율(Conversion Rate)을 관리하는 목적은?",["각 단계별 이탈 원인을 파악해 채용 프로세스를 개선하기 위해","전환율은 채용과 무관한 지표이기 때문에","지원자 수를 줄이기 위해","서류 접수를 막기 위해"],0,""],
-["Q294","analytics","A/B 테스트를 인사 영역(예: 채용 공고 문구)에 적용하는 방식으로 옳은 것은?",["두 가지 버전을 각각 다른 집단에 노출해 성과 차이를 비교한다","전체에게 하나의 버전만 보여주고 끝낸다","결과를 비교하지 않고 느낌으로 결정한다","표본 없이 이론적으로만 판단한다"],0,""],
-["Q295","analytics","다양성(Diversity) 지표를 관리할 때 흔히 활용되는 항목은?",["성별·연령 등 구성원 특성별 분포","사무실 면적","커피머신 대수","주차장 규모"],0,""],
-["Q296","analytics","인건비 총액 40억원, 매출 200억원일 때 매출 대비 인건비 비율은?",["20%","40%","10%","5%"],0,"40÷200×100=20%"],
-["Q297","analytics","Span of Control(관리 폭)이 평균 5라는 것은 무엇을 의미하는가?",["관리자 1인이 평균 5명의 직속 부하를 관리한다는 뜻이다","전체 조직에 관리자가 5명뿐이라는 뜻이다","5개 부서가 있다는 뜻이다","이직률이 5%라는 뜻이다"],0,""],
-["Q298","analytics","HR 지표를 경영진에게 보고할 때 우선적으로 고려해야 할 원칙은?",["사업 의사결정과 직결되는 소수의 핵심 지표를 명확하게 전달한다","가능한 모든 지표를 빠짐없이 나열한다","가장 복잡한 통계기법을 우선 적용한다","원본 데이터를 가공 없이 그대로 전달한다"],0,""],
-["Q299","analytics","설문 조사에서 무응답률이 매우 높을 때 우선적으로 점검해야 할 것은?",["설문 설계·전달 방식과 구성원의 신뢰 수준을 함께 점검한다","무조건 표본을 늘리면 해결된다","결과를 그대로 신뢰하고 발표한다","응답자에게 불이익을 준다"],0,""],
-["Q300","analytics","People Analytics 프로젝트를 시작할 때 가장 먼저 정의해야 하는 것은?",["분석을 통해 해결하고자 하는 비즈니스 질문(목적)","사용할 통계 프로그램의 종류","보고서 색상 테마","분석팀 회식 일정"],0,""]
+["Q001","recruit","채용공고에 특정 성별만 지원 가능하다고 적는 것은?",["직무 특성상 예외가 인정되는 극히 일부를 제외하면 원칙적으로 금지된다","회사 재량이라 문제없다","공고에만 명시하면 합법이다","지원자가 적으면 예외가 인정된다"],0,"남녀고용평등법상 모집·채용에서의 성차별은 원칙적으로 금지되며, 예외는 직무의 성질상 불가피한 경우로 매우 제한적으로만 인정됩니다."],
+["Q002","recruit","블라인드 채용의 핵심 취지는?",["출신지·학력·외모 등 편견 요소를 배제하고 직무 능력 중심으로 평가한다","서류 전형을 아예 없앤다","면접을 비대면으로만 진행한다","이력서 제출을 금지한다"],0,"블라인드 채용은 편견을 유발할 수 있는 정보를 가리고, 직무 수행에 필요한 역량과 경험 중심으로 평가하는 방식입니다."],
+["Q003","recruit","채용 과정에서 지원자의 개인정보를 수집할 때 반드시 필요한 것은?",["수집 목적을 알리고 본인 동의를 받는 것","수집 후 사후 통보만 하면 된다","동의 없이도 채용 목적이면 자유롭게 수집 가능하다","합격자에 한해서만 동의를 받으면 된다"],0,"개인정보보호법에 따라 채용 전형에서도 개인정보 수집·이용 목적을 명확히 고지하고 동의를 받아야 합니다."],
+["Q004","recruit","채용절차법상 채용서류 반환 의무에 대한 설명으로 옳은 것은?",["구직자가 요구하면 채용서류를 반환하거나 파기해야 한다","제출된 서류는 회사가 영구 보관해야 한다","반환 의무는 상시근로자 5인 미만 사업장에도 동일하게 적용된다","구직자는 반환을 요구할 권리가 없다"],0,"채용절차의 공정화에 관한 법률에 따라 일정 규모 이상 사업장은 구직자가 요구할 경우 채용서류를 반환하거나 파기해야 합니다."],
+["Q005","recruit","수습기간 중 해고(채용 취소)에 대한 설명으로 옳은 것은?",["수습이라도 정당한 이유 없이 함부로 해고할 수 없다","수습 기간에는 사유 없이 언제든 해고 가능하다","수습 근로자는 근로기준법 보호 대상이 아니다","수습 계약은 구두로만 체결해도 무방하다"],0,"수습 근로자도 근로기준법상 근로자이므로, 해고에는 정당한 이유가 필요합니다. 다만 통상 해고보다 다소 완화된 기준이 적용될 수 있습니다."],
+["Q006","recruit","NCS(국가직무능력표준) 기반 채용의 특징은?",["직무 수행에 필요한 능력 단위를 기준으로 전형을 설계한다","학벌과 스펙을 최우선으로 평가한다","외국어 성적만으로 합격을 결정한다","공채 대신 수시채용만 허용한다"],0,"NCS는 산업현장에서 직무를 수행하는 데 필요한 지식·기술·태도를 표준화한 것으로, 이를 기반으로 직무 중심 채용을 설계합니다."],
+["Q007","recruit","평판조회(레퍼런스 체크)를 진행할 때 유의할 점은?",["대상자 본인의 동의를 받고 진행해야 한다","동의 없이 지인에게 물어봐도 무방하다","현직 회사 상사에게만 문의하면 된다","합격 통보 후에는 할 필요가 없다"],0,"평판조회도 개인정보 수집에 해당할 수 있어 대상자의 동의를 받는 것이 원칙이며, 무분별한 조회는 분쟁의 소지가 있습니다."],
+["Q008","recruit","채용 시 이력서에 허위 학력을 기재한 사실이 입사 후 밝혀진 경우는?",["중대한 허위 기재는 해고 사유가 될 수 있다","이미 입사했으므로 문제되지 않는다","급여만 삭감하면 된다","징계 없이 경고로 끝나야 한다"],0,"채용 결정에 영향을 줄 정도의 중대한 허위 기재는 근로계약 취소나 징계해고 사유로 인정될 수 있습니다."],
+["Q009","recruit","구조화 면접(Structured Interview)의 장점은?",["모든 지원자에게 동일 기준의 질문을 적용해 평가 일관성을 높인다","면접관이 자유롭게 아무 질문이나 할 수 있다","면접 시간을 항상 짧게 만든다","서류 전형을 생략해도 된다"],0,"구조화 면접은 사전에 정한 평가 기준과 질문지를 모든 지원자에게 동일하게 적용해 면접관의 주관 개입을 줄이는 방식입니다."],
+["Q010","recruit","채용공고에 실제보다 높은 연봉이나 근무조건을 제시해 지원자를 모집하는 행위는?",["채용절차법상 허위 채용광고로 문제될 수 있다","마케팅 기법으로 법적 문제가 없다","입사 후 정정하면 무관하다","구두로만 안내하면 괜찮다"],0,"채용절차의 공정화에 관한 법률은 거짓 채용광고 게시를 금지하고 있으며, 위반 시 제재 대상이 될 수 있습니다."],
+["Q011","recruit","경력직 채용 시 전 직장과의 경업금지약정을 검토해야 하는 이유는?",["약정 위반 시 신규 입사자와 회사 모두 법적 분쟁에 휘말릴 수 있다","경업금지약정은 법적 효력이 전혀 없다","이직자는 어떤 약정도 신경 쓸 필요가 없다","경업금지약정은 임원에게만 적용된다"],0,"유효한 경업금지약정을 위반해 이직하면 전 직장이 손해배상 등을 청구할 수 있어, 채용 전 사전 확인이 필요합니다."],
+["Q012","recruit","채용 전형에서 지원자에게 가족관계, 결혼 여부 등을 묻는 것은?",["직무와 무관한 개인정보 요구로 지양해야 한다","지원자를 이해하는 데 필요하므로 항상 물어봐야 한다","법적으로 아무 제한이 없다","면접관 재량으로 자유롭게 물어도 된다"],0,"채용절차법과 관련 지침은 직무 수행과 무관한 개인정보(용모, 키, 가족관계, 재산 등) 요구를 제한하고 있습니다."],
+["Q013","recruit","인턴십 이후 정규직 전환 채용의 일반적인 절차는?",["인턴 기간의 근무 평가를 바탕으로 별도 전환 심사를 거친다","인턴은 자동으로 모두 정규직 전환된다","전환 여부는 인턴 본인이 결정한다","전환 심사는 법적으로 금지되어 있다"],0,"체험형·채용연계형 인턴 모두 통상 근무 태도와 성과에 대한 평가를 바탕으로 전환 심사를 진행합니다."],
+["Q014","recruit","헤드헌팅(서치펌)을 통한 채용의 특징은?",["주로 경력직·전문직군 등 필요 인재를 직접 발굴해 추천받는 방식이다","신입 공채 전용 채용 방식이다","채용 비용이 전혀 들지 않는다","서치펌은 채용 후보자와 계약을 대신 체결해준다"],0,"헤드헌팅은 서치펌이 기업의 요청에 따라 적합한 인재를 발굴·추천하는 방식으로, 주로 경력직이나 전문 인력 채용에 활용됩니다."],
+["Q015","recruit","최종 합격자에게 근로계약서를 작성해야 하는 시점은?",["근로 개시 전에 작성해 교부하는 것이 원칙이다","입사 후 3개월 이내면 언제든 무방하다","연봉 협상이 끝나면 작성하지 않아도 된다","구두 합의만으로 충분하다"],0,"근로기준법상 사용자는 근로계약 체결 시 임금, 근로시간 등 주요 근로조건을 명시한 서면을 근로자에게 교부해야 합니다."],
+["Q016","recruit","장애인 의무고용제도에 대한 설명으로 옳은 것은?",["일정 규모 이상 사업주는 상시근로자의 일정 비율 이상을 장애인으로 고용해야 한다","모든 사업장에 동일하게 강제 적용되는 것은 아니다","의무를 지키지 않아도 아무 불이익이 없다","장애인 고용은 공공기관에만 해당한다"],0,"장애인고용촉진법에 따라 일정 규모 이상 민간·공공 사업주는 법정 의무고용률 이상 장애인을 고용해야 하며, 미이행 시 부담금이 부과됩니다."],
+["Q017","recruit","채용 시 인적성검사를 활용하는 주된 목적은?",["직무 적합도와 조직 적응 가능성을 객관적으로 가늠하는 참고 자료로 활용한다","검사 점수만으로 최종 합격을 100% 결정한다","불합격자를 걸러내기 위한 형식적 절차일 뿐이다","법적으로 반드시 실시해야 하는 의무 절차이다"],0,"인적성검사는 직무 역량과 조직 적합성을 파악하기 위한 보조 도구로 활용되며, 단독으로 당락을 결정하는 절대 기준으로 쓰이지는 않는 것이 일반적입니다."],
+["Q018","recruit","채용 담당자가 지원자의 SNS를 임의로 조사해 평가에 반영하는 것은?",["사생활 침해 소지가 있어 신중해야 한다","채용 담당자의 당연한 권한이다","법적으로 전혀 문제되지 않는다","모든 회사가 의무적으로 해야 하는 절차다"],0,"직무와 무관한 사생활 정보를 임의로 수집·활용하는 것은 개인정보보호 및 사생활 침해 논란의 소지가 있어 신중한 접근이 필요합니다."],
+["Q019","recruit","채용형 인턴 계약서에 반드시 포함되어야 할 내용은?",["근로시간, 임금 등 근로기준법상 필수 근로조건","전환 시 예상 연봉 협상 시나리오","입사 후 5년 커리어 로드맵","팀 회식 참석 의무 조항"],0,"인턴도 근로자이므로 근로계약서에는 근로시간, 임금, 휴일 등 근로기준법이 정한 필수 근로조건이 반드시 명시되어야 합니다."],
+["Q020","recruit","다수 지원자를 효율적으로 스크리닝하기 위한 ATS(지원자 추적 시스템)의 역할은?",["지원서 접수부터 전형 단계별 진행 상황을 체계적으로 관리한다","최종 합격자를 자동으로 확정한다","면접관의 평가를 대신 작성해준다","연봉 협상을 자동으로 진행한다"],0,"ATS는 채용 프로세스 전반(접수, 서류검토, 일정관리 등)을 효율적으로 관리하도록 돕는 시스템으로, 최종 판단은 채용 담당자가 합니다."],
+["Q021","ld","신입사원 온보딩 프로그램의 핵심 목적은?",["조직 적응과 직무 이해를 도와 조기 전력화를 돕는다","입사 첫날 서류 작성만 마치면 끝이다","온보딩은 법적 의무 사항일 뿐이다","경력직에게는 필요 없는 절차다"],0,"온보딩은 신규 입사자가 조직문화와 업무를 빠르게 이해하고 적응하도록 돕는 과정으로, 조기 이탈 방지에도 중요합니다."],
+["Q022","ld","법정 의무교육으로 대부분의 사업장에서 매년 실시해야 하는 것이 아닌 것은?",["신규 입사자 채용 면접 스킬 교육","성희롱 예방교육","개인정보보호 교육","산업안전보건교육"],0,"성희롱 예방교육, 개인정보보호 교육, 산업안전보건교육 등은 관련 법령에 따른 법정 의무교육이지만, 면접 스킬 교육은 법정 의무가 아닙니다."],
+["Q023","ld","OJT(On-the-Job Training)의 특징은?",["실제 업무 현장에서 선배·상사의 지도를 받으며 배우는 방식이다","반드시 외부 강사를 초빙해야 한다","오프라인 집합 교육만을 의미한다","신입사원에게는 적용할 수 없다"],0,"OJT는 직무 현장에서 실제 업무를 수행하며 습득하는 교육 방식으로, 실무 적용력을 높이는 데 효과적입니다."],
+["Q024","ld","사내 멘토링 제도를 운영하는 주요 목적은?",["경험 많은 구성원이 신규·주니어 구성원의 적응과 성장을 돕는다","멘토가 멘티의 업무를 대신 처리해준다","승진 심사를 멘토가 결정한다","연봉 협상을 멘토가 대행한다"],0,"멘토링은 조직 내 지식과 경험을 전수하고 정서적 지지를 제공해 구성원의 적응과 성장을 촉진하는 제도입니다."],
+["Q025","ld","고용보험 환급과정(국비지원 훈련)을 활용하는 이유는?",["교육훈련 비용의 일부를 정부로부터 지원받을 수 있다","모든 교육이 100% 무료가 된다","정부 승인 없이도 자유롭게 신청 가능하다","대기업만 신청할 수 있다"],0,"고용보험 환급과정은 사업주가 직업능력개발훈련을 실시할 경우 일정 요건을 충족하면 훈련비 일부를 지원받는 제도입니다."],
+["Q026","ld","승계계획(Succession Planning)의 의미는?",["핵심 직책의 공백에 대비해 후보자를 미리 육성·관리하는 것","퇴사자의 인수인계 문서를 작성하는 것","조직도를 매년 갱신하는 것","신입사원 채용 계획을 세우는 것"],0,"승계계획은 핵심 포지션이 공석이 될 경우를 대비해 내부 후보자를 사전에 파악하고 육성하는 인재관리 활동입니다."],
+["Q027","ld","교육의 효과성을 확인하기 위한 방법으로 가장 적절한 것은?",["교육 만족도뿐 아니라 실제 현업 적용도와 성과 변화를 함께 살펴본다","교육 종료 후 설문만 확인하면 충분하다","교육 참석률만 확인하면 된다","교육비 집행 내역만 점검하면 된다"],0,"교육 효과는 만족도 조사에 그치지 않고, 학습 내용이 실제 업무에 적용되는지와 성과에 미치는 영향까지 살펴보는 것이 바람직합니다."],
+["Q028","ld","사내 강사(SME, 현업 전문가)를 활용한 교육의 장점은?",["실무에 즉시 적용 가능한 현장 지식을 전달할 수 있다","외부 강사보다 항상 강의력이 뛰어나다","교육 준비 시간이 전혀 들지 않는다","법정 의무교육을 대체할 수 있다"],0,"현업 전문가가 강사로 참여하면 실제 업무 맥락에 맞는 살아있는 지식을 전달할 수 있다는 장점이 있습니다."],
+["Q029","ld","이러닝(e-Learning) 교육의 특징으로 옳은 것은?",["시간과 장소 제약 없이 자율적으로 학습할 수 있다","반드시 정해진 시간에 한 장소에 모여야 한다","실습이 필요한 교육에는 전혀 활용할 수 없다","현장 교육보다 항상 학습 효과가 낮다"],0,"이러닝은 학습자가 원하는 시간과 장소에서 유연하게 학습할 수 있다는 것이 큰 장점이며, 최근에는 다양한 실습형 콘텐츠도 활용됩니다."],
+["Q030","ld","직무교육 계획을 수립할 때 가장 먼저 해야 할 일은?",["구성원의 현재 역량과 요구되는 역량 간의 격차를 파악한다","일단 인기 있는 외부 교육을 신청한다","예산부터 확정한다","교육 일정표를 먼저 정한다"],0,"효과적인 교육설계는 현재 역량 수준과 목표 역량 사이의 갭(Gap)을 분석하는 것에서 출발합니다."],
+["Q031","ld","리더십 파이프라인 관점에서 신임 팀장에게 가장 필요한 교육은?",["실무자에서 관리자로의 역할 전환에 필요한 코칭·피드백 스킬","전사 재무제표 작성법","신입사원 채용 면접관 자격증","전산 시스템 개발 언어"],0,"실무자에서 관리자로 전환할 때는 일하는 방식 자체가 바뀌므로, 위임·코칭·피드백 등 관리자 역할에 맞는 교육이 중요합니다."],
+["Q032","ld","장애인 인식개선 교육에 대한 설명으로 옳은 것은?",["일정 규모 이상 사업장은 매년 1회 이상 실시해야 하는 법정 의무교육이다","희망하는 사업장만 자율적으로 실시하면 된다","임원만 이수하면 되는 교육이다","한번 이수하면 평생 재이수가 필요 없다"],0,"장애인고용촉진 및 직업재활법에 따라 사업주는 매년 1회 이상 장애인 인식개선 교육을 실시해야 합니다."],
+["Q033","ld","경력개발제도(CDP)의 목적은?",["구성원 개인의 성장 경로를 조직 목표와 연계해 체계적으로 지원한다","모든 직원을 임원으로 승진시키는 것이다","퇴사를 유도하는 제도이다","연봉 인상만을 목적으로 한다"],0,"경력개발제도는 구성원의 장기적 성장 경로를 조직의 인재 육성 전략과 연계해 지원하는 체계입니다."],
+["Q034","ld","교육훈련 예산을 편성할 때 고려할 요소가 아닌 것은?",["전 직원의 개인 SNS 팔로워 수","전략적으로 필요한 핵심 역량","법정 의무교육 이수 현황","조직의 성장 단계와 사업 방향"],0,"교육 예산은 조직의 사업 전략, 필요 역량, 법정 의무 이행 여부 등을 기준으로 편성하며, 개인 SNS 팔로워 수는 무관한 요소입니다."],
+["Q035","ld","블렌디드 러닝(Blended Learning)이란?",["오프라인 교육과 온라인 학습을 결합한 방식이다","오직 온라인 강의만을 의미한다","외부 위탁 교육만을 뜻한다","1:1 개인 코칭만을 지칭한다"],0,"블렌디드 러닝은 집합교육, 이러닝, 실습 등 여러 학습 방식을 혼합해 학습 효과를 높이는 방식입니다."],
+["Q036","ld","신입사원 수습평가 결과가 기준 미달일 때 일반적인 절차는?",["평가 기준과 사유를 명확히 안내하고 절차에 따라 처리한다","별도 안내 없이 즉시 퇴사 처리한다","무조건 수습기간을 연장한다","평가 자체를 생략하고 정규직 전환한다"],0,"수습평가가 기준에 미달하더라도 명확한 기준 고지와 정당한 절차 없이 임의로 처리하면 분쟁의 소지가 있습니다."],
+["Q037","ld","직무순환(Job Rotation)의 효과로 보기 어려운 것은?",["특정 부서의 매출을 즉시 2배로 늘린다","다양한 직무 경험을 통해 시야를 넓힌다","조직 전체에 대한 이해도를 높인다","여러 부서 간 협업 네트워크가 형성된다"],0,"직무순환은 다양한 경험과 시야 확대, 네트워크 형성에 효과적이지만 매출을 직접적으로 증대시키는 수단은 아닙니다."],
+["Q038","ld","교육 이수 후 현업 적용을 촉진하기 위한 방법으로 가장 적절한 것은?",["교육 후 실행계획(Action Plan)을 세우고 상사가 후속 점검을 한다","교육이 끝나면 완전히 별개로 여기고 신경 쓰지 않는다","수료증만 발급하고 종료한다","다음 교육 신청서만 준비한다"],0,"교육 후 현업 적용을 위해서는 실행계획 수립과 상사의 후속 코칭·점검이 병행되는 것이 효과적입니다."],
+["Q039","ld","사내 교육 커리큘럼을 설계할 때 계층별(신입/주니어/시니어/리더) 교육을 구분하는 이유는?",["직급·연차별로 요구되는 역량과 과업 수준이 다르기 때문이다","교육팀의 업무를 늘리기 위함이다","모든 사람에게 같은 내용을 반복하기 위함이다","법적으로 계층 구분이 강제되기 때문이다"],0,"직급과 연차에 따라 요구되는 역량 수준과 역할이 다르므로, 계층별 맞춤 교육을 설계하는 것이 효과적입니다."],
+["Q040","ld","외부 위탁 교육을 선정할 때 확인해야 할 사항으로 가장 거리가 먼 것은?",["강사의 개인 SNS 팔로워 수","교육 커리큘럼의 실무 적합성","과거 교육 만족도 및 성과 사례","강사의 전문성과 경력"],0,"위탁 교육 선정 시에는 커리큘럼의 적합성, 강사 전문성, 과거 성과 등을 살펴야 하며 SNS 팔로워 수는 본질적 기준이 아닙니다."],
+["Q041","perf","OKR에서 KR(Key Result)의 특징으로 옳은 것은?",["목표 달성 여부를 측정할 수 있는 구체적 지표로 설정한다","항상 정성적으로만 표현한다","팀장 혼자 결정해서 하달한다","1년에 한 번만 점검한다"],0,"KR은 Objective 달성 정도를 확인할 수 있도록 측정 가능한 수치나 결과로 구체화하는 것이 원칙입니다."],
+["Q042","perf","목표설정 면담에서 SMART 원칙 중 'A'가 의미하는 것은?",["달성 가능성(Achievable)","자동화(Automated)","익명성(Anonymous)","연간(Annual)"],0,"SMART는 Specific(구체적), Measurable(측정가능), Achievable(달성가능), Relevant(관련성), Time-bound(기한)의 약자입니다."],
+["Q043","perf","다면평가(360도 평가)의 특징은?",["상사뿐 아니라 동료, 부하, 때로는 본인까지 다양한 시각에서 평가한다","오직 상사 한 사람만 평가에 참여한다","연봉 결정에만 활용되는 평가다","익명성을 절대 보장하지 않는다"],0,"다면평가는 여러 관계자의 다각적 피드백을 통해 평가의 객관성과 입체성을 높이려는 방식입니다."],
+["Q044","perf","평가자가 한 가지 우수한 특성 때문에 다른 항목까지 좋게 평가하는 오류는?",["후광효과(Halo Effect)","관대화 경향","중심화 경향","최근효과"],0,"후광효과는 특정 인상이나 특성이 다른 평가 항목에까지 긍정적(혹은 부정적) 영향을 미치는 평가 오류입니다."],
+["Q045","perf","저성과자 관리(PIP, 성과개선계획)의 올바른 절차는?",["구체적 개선 목표와 기간을 제시하고 지원하며 진행 상황을 점검한다","경고 없이 곧바로 해고한다","별도 계획 없이 방치한다","동료들에게 저성과 사실을 공개한다"],0,"PIP는 저성과 사유를 명확히 하고, 개선 목표·기간·지원방안을 제시한 뒤 그 결과를 공정하게 점검하는 절차로 운영해야 합니다."],
+["Q046","perf","캘리브레이션(Calibration) 미팅을 진행하는 이유는?",["평가자 간 기준 차이를 조율해 평가의 형평성을 높인다","평가 결과를 아예 무효화하기 위함이다","연봉을 실시간으로 재계산하기 위함이다","퇴사자 명단을 정리하기 위함이다"],0,"캘리브레이션은 여러 평가자의 평가 기준 편차를 조정해 조직 전체의 평가 형평성과 신뢰도를 높이는 과정입니다."],
+["Q047","perf","평가자가 극단적 평가를 피하고 중간 등급에 몰아서 평가하는 오류는?",["중심화 경향","관대화 경향","엄격화 경향","대비오류"],0,"중심화 경향은 평가자가 우수·저조를 구분하기보다 평균에 가까운 점수로 평가를 몰아주는 오류입니다."],
+["Q048","perf","성과평가 결과에 대한 이의제기 절차가 필요한 이유는?",["평가의 공정성과 수용성을 높이고 분쟁을 예방할 수 있다","평가 결과를 항상 뒤집기 위함이다","인사팀의 업무를 늘리기 위함이다","법적으로 아무 의미가 없기 때문이다"],0,"이의제기 절차는 평가 오류를 바로잡을 기회를 제공해 공정성에 대한 신뢰를 높이고 갈등을 예방하는 역할을 합니다."],
+["Q049","perf","1:1 정기 면담(원온원)의 주된 목적은?",["업무 진행 상황 점검과 함께 구성원의 고충·성장 니즈를 파악한다","연봉 협상을 매번 진행하는 자리다","징계 사유를 통보하는 자리다","팀 전체 회의를 대체하는 것이다"],0,"원온원은 업무 점검뿐 아니라 구성원의 애로사항과 성장 니즈를 파악해 지속적인 코칭을 제공하는 데 목적이 있습니다."],
+["Q050","perf","성과평가에서 최근 발생한 사건의 인상이 전체 평가에 과도한 영향을 주는 오류는?",["최근효과(Recency Effect)","후광효과","자기고양 편향","서열화 오류"],0,"최근효과는 평가기간 초반의 성과보다 최근의 사건이나 성과가 평가에 더 크게 반영되는 오류를 말합니다."],
+["Q051","perf","절대평가와 상대평가의 차이는?",["절대평가는 기준 대비 달성도를, 상대평가는 구성원 간 서열을 중심으로 평가한다","둘은 완전히 동일한 방식이다","상대평가는 법으로 금지되어 있다","절대평가는 등급을 매기지 않는다"],0,"절대평가는 사전에 정한 기준(목표) 대비 달성 정도를 평가하고, 상대평가는 구성원 간 상대적 서열에 따라 등급을 배분합니다."],
+["Q052","perf","목표 달성이 어려운 외부 환경 변화(시장 급변 등)가 발생했을 때 평가에서 고려할 점은?",["환경 변화가 성과에 미친 영향을 함께 고려해 평가한다","환경과 무관하게 목표 미달 시 무조건 최저등급을 준다","평가 자체를 생략한다","해당 구성원에게만 불이익을 준다"],0,"통제 불가능한 외부 요인이 성과에 큰 영향을 미쳤다면, 이를 평가 시 합리적으로 반영하는 것이 공정한 평가에 가깝습니다."],
+["Q053","perf","성과평가 등급과 승진 심사의 관계로 적절한 것은?",["평가 등급은 승진 심사의 중요한 참고 자료 중 하나로 활용된다","평가 등급과 승진은 전혀 무관하다","최고 등급을 받으면 자동으로 승진이 확정된다","승진 심사에는 평가 결과를 반영하면 안 된다"],0,"평가 등급은 통상 승진 심사의 핵심 참고자료 중 하나이지만, 그 자체로 승진을 자동 보장하지는 않으며 종합적으로 심사됩니다."],
+["Q054","perf","팀 단위 성과와 개인 성과를 함께 평가에 반영하는 이유는?",["협업을 촉진하면서도 개인 기여도를 균형 있게 평가하기 위함이다","팀 성과만 평가하면 계산이 더 쉬워서다","개인 평가가 법적으로 금지되어 있어서다","팀 성과는 평가에 반영할 필요가 없어서다"],0,"팀과 개인 성과를 함께 반영하면 협업을 유도하면서도 개인의 기여를 놓치지 않는 균형 잡힌 평가가 가능합니다."],
+["Q055","perf","평가 면담 시 피드백을 효과적으로 전달하는 방법은?",["구체적 사실과 사례를 근거로 행동 중심의 피드백을 준다","모호하게 전반적인 느낌만 전달한다","평가 등급만 통보하고 대화는 생략한다","다른 동료와 비교하며 질책한다"],0,"효과적인 피드백은 추상적 인상이 아니라 구체적 사실과 행동에 근거해 전달할 때 수용성과 개선 효과가 높아집니다."],
+["Q056","perf","OKR과 KPI의 차이에 대한 설명으로 적절한 것은?",["OKR은 도전적 목표와 정렬에, KPI는 핵심 성과지표 관리에 상대적으로 중점을 둔다","두 개념은 완전히 동일하다","KPI는 목표를, OKR은 예산을 의미한다","OKR은 평가에만, KPI는 채용에만 쓰인다"],0,"OKR은 도전적인 목표(O)와 조직 전체의 정렬을, KPI는 핵심 성과지표를 통한 성과 모니터링에 각각 상대적으로 중점을 두는 방법론입니다."],
+["Q057","perf","평가자 교육(Rater Training)을 실시하는 목적은?",["평가 오류를 줄이고 평가자 간 기준을 일치시킨다","평가 결과를 조작하는 방법을 알려주기 위함이다","평가 자체를 없애기 위함이다","연봉 인상률만 안내하기 위함이다"],0,"평가자 교육은 후광효과, 중심화 경향 등 평가 오류를 줄이고 평가자 간 기준 편차를 좁히기 위해 실시합니다."],
+["Q058","perf","성과 목표를 지나치게 쉽게 설정하는 관행의 문제점은?",["도전 의욕을 저하시키고 조직의 성장 잠재력을 제한할 수 있다","항상 구성원 만족도를 높인다","조직의 생산성이 무조건 향상된다","평가 공정성이 자동으로 높아진다"],0,"지나치게 낮은 목표는 손쉽게 달성되어 평가는 좋아 보일 수 있으나, 조직의 성장과 도전을 저해할 수 있습니다."],
+["Q059","perf","수시 피드백(Continuous Feedback) 문화가 확산되는 배경은?",["연 1회 평가만으로는 실시간 성과 개선에 한계가 있기 때문이다","법적으로 수시 피드백이 의무화되었기 때문이다","연말 평가를 아예 없애기 위함이다","피드백 비용을 줄이기 위함이다"],0,"빠르게 변화하는 업무 환경에서는 연 1회 평가만으로 적시에 개선하기 어려워, 상시적인 피드백 문화가 확산되고 있습니다."],
+["Q060","comp","2025년 기준 최저임금은 사업장 규모와 무관하게 어떻게 적용되는가?",["원칙적으로 업종·규모와 무관하게 모든 사업장에 동일하게 적용된다","대기업에만 적용된다","5인 미만 사업장은 적용 대상이 아니다","최저임금은 지역별로 다르게 적용된다"],0,"최저임금법상 최저임금은 원칙적으로 업종이나 사업장 규모와 무관하게 모든 사업장에 동일하게 적용됩니다(일부 감액 예외 존재)."],
+["Q061","comp","통상임금에 포함되는 항목으로 옳은 것은?",["정기적·일률적으로 지급되는 고정 수당","실적에 따라 변동하는 성과급","경조사 발생 시에만 지급되는 경조금","특정 시점 재직자에게만 지급되는 명절 격려금(비정기)"],0,"통상임금은 정기적·일률적·고정적으로 지급되는 임금을 말하며, 변동성과급이나 조건부 비정기 수당은 통상임금에서 제외되는 경우가 많습니다."],
+["Q062","comp","연장근로에 대한 가산수당의 원칙적인 최소 할증률은?",["통상임금의 50% 이상 가산","통상임금의 10% 이상 가산","가산 없이 동일하게 지급","통상임금의 100% 이상 가산"],0,"근로기준법상 연장·야간·휴일근로에 대해서는 통상임금의 50% 이상을 가산해 지급해야 합니다."],
+["Q063","comp","포괄임금제에 대한 설명으로 옳은 것은?",["연장·야간근로수당을 미리 정해 기본급에 포함해 지급하는 방식으로, 무제한 정당화되는 것은 아니다","포괄임금제는 모든 업종에서 자유롭게 사용해도 법적 문제가 없다","포괄임금제를 적용하면 연장근로수당을 아예 지급하지 않아도 된다","포괄임금제는 근로시간 산정이 가능한 업무에도 항상 우선 적용된다"],0,"포괄임금제는 근로시간 산정이 어려운 경우 등 제한적으로 인정되며, 실제 연장근로가 포괄된 수당을 초과하면 추가 지급 의무가 발생할 수 있습니다."],
+["Q064","comp","퇴직금 산정의 기본 원칙은?",["계속근로기간 1년에 대해 평균임금 30일분 이상을 지급한다","입사 즉시 무조건 1개월치 급여를 지급한다","퇴직금은 회사 재량으로 지급하지 않아도 된다","근속연수와 무관하게 동일한 금액을 지급한다"],0,"근로자퇴직급여보장법에 따라 계속근로기간 1년에 대해 30일분 이상의 평균임금을 퇴직금으로 지급해야 합니다."],
+["Q065","comp","임금명세서 교부에 대한 설명으로 옳은 것은?",["사용자는 임금 지급 시 임금 구성항목별 금액 등을 적은 임금명세서를 교부해야 한다","임금명세서 교부는 회사가 원할 때만 하면 된다","서면 명세서만 인정되고 전자문서는 불가하다","임금명세서에는 지급총액만 적으면 충분하다"],0,"근로기준법에 따라 사용자는 임금 지급 시 임금 항목별 계산방법 등을 명시한 임금명세서를 근로자에게 교부해야 합니다."],
+["Q066","comp","4대보험에 해당하지 않는 것은?",["개인연금보험","국민연금","건강보험","고용보험"],0,"4대보험은 국민연금, 건강보험, 고용보험, 산재보험을 말하며, 개인연금보험은 이에 해당하지 않는 사적 보험입니다."],
+["Q067","comp","임금체불이 발생했을 때 근로자가 취할 수 있는 조치는?",["고용노동부에 진정을 제기하거나 민사상 청구를 할 수 있다","회사를 그만두는 것 외에는 방법이 없다","3년이 지나도 아무 때나 청구 가능하다","임금체불은 형사처벌 대상이 될 수 없다"],0,"임금체불 시 근로자는 고용노동부에 진정을 제기하거나 민사소송으로 미지급 임금을 청구할 수 있으며, 사용자는 형사처벌 대상이 될 수도 있습니다."],
+["Q068","comp","평균임금이 사용되는 대표적인 경우는?",["퇴직금, 휴업수당 등 산정 기준으로 활용된다","기본급 인상률 결정에만 사용된다","성과급 지급 여부 결정에만 쓰인다","4대보험료 산정과는 무관하다"],0,"평균임금은 퇴직금, 휴업수당, 산재보상금 등 다양한 법정 급여의 산정 기준으로 활용됩니다."],
+["Q069","comp","성과급(인센티브)과 기본급의 일반적인 차이는?",["성과급은 실적에 따라 변동하고, 기본급은 통상 고정적으로 지급된다","성과급과 기본급은 완전히 동일한 개념이다","기본급은 실적에 따라서만 지급된다","성과급은 반드시 매월 고정액으로 지급된다"],0,"기본급은 통상 정해진 금액이 정기적으로 고정 지급되는 반면, 성과급은 실적이나 성과 평가 결과에 따라 변동되는 것이 일반적입니다."],
+["Q070","comp","연차수당(미사용 연차에 대한 보상)이 발생하는 경우는?",["연차유급휴가를 사용하지 못하고 그 사용 기한이 지났을 때 발생할 수 있다","연차를 하루라도 사용하면 전액 소멸된다","연차수당은 회사가 원할 때만 지급하면 된다","입사 첫 달부터 무조건 발생한다"],0,"연차유급휴가를 사용기한 내 사용하지 못한 경우, 사용자가 적법한 사용촉진 조치를 하지 않았다면 미사용 연차에 대해 수당을 지급해야 합니다."],
+["Q071","comp","복리후생 제도를 설계할 때 고려할 요소로 가장 적절한 것은?",["구성원의 니즈와 조직의 재정 여건을 함께 고려한다","가장 비용이 저렴한 항목만 선택한다","경쟁사와 무관하게 독자적으로만 설계한다","법정 복리후생 외에는 전혀 고려하지 않는다"],0,"효과적인 복리후생 설계를 위해서는 구성원의 실제 니즈와 조직의 재정 여건, 시장 경쟁력을 종합적으로 고려해야 합니다."],
+["Q072","comp","임금피크제에 대한 설명으로 옳은 것은?",["일정 연령 이후 임금을 조정하는 대신 고용을 연장하는 제도이다","모든 직원의 임금을 매년 무조건 인상하는 제도이다","신입사원에게만 적용되는 제도이다","임금피크제는 법으로 전면 금지되어 있다"],0,"임금피크제는 정년 연장이나 고용 안정을 조건으로, 일정 시점 이후 임금을 조정하는 제도로 다수 기업에서 도입하고 있습니다."],
+["Q073","comp","동일가치노동 동일임금 원칙과 관련된 설명으로 옳은 것은?",["성별을 이유로 동일 가치 노동에 대해 차별적 임금을 지급해서는 안 된다","경력이 같으면 반드시 직급도 같아야 한다는 원칙이다","동일 직급이면 무조건 같은 성과급을 줘야 한다는 원칙이다","비정규직에게는 적용되지 않는 원칙이다"],0,"남녀고용평등법은 동일한 사업 내 동일 가치의 노동에 대해 성별을 이유로 차별적인 임금을 지급하는 것을 금지하고 있습니다."],
+["Q074","comp","비정규직 근로자에 대한 차별적 처우 금지 원칙은?",["합리적 이유 없이 정규직과 차별해서는 안 된다는 원칙이다","비정규직에게는 어떤 법적 보호도 적용되지 않는다는 뜻이다","비정규직은 임금을 아예 지급하지 않아도 된다는 뜻이다","정규직보다 항상 낮은 임금을 줘야 한다는 원칙이다"],0,"기간제 및 단시간근로자 보호법 등에 따라 합리적 이유 없이 비정규직을 정규직과 차별하는 것은 금지됩니다."],
+["Q075","comp","야간근로수당이 적용되는 일반적인 시간대는?",["오후 10시부터 다음날 오전 6시 사이의 근로","오전 6시부터 오후 6시 사이의 근로","점심시간 전후 1시간","주말 근로 전체"],0,"근로기준법상 야간근로는 오후 10시부터 다음날 오전 6시 사이의 근로를 의미하며, 이 시간대 근로에는 가산수당이 적용됩니다."],
+["Q076","comp","임금 총액을 결정할 때 활용되는 시장 데이터(임금 서베이)의 역할은?",["시장 경쟁력 있는 보상 수준을 설계하는 참고 자료로 활용된다","무조건 시장 평균과 동일하게 임금을 맞춰야 한다는 규정이다","임금 서베이는 법적으로 신뢰할 수 없는 자료다","경쟁사보다 항상 낮게 책정해야 한다는 근거다"],0,"임금 서베이는 시장의 보상 수준을 파악해 자사의 보상 경쟁력과 내부 형평성을 설계하는 데 참고 자료로 활용됩니다."],
+["Q077","comp","단시간근로자(파트타임)의 임금 산정 원칙은?",["근로시간에 비례해 통상 근로자와 균등하게 처우한다","단시간근로자는 최저임금 적용 대상이 아니다","무조건 통상 근로자와 동일한 급여를 줘야 한다","단시간근로자에게는 주휴수당이 발생하지 않는다"],0,"단시간근로자는 근로시간에 비례해 임금이 산정되며, 일정 요건 충족 시 주휴수당 등도 통상 근로자와 균등하게 적용됩니다."],
+["Q078","comp","임금대장(임금관리대장)을 작성·보존해야 하는 이유는?",["법정 의무이며 임금 관련 분쟁 발생 시 중요한 근거자료가 된다","단순 사내 참고용이라 보존 의무가 없다","세무 목적 외에는 활용되지 않는다","분기별로 한 번만 작성하면 충분하다"],0,"근로기준법상 사용자는 임금대장을 작성해 일정 기간 보존해야 하며, 이는 임금 관련 분쟁 시 핵심 증빙자료로 활용됩니다."],
+["Q079","culture","eNPS(직원 순추천지수)가 측정하는 것은?",["구성원이 회사를 지인에게 추천할 의향이 얼마나 되는지","회사의 재무 건전성","고객 만족도","채용 브랜드 인지도"],0,"eNPS는 '이 회사를 주변에 추천하겠는가'라는 질문을 통해 구성원의 조직 몰입과 만족도를 가늠하는 대표적 지표입니다."],
+["Q080","culture","직장 내 괴롭힘 금지법의 적용 대상은?",["직장에서의 지위나 관계 우위를 이용한 괴롭힘 행위 전반","사업장 밖에서 발생한 모든 사적 다툼","오직 임원 간의 갈등만 해당","5인 미만 사업장은 전혀 적용되지 않음(신고·조치 의무 등 일부는 적용)"],0,"직장 내 괴롭힘 금지법은 직장에서의 지위·관계 우위를 이용해 신체적·정신적 고통을 주는 행위를 규율하며, 사용자는 조사·조치 의무를 집니다."],
+["Q081","culture","고충처리제도를 운영하는 목적은?",["구성원의 애로사항을 공식 채널로 접수·해결해 조직 신뢰를 높인다","불만이 있는 구성원을 걸러내기 위함이다","법적 의무이므로 형식적으로만 운영한다","경영진의 의사결정을 감시하기 위함이다"],0,"고충처리제도는 구성원이 겪는 다양한 애로사항을 공식적으로 접수하고 해결함으로써 조직에 대한 신뢰를 높이는 역할을 합니다."],
+["Q082","culture","재택근무·하이브리드 근무제 도입 시 고려해야 할 사항은?",["업무 성과 관리 방식과 소통 체계를 함께 정비해야 한다","무조건 사무실 근무보다 생산성이 낮다고 가정해야 한다","법적으로 전면 금지된 근무 형태다","도입만 하면 별도 관리가 필요 없다"],0,"재택·하이브리드 근무는 대면 근무와 다른 성과관리·소통 방식이 필요하므로, 관련 체계를 함께 정비하는 것이 중요합니다."],
+["Q083","culture","조직 내 심리적 안전감(Psychological Safety)이 높은 팀의 특징은?",["실수나 다른 의견을 자유롭게 이야기해도 불이익이 없다고 느낀다","실수하면 즉시 불이익을 받는다고 느낀다","의견 차이를 표현하는 것이 금기시된다","상급자의 의견에 무조건 따라야 한다"],0,"심리적 안전감이 높은 팀은 구성원이 실수나 반대 의견을 말해도 처벌받지 않는다고 느끼며, 이는 학습과 혁신에 긍정적 영향을 줍니다."],
+["Q084","culture","MZ세대 구성원의 조직 내 특징으로 자주 언급되는 것은?",["공정한 보상과 성장, 워라밸을 중요하게 여기는 경향이 있다","오직 연공서열만을 최우선 가치로 여긴다","조직에 대한 어떠한 의견도 제시하지 않는다","이직을 절대 고려하지 않는다"],0,"다만 세대 특성은 개인차가 크므로 일반화에는 유의해야 하지만, 공정성·성장·워라밸에 대한 관심이 자주 언급되는 특징입니다."],
+["Q085","culture","사내 커뮤니케이션 채널을 다양화하는 이유는?",["구성원 특성과 상황에 맞는 효과적인 정보 전달과 피드백을 촉진하기 위함이다","채널이 많을수록 무조건 혼란만 가중되기 때문이다","경영진의 업무를 줄이기 위함이다","법적으로 다양화가 의무화되어 있기 때문이다"],0,"공지사항, 익명 채널, 타운홀 등 다양한 채널을 운영하면 상황과 구성원 특성에 맞는 효과적인 소통이 가능해집니다."],
+["Q086","culture","조직문화 진단(서베이) 결과를 활용하는 바람직한 방식은?",["결과를 구성원과 투명하게 공유하고 개선 액션으로 연결한다","결과를 경영진만 확인하고 비공개로 종료한다","부정적 결과는 삭제하고 긍정적 결과만 공유한다","진단 이후 아무 조치도 취하지 않는다"],0,"조직문화 진단은 결과를 투명하게 공유하고 구체적인 개선 활동으로 이어질 때 구성원의 신뢰와 참여를 이끌어낼 수 있습니다."],
+["Q087","culture","직장 내 성희롱 예방교육에 대한 설명으로 옳은 것은?",["사업장 규모와 무관하게 매년 1회 이상 실시해야 하는 법정 의무교육이다","임원만 이수하면 되는 교육이다","한 번 이수하면 이후 재교육이 필요 없다","희망하는 직원만 선택적으로 들으면 된다"],0,"남녀고용평등법에 따라 사업주는 원칙적으로 사업장 규모와 무관하게 매년 1회 이상 성희롱 예방교육을 실시해야 합니다."],
+["Q088","culture","조직개편 시 커뮤니케이션의 바람직한 방향은?",["변화의 배경과 방향을 시의적절하게 투명히 공유한다","조직개편 완료 전까지 철저히 함구한다","루머가 돌더라도 대응하지 않는다","일부 구성원에게만 비공식적으로 알린다"],0,"조직개편처럼 민감한 변화일수록 배경과 방향을 시의적절하고 투명하게 공유해야 불필요한 불안과 루머를 줄일 수 있습니다."],
+["Q089","culture","수평적 조직문화를 표방하며 도입하는 호칭제도(님/프로 등)의 목적은?",["직급에 따른 위계보다 자유로운 의사소통 분위기를 조성하려는 것이다","조직의 위계질서를 강화하려는 것이다","급여 체계를 단순화하려는 것이다","법적으로 의무화된 제도이기 때문이다"],0,"호칭 파괴는 직급 위계를 낮추고 수평적이고 자유로운 소통 문화를 조성하려는 시도로, 다만 제도만으로는 문화가 바뀌지 않는다는 한계도 있습니다."],
+["Q090","culture","조직 내 세대 간 갈등을 줄이기 위한 접근으로 적절한 것은?",["서로 다른 가치관을 이해하는 상호 교육과 소통 기회를 마련한다","특정 세대의 의견만 전적으로 수용한다","세대 간 접점을 아예 차단한다","갈등이 없다고 가정하고 방치한다"],0,"세대 간 가치관 차이를 서로 이해할 수 있는 소통과 교육 기회를 마련하는 것이 갈등 완화에 효과적입니다."],
+["Q091","culture","워라밸(일과 삶의 균형) 제도의 예로 보기 어려운 것은?",["무제한 초과근무 의무화 제도","시차출퇴근제","연차 사용 촉진 캠페인","유연근무제"],0,"시차출퇴근제, 유연근무제, 연차 사용 촉진 등은 워라밸을 지원하는 제도이며, 초과근무를 의무화하는 것은 반대되는 방향입니다."],
+["Q092","culture","조직 내 다양성과 포용성(D&I)을 높이는 활동의 예는?",["채용·승진에서 다양한 배경의 구성원에게 공정한 기회를 보장한다","특정 집단만을 우대해 다른 집단을 배제한다","다양성 관련 논의 자체를 금지한다","동일한 배경의 인재만 지속적으로 채용한다"],0,"D&I 활동은 성별, 연령, 배경 등이 다른 구성원들에게 공정한 기회를 보장하고 다양한 관점이 존중받는 문화를 만드는 것을 목표로 합니다."],
+["Q093","culture","조직 내 익명 신고·제보 채널을 운영하는 이유는?",["보복에 대한 두려움 없이 문제를 제기할 수 있는 통로를 제공하기 위함이다","신고 내용을 무시하기 위한 형식적 채널이기 때문이다","신고자를 특정해 불이익을 주기 위함이다","경영진 감시를 피하기 위함이다"],0,"익명 채널은 보복에 대한 우려로 문제 제기를 주저하는 구성원이 안전하게 목소리를 낼 수 있도록 돕는 장치입니다."],
+["Q094","culture","타운홀 미팅의 목적으로 가장 적절한 것은?",["경영진과 구성원이 직접 소통하며 정보를 공유하고 질의응답을 나눈다","특정 부서의 인사평가를 진행하는 자리다","외부 고객 대상 설명회를 뜻한다","징계 대상자를 공개 심의하는 자리다"],0,"타운홀 미팅은 경영진이 전사 구성원과 직접 소통하며 회사의 방향과 이슈를 공유하고 질문을 받는 대표적 소통 방식입니다."],
+["Q095","culture","조직문화와 핵심가치(Core Value)의 관계는?",["핵심가치는 구성원의 행동과 의사결정 기준이 되어 조직문화 형성에 영향을 준다","핵심가치는 액자 속 문구일 뿐 실무와는 무관하다","조직문화는 핵심가치와 전혀 관계가 없다","핵심가치는 매년 완전히 바뀌어야 한다"],0,"핵심가치가 실제 행동과 의사결정 기준으로 작동할 때 조직문화 형성에 실질적인 영향을 미칩니다."],
+["Q096","culture","퇴사자 인터뷰(Exit Interview)를 실시하는 목적은?",["퇴사 사유를 파악해 조직 운영 개선의 단서를 얻는다","퇴사자를 설득해 무조건 잔류시키기 위함이다","퇴사자에게 불이익을 주기 위함이다","형식적 절차이므로 결과를 활용하지 않는다"],0,"퇴사자 인터뷰는 솔직한 퇴사 사유를 파악해 조직문화나 제도 개선에 참고하기 위한 중요한 자료로 활용됩니다."],
+["Q097","culture","사내 소통에서 상향식(bottom-up) 피드백 채널이 중요한 이유는?",["현장의 목소리를 경영 의사결정에 반영할 수 있다","경영진의 권위를 낮추기 위함이다","하향식 지시만으로 충분하기 때문에 불필요하다","법적으로 반드시 운영해야 하는 채널이라서다"],0,"상향식 피드백 채널은 현장의 실질적인 의견과 문제의식을 경영 의사결정에 반영할 수 있게 해주는 중요한 통로입니다."],
+["Q098","labor","근로계약서에 반드시 명시해야 하는 사항이 아닌 것은?",["직원의 개인 SNS 계정","임금의 구성항목과 계산방법","소정근로시간","휴일"],0,"근로기준법상 임금, 소정근로시간, 휴일, 연차유급휴가 등은 근로계약서에 명시해야 하는 필수 사항이며, 개인 SNS 계정은 해당하지 않습니다."],
+["Q099","labor","사용자가 근로자를 해고하려면 원칙적으로 언제까지 예고해야 하는가?",["적어도 30일 전에 예고해야 한다","3일 전까지만 알려도 된다","예고 없이 즉시 해고해도 무방하다","1년 전에 예고해야 한다"],0,"근로기준법상 사용자는 근로자를 해고하려면 원칙적으로 적어도 30일 전에 예고하거나, 30일분 이상의 통상임금을 지급해야 합니다."],
+["Q100","labor","부당해고를 당했다고 판단한 근로자가 취할 수 있는 조치는?",["노동위원회에 부당해고 구제신청을 할 수 있다","아무 구제 수단이 없어 그냥 감수해야 한다","반드시 형사고소만 가능하다","사내 게시판에 글을 올리는 것 외에는 방법이 없다"],0,"근로자는 부당해고라고 판단되면 노동위원회에 구제신청을 하거나 법원에 소송을 제기하는 등의 방법으로 구제받을 수 있습니다."],
+["Q101","labor","연차유급휴가 발생의 기본 원칙은?",["1년간 80% 이상 출근한 근로자에게 15일의 연차가 발생한다(가산 규정 별도)","입사 1개월 차부터 무조건 15일이 발생한다","연차는 회사가 임의로 지급 여부를 결정할 수 있다","1년 미만 근로자는 연차가 전혀 발생하지 않는다"],0,"근로기준법상 1년간 80% 이상 출근한 근로자에게는 15일의 연차유급휴가가 발생하며, 1년 미만 근로자도 개근한 달마다 1일씩 발생합니다."],
+["Q102","labor","육아휴직에 대한 설명으로 옳은 것은?",["만 8세 이하 또는 초등학교 2학년 이하 자녀를 둔 근로자가 신청할 수 있다","오직 여성 근로자만 신청할 수 있다","육아휴직은 무급이며 어떤 지원도 없다","사업주는 육아휴직 신청을 자유롭게 거부할 수 있다"],0,"남녀고용평등법상 일정 요건을 갖춘 근로자는 성별과 무관하게 육아휴직을 신청할 수 있으며, 사업주는 정당한 사유 없이 거부할 수 없습니다."],
+["Q103","labor","취업규칙 신고 의무가 발생하는 기준은?",["상시근로자 10인 이상 사업장은 취업규칙을 작성해 고용노동부에 신고해야 한다","모든 사업장은 무조건 신고해야 한다","5인 이상이면 신고 의무가 발생한다","취업규칙 신고는 법적 의무가 아니다"],0,"근로기준법상 상시 10인 이상 근로자를 사용하는 사용자는 취업규칙을 작성해 고용노동부장관에게 신고해야 합니다."],
+["Q104","labor","법정근로시간의 원칙은?",["1주 40시간, 1일 8시간을 초과할 수 없다(연장근로 별도 요건 하에 가능)","1주 52시간을 기본 근로시간으로 한다","근로시간에 대한 법적 제한은 없다","1일 근로시간 제한만 있고 주간 제한은 없다"],0,"근로기준법상 법정근로시간은 1주 40시간, 1일 8시간이며, 당사자 합의에 따라 제한된 범위 내에서 연장근로가 가능합니다."],
+["Q105","labor","휴게시간에 대한 설명으로 옳은 것은?",["근로시간이 8시간인 경우 1시간 이상의 휴게시간을 근로시간 도중에 부여해야 한다","휴게시간은 근로시간에 포함해 급여를 지급해야 한다","휴게시간은 반드시 근무 시작 전에 부여해야 한다","4시간 미만 근무자도 반드시 1시간을 부여해야 한다"],0,"근로기준법상 근로시간이 4시간이면 30분, 8시간이면 1시간 이상의 휴게시간을 근로 도중에 부여해야 하며, 이는 무급이 원칙입니다."],
+["Q106","labor","산업재해가 발생했을 때 사업주의 우선 조치는?",["즉시 필요한 구호조치를 하고 관련 절차에 따라 신고한다","산재 사실을 숨기고 개인적으로 합의한다","일정 기간이 지난 후 신고해도 무방하다","근로자 본인이 알아서 처리하도록 둔다"],0,"산업재해 발생 시 사업주는 즉시 구호조치를 취하고, 산업안전보건법 등 관련 규정에 따라 신고 및 후속 조치를 이행해야 합니다."],
+["Q107","labor","단시간근로자(파트타임)에게도 적용되는 근로기준법상 원칙은?",["근로시간에 비례한 균등처우 원칙이 적용된다","근로기준법이 전혀 적용되지 않는다","최저임금 적용 대상에서 제외된다","연차유급휴가가 발생하지 않는다"],0,"단시간근로자도 근로기준법의 보호를 받으며, 근로시간에 비례해 임금·연차 등에서 통상 근로자와 균등한 처우를 받는 것이 원칙입니다."],
+["Q108","labor","임신 중인 여성 근로자의 근로시간 관련 보호 규정은?",["시간외근로(연장근로)가 원칙적으로 제한된다","임신과 관계없이 동일한 연장근로가 적용된다","보호 규정 위반 시 아무 제재가 없다","출산 예정일까지는 어떠한 보호도 적용되지 않는다"],0,"근로기준법상 임신 중인 여성에 대해서는 연장근로 제한 등 모성보호를 위한 다양한 규정이 적용됩니다."],
+["Q109","labor","근로자 대표(근로자대표제도)의 역할로 옳은 것은?",["탄력적 근로시간제 등 노사 합의가 필요한 사항에 대해 근로자를 대표해 협의한다","사용자의 인사권을 대신 행사한다","임금 인상률을 단독으로 결정한다","취업규칙을 단독으로 제개정한다"],0,"근로자대표는 탄력적 근로시간제, 연차휴가 대체 등 법에서 정한 노사 합의 사항에 대해 근로자를 대표해 협의·동의하는 역할을 합니다."],
+["Q110","labor","해고 절차에서 서면 통지가 요구되는 이유는?",["해고 사유와 시기를 서면으로 통지해야 해고의 효력이 인정된다","구두 통지가 원칙이고 서면은 참고용일 뿐이다","서면 통지는 대기업에만 적용되는 규정이다","서면 통지는 근로자가 요청할 때만 하면 된다"],0,"근로기준법상 사용자가 근로자를 해고하려면 해고 사유와 시기를 서면으로 통지해야 하며, 이를 지키지 않으면 해고의 효력이 인정되지 않습니다."],
+["Q111","labor","근로시간 단축(육아기 근로시간 단축 등) 제도에 대한 설명은?",["일정 요건을 갖춘 근로자가 신청할 수 있는 법정 제도이다","모든 근로자가 아무 사유 없이 신청할 수 있다","사업주는 아무 사유 없이도 항상 거부할 수 있다","단축 근로시간에는 급여를 전혀 지급하지 않는다"],0,"육아기 근로시간 단축은 남녀고용평등법상 요건을 갖춘 근로자가 신청할 수 있는 제도로, 사업주는 정당한 사유 없이 거부할 수 없습니다."],
+["Q112","labor","취업규칙을 근로자에게 불리하게 변경할 때 필요한 절차는?",["원칙적으로 근로자 과반수의 동의를 받아야 한다","사용자 단독으로 자유롭게 변경할 수 있다","변경 후 사후 통보만 하면 충분하다","취업규칙은 한번 정하면 변경할 수 없다"],0,"근로기준법상 취업규칙을 근로자에게 불리하게 변경하는 경우 원칙적으로 근로자 과반수(또는 노동조합)의 동의가 필요합니다."],
+["Q113","labor","포괄임금제 하에서도 실제 연장근로시간이 약정 시간을 초과하면?",["초과분에 대한 추가 수당을 지급해야 할 의무가 발생할 수 있다","포괄임금제이므로 추가 지급 의무가 전혀 없다","초과 여부와 무관하게 정액만 지급하면 된다","초과근로 자체가 법적으로 불가능하다"],0,"포괄임금제라도 실제 제공된 연장근로가 약정된 시간을 초과하면, 그 초과분에 대해서는 추가 수당 지급 의무가 발생할 수 있습니다."],
+["Q114","labor","근로기준법상 사용자가 근로자명부를 작성·보존해야 하는 이유는?",["근로관계 관리와 각종 신고·증빙의 기초자료가 되기 때문이다","단순 사내 참고용이라 보존 의무가 없다","근로자명부는 채용 시에만 필요하고 이후 폐기해도 된다","세무 목적으로만 사용되는 서류다"],0,"근로기준법은 사용자에게 근로자명부를 작성하고 일정 기간 보존하도록 의무화하고 있으며, 이는 각종 신고와 분쟁 대응의 기초자료가 됩니다."],
+["Q115","labor","근로자가 업무상 재해로 요양이 필요할 때 받을 수 있는 보상 체계는?",["산업재해보상보험을 통해 요양급여, 휴업급여 등을 받을 수 있다","전적으로 회사가 사비로 치료비를 지급해야 한다","보상 체계가 없어 개인이 모두 부담해야 한다","국민건강보험으로만 모든 것을 해결해야 한다"],0,"업무상 재해는 산업재해보상보험법에 따라 요양급여, 휴업급여, 장해급여 등 다양한 보상을 받을 수 있는 체계가 마련되어 있습니다."],
+["Q116","labor","근로기준법상 근로자로 인정되는 핵심 판단 기준은?",["사용종속관계 하에서 임금을 목적으로 근로를 제공하는지 여부","계약서의 명칭이 '근로계약서'인지 여부","4대보험 가입 여부만으로 결정된다","근무 장소가 사업장 내부인지 여부만으로 결정된다"],0,"근로자성 판단은 계약의 형식적 명칭보다 실질적으로 사용종속관계 하에서 임금을 목적으로 근로를 제공했는지를 종합적으로 살펴 판단합니다."],
+["Q117","org","기능식 조직구조(Functional Structure)의 특징은?",["인사, 재무, 영업 등 전문 기능별로 부서를 구성한다","제품별로 독립된 사업부를 구성한다","프로젝트 단위로만 조직을 구성한다","고객 유형별로만 조직을 나눈다"],0,"기능식 조직은 인사·재무·영업 등 전문 기능을 기준으로 부서를 나누어, 각 분야의 전문성을 살리는 데 유리한 구조입니다."],
+["Q118","org","매트릭스 조직(Matrix Structure)의 특징은?",["기능조직과 프로젝트(제품)조직이 결합되어 이중 보고체계를 가진다","보고체계가 단 하나로만 단순화된다","오직 임시 조직에만 적용되는 구조다","부서 간 협업이 원천적으로 불가능한 구조다"],0,"매트릭스 조직은 기능 조직과 프로젝트/제품 조직을 결합해 구성원이 두 명의 상사에게 동시에 보고하는 이중 보고체계를 특징으로 합니다."],
+["Q119","org","직무기술서(Job Description)에 일반적으로 포함되는 내용은?",["직무의 주요 과업, 책임, 요구 자격요건","직원 개인의 병역사항","직원의 가족관계","팀 회식 규칙"],0,"직무기술서는 해당 직무가 수행하는 주요 과업과 책임, 필요한 자격요건 등을 정리한 문서입니다."],
+["Q120","org","통제범위(Span of Control)가 지나치게 넓을 때 발생할 수 있는 문제는?",["관리자가 구성원 개개인을 세심히 관리하기 어려워질 수 있다","조직의 의사결정 속도가 항상 빨라진다","보고 체계가 지나치게 복잡해진다","인건비가 무조건 절감된다"],0,"통제범위가 지나치게 넓으면 한 명의 관리자가 관리해야 할 인원이 많아져 세심한 코칭과 관리가 어려워질 수 있습니다."],
+["Q121","org","사업부제 조직(Divisional Structure)의 장점은?",["제품·지역별로 독립적인 의사결정과 책임경영이 가능하다","전사 공통 기능의 중복을 완전히 없앤다","항상 기능식 조직보다 비용이 적게 든다","조직 규모가 작을수록 유리한 구조다"],0,"사업부제는 제품이나 지역별로 독립된 조직 단위를 구성해 각 사업부가 신속한 의사결정과 책임경영을 할 수 있게 합니다."],
+["Q122","org","정원관리(TO, Table of Organization)의 목적은?",["조직의 적정 인력 규모를 계획하고 관리한다","직원의 개인 성과를 평가하는 것이다","급여 인상률을 결정하는 것이다","채용 광고 문구를 작성하는 것이다"],0,"정원관리는 조직의 사업 계획과 업무량에 맞는 적정 인력 규모를 계획하고 통제하는 활동입니다."],
+["Q123","org","조직개편 시 직무분석을 선행하는 이유는?",["변경되는 직무의 역할과 책임을 명확히 정의하기 위함이다","조직개편 절차를 지연시키기 위함이다","법적으로 직무분석이 의무화되어 있기 때문이다","직무분석은 채용 시에만 필요하기 때문이다"],0,"조직개편 시 직무분석을 통해 새롭게 정의되는 직무의 역할과 책임을 명확히 해야 혼선을 줄이고 원활한 전환이 가능합니다."],
+["Q124","org","아웃소싱(외주화)을 검토할 때 고려할 사항은?",["핵심 역량 여부와 비용·품질·보안 측면을 종합적으로 검토한다","무조건 비용이 저렴하면 외주화를 결정한다","핵심 업무일수록 우선적으로 외주화한다","외주화는 법적으로 전면 금지되어 있다"],0,"아웃소싱 여부는 해당 업무가 핵심 역량인지, 비용·품질·보안 측면에서 이점이 있는지를 종합적으로 검토해 결정해야 합니다."],
+["Q125","org","겸직(부업) 허용 여부에 대한 일반적인 인사 원칙은?",["회사의 이해상충 및 경쟁 방지 규정을 준수하는 범위에서 검토한다","모든 겸직은 법적으로 전면 금지되어 있다","어떤 겸직이든 회사가 관여할 수 없다","겸직 여부는 임원에게만 해당하는 사안이다"],0,"겸직은 회사의 취업규칙이나 근로계약에 따라 이해상충, 경쟁업무 여부 등을 검토해 허용 여부를 판단하는 것이 일반적입니다."],
+["Q126","org","조직 계층(직급 단계)을 축소하는 조직 슬림화의 목적은?",["의사결정 속도를 높이고 소통 단계를 줄인다","인건비를 무조건 늘리기 위함이다","조직의 통제를 강화하기 위함이다","직급체계를 더 복잡하게 만들기 위함이다"],0,"계층을 축소하면 보고와 의사결정 단계가 줄어들어 조직의 민첩성과 소통 속도를 높이는 데 도움이 됩니다."],
+["Q127","org","직무 중심 조직설계(Job-based)와 사람 중심 조직설계(People-based)의 차이는?",["직무 중심은 역할과 직무에, 사람 중심은 개인의 역량과 성장에 상대적으로 초점을 둔다","두 방식은 동일한 개념이다","사람 중심 설계는 직무기술서를 절대 사용하지 않는다","직무 중심 설계는 소규모 조직에만 적용 가능하다"],0,"직무 중심 설계는 직무 자체의 역할과 요구사항에, 사람 중심 설계는 구성원 개인의 역량과 성장 경로에 상대적으로 더 초점을 둡니다."],
+["Q128","org","신설 조직의 직무 등급(Job Grade)을 설계할 때 고려 요소는?",["직무의 난이도, 책임 범위, 필요 역량 수준","담당자의 개인적 친분","담당자의 근속연수만","담당자의 희망 연봉"],0,"직무 등급은 담당자 개인 요소가 아니라, 직무 자체의 난이도·책임 범위·요구 역량 수준 등을 기준으로 설계하는 것이 원칙입니다."],
+["Q129","org","조직도(Organization Chart)가 조직 운영에서 하는 역할은?",["보고체계와 역할·책임 소재를 시각적으로 명확히 보여준다","구성원의 개인 성과를 나타낸다","연봉 정보를 표시하는 문서이다","채용 계획서를 대체하는 문서이다"],0,"조직도는 구성원 간 보고 체계와 부서별 역할·책임 소재를 한눈에 파악할 수 있게 해주는 기본적인 조직 운영 도구입니다."],
+["Q130","org","애자일(Agile) 조직 운영 방식의 특징은?",["작은 단위의 팀이 빠르게 실행하고 피드백을 반영해 조정한다","한 번 수립한 계획은 절대 변경하지 않는다","의사결정을 최고경영진에만 집중시킨다","프로젝트 완료 후에만 피드백을 받는다"],0,"애자일 방식은 소규모 팀 단위로 빠르게 실행하고 짧은 주기로 피드백을 반영해 지속적으로 조정해 나가는 것이 특징입니다."],
+["Q131","org","전사 조직개편 시 인사팀의 주요 역할이 아닌 것은?",["신제품의 기술 사양을 직접 설계한다","인력 재배치와 직무 전환을 지원한다","조직개편에 따른 커뮤니케이션을 지원한다","변경된 조직구조에 맞춰 직무·직급 체계를 정비한다"],0,"인사팀은 인력 재배치, 직무·직급 정비, 커뮤니케이션 지원 등을 담당하며, 제품의 기술 사양 설계는 인사팀의 역할이 아닙니다."],
+["Q132","org","자회사·계열사 간 인력 파견(전출) 시 주의할 점은?",["근로조건 변경 등에 대해 근로자 동의와 법적 요건을 충족해야 한다","회사 재량으로 근로자 동의 없이 자유롭게 전출할 수 있다","전출은 법적으로 전면 금지되어 있다","전출 시에는 근로계약서를 작성할 필요가 없다"],0,"전출은 근로조건에 중대한 변경을 수반할 수 있어, 원칙적으로 근로자의 동의와 관련 법적 요건을 충족해야 합니다."],
+["Q133","org","조직 내 직책자(팀장 등)와 직급의 차이는?",["직책은 맡은 역할(보직)을, 직급은 조직 내 서열 단계를 의미한다","직책과 직급은 완전히 동일한 개념이다","직책은 급여와 무관하게 결정될 수 없다","직급이 높으면 항상 특정 직책을 맡아야 한다"],0,"직책은 팀장, 실장처럼 맡은 역할(보직)을 의미하고, 직급은 조직 내 서열 체계를 나타내는 것으로 서로 다른 개념입니다."],
+["Q134","org","조직 리밸런싱(인력 재배치)을 진행할 때 고려할 점은?",["사업 우선순위 변화와 구성원의 역량·의견을 함께 반영한다","경영진의 일방적 지시만으로 신속히 처리한다","기존 인력 배치는 절대 변경하지 않는다","리밸런싱은 법적으로 금지되어 있다"],0,"인력 재배치는 사업 우선순위 변화를 반영하되, 구성원의 역량과 의견을 함께 고려해야 수용성과 실행력이 높아집니다."],
+["Q135","org","스타트업이 성장하면서 조직구조를 재정비하는 이유는?",["인력 규모가 커지면서 이전의 단순한 구조로는 소통·관리에 한계가 생기기 때문이다","조직구조는 회사 규모와 무관하게 항상 동일해야 하기 때문이다","조직 재정비는 법적 의무 사항이기 때문이다","외부 컨설팅 비용을 늘리기 위함이다"],0,"조직 규모가 커지면 초기의 단순한 구조로는 소통과 의사결정에 한계가 생기므로, 성장 단계에 맞는 구조 재정비가 필요합니다."],
+["Q136","analytics","이직률(Turnover Rate)을 계산하는 일반적인 방식은?",["일정 기간 퇴사자 수를 평균 재직 인원 수로 나눈 값이다","전체 채용 인원 대비 합격자 비율이다","연봉 인상률과 동일한 개념이다","입사자 수에서 퇴사자 수를 뺀 값이다"],0,"이직률은 통상 특정 기간의 퇴사자 수를 해당 기간의 평균 재직 인원 수로 나누어 백분율로 산출합니다."],
+["Q137","analytics","채용전환율(합격률)을 활용하는 목적은?",["채용 프로세스 단계별 병목 구간을 파악한다","연봉 협상 결과만을 확인하기 위함이다","교육 만족도를 측정하기 위함이다","퇴사자 수를 집계하기 위함이다"],0,"채용전환율은 지원부터 합격까지 단계별 전환 비율을 분석해 어느 단계에서 이탈이 많은지 파악하는 데 활용됩니다."],
+["Q138","analytics","급여 등 민감한 인사 데이터를 다룰 때 가장 중요한 원칙은?",["접근 권한을 최소화하고 보안 절차를 철저히 준수한다","누구나 쉽게 조회할 수 있도록 공유한다","데이터를 백업 없이 개인 PC에만 저장한다","보안보다 분석 속도를 항상 우선시한다"],0,"급여, 평가 등 민감한 인사 데이터는 접근 권한을 최소화하고 개인정보보호 및 보안 절차를 철저히 지켜야 합니다."],
+["Q139","analytics","헤드카운트(Headcount) 리포트에 일반적으로 포함되는 정보는?",["부서별 인원 현황과 증감 추이","개별 직원의 건강검진 결과","직원 개인의 정치 성향","경쟁사의 인사 정책"],0,"헤드카운트 리포트는 부서별·직급별 인원 현황과 시점별 증감 추이를 파악하기 위한 대표적인 인사 데이터 리포트입니다."],
+["Q140","analytics","퇴사 원인 분석을 위해 활용할 수 있는 방법은?",["퇴사자 인터뷰와 설문 데이터를 함께 분석한다","퇴사자와의 접촉을 전혀 시도하지 않는다","동일한 원인이라고 미리 단정하고 분석을 생략한다","퇴사 원인은 분석할 필요가 없다"],0,"퇴사 원인은 퇴사자 인터뷰, 설문, 근속 데이터 등을 종합적으로 분석해야 실제 조직 개선에 유의미한 시사점을 얻을 수 있습니다."],
+["Q141","analytics","설문 조사에서 무응답률이 매우 높을 때 우선 점검할 사항은?",["설문 설계·전달 방식과 구성원의 신뢰 수준을 함께 점검한다","무조건 표본을 늘리면 해결된다","결과를 그대로 신뢰하고 발표한다","응답자에게 불이익을 준다"],0,"무응답률이 높다면 설문 문항 설계, 전달 방식, 익명성에 대한 신뢰 등 다양한 원인을 점검해야 합니다."],
+["Q142","analytics","피플애널리틱스 프로젝트를 시작할 때 가장 먼저 정의해야 하는 것은?",["분석을 통해 해결하고자 하는 인사 이슈(목적)","사용할 통계 프로그램의 종류","보고서 색상 테마","분석팀 회식 일정"],0,"데이터 분석에 앞서 무엇을 알고 싶은지, 어떤 인사 이슈를 해결하려는지 목적을 명확히 정의하는 것이 가장 중요한 출발점입니다."],
+["Q143","analytics","조직 내 승진 소요연수 데이터를 분석하는 목적은?",["승진 체계의 공정성과 적정성을 점검한다","개인의 사생활을 조사하기 위함이다","급여 총액을 계산하기 위함이다","채용 브랜드를 홍보하기 위함이다"],0,"승진 소요연수 분석은 특정 집단 간 승진 속도 차이 등을 통해 승진 체계의 공정성과 운영 적정성을 점검하는 데 활용됩니다."],
+["Q144","analytics","정성적 데이터(인터뷰, 서술형 응답 등)와 정량적 데이터를 함께 분석하는 이유는?",["숫자로 드러나지 않는 맥락과 원인을 함께 이해할 수 있다","정성적 데이터는 분석할 가치가 전혀 없기 때문이다","정량 데이터만으로 항상 충분하기 때문이다","두 데이터를 섞으면 분석이 무효화되기 때문이다"],0,"정량 데이터가 '무엇이' 일어났는지를 보여준다면, 정성 데이터는 '왜' 그런 결과가 나왔는지 맥락을 이해하는 데 도움을 줍니다."],
+["Q145","analytics","인사 대시보드를 설계할 때 고려할 점은?",["의사결정에 실제로 필요한 핵심 지표 위주로 구성한다","가능한 모든 지표를 빠짐없이 전부 나열한다","디자인 화려함을 최우선으로 고려한다","매번 지표 정의를 바꿔서 표시한다"],0,"효과적인 대시보드는 의사결정자가 실제로 필요로 하는 핵심 지표를 선별해 명확하게 전달하는 것이 중요합니다."],
+["Q146","analytics","채용 소요기간(Time to Hire)을 단축하기 위해 분석해야 할 구간은?",["공고 게시부터 최종 합격까지 단계별 소요 시간","합격자의 입사 후 1년 성과","퇴사자의 평균 근속연수","경쟁사의 매출액"],0,"채용 소요기간을 줄이려면 공고, 서류, 면접, 처우협의 등 단계별로 어디서 시간이 지연되는지 분석해야 합니다."],
+["Q147","analytics","특정 부서의 이직률이 유독 높게 나타날 때 인사담당자가 취할 접근은?",["해당 부서의 근무 환경, 리더십, 보상 등 다각도 원인을 살펴본다","우연이라 여기고 별도 분석 없이 넘어간다","해당 부서원 전체를 즉시 교체한다","이직률 수치 자체를 공개하지 않는다"],0,"특정 부서의 이직률이 두드러진다면 리더십, 업무강도, 보상 등 다양한 요인을 다각도로 살펴 원인을 규명하는 것이 필요합니다."],
+["Q148","analytics","인사 데이터 분석 결과를 경영진에게 보고할 때 유의할 점은?",["데이터의 한계와 해석의 전제를 함께 설명한다","숫자만 있으면 맥락 설명은 생략해도 된다","항상 긍정적인 결과만 선별해 보고한다","분석 방법은 비밀로 하고 결과만 전달한다"],0,"데이터에는 표본 크기, 수집 방식 등의 한계가 있을 수 있으므로, 해석의 전제와 한계를 함께 설명하는 것이 바람직합니다."],
+["Q149","analytics","조직 내 성별 임금 격차를 분석할 때 함께 고려해야 할 변수는?",["직급, 근속연수, 직무 등 임금에 영향을 주는 다른 요인들","분석 대상자의 개인 취미","분석 대상자의 거주지 아파트 평수","분석과 무관한 회사 로고 색상"],0,"단순 평균 비교만으로는 왜곡될 수 있어, 직급·근속·직무 등 임금에 영향을 미치는 다른 변수를 통제한 분석이 필요합니다."],
+["Q150","analytics","인사 데이터의 정확성을 유지하기 위해 필요한 활동은?",["데이터 입력 기준을 표준화하고 정기적으로 검증한다","한번 입력한 데이터는 절대 재확인하지 않는다","여러 시스템에 제각각 다른 기준으로 입력해도 무방하다","데이터 오류는 발견되어도 수정하지 않는다"],0,"인사 데이터의 신뢰도를 유지하려면 입력 기준을 표준화하고, 정기적인 검증과 정합성 점검이 필요합니다."],
+["Q151","analytics","조직의 다양성 지표(성별, 연령 분포 등)를 정기적으로 모니터링하는 목적은?",["다양성 관련 현황과 변화 추이를 파악해 정책에 반영한다","특정 집단을 차별하기 위한 근거자료로 쓰기 위함이다","법적 의무와 무관하게 형식적으로만 수집한다","다양성 지표는 활용 가치가 전혀 없다"],0,"다양성 지표를 모니터링하면 조직의 현황과 변화 추이를 파악해 채용·육성 등 관련 정책 수립에 참고할 수 있습니다."],
+["Q152","analytics","설문 응답의 익명성을 보장해야 하는 이유는?",["솔직한 응답을 유도해 데이터의 신뢰도를 높일 수 있다","익명성은 데이터 분석에 불필요한 요소다","응답자를 특정하기 쉽게 하기 위함이다","익명 설문은 법적으로 금지되어 있다"],0,"익명성이 보장되지 않으면 응답자가 불이익을 우려해 솔직하지 않은 답변을 할 가능성이 높아져 데이터 신뢰도가 떨어집니다."],
+["Q153","analytics","인사 지표를 시계열(추세)로 분석하는 것이 중요한 이유는?",["단일 시점 수치만으로는 알기 어려운 변화의 방향과 속도를 파악할 수 있다","시계열 분석은 법적으로 요구되는 절차이기 때문이다","한 시점의 데이터만 보는 것이 항상 더 정확하기 때문이다","추세 분석은 채용에만 활용되기 때문이다"],0,"시계열 분석을 통해 단순 스냅샷으로는 알 수 없는 추세와 변화 속도를 파악할 수 있어 선제적 대응이 가능해집니다."],
+["Q154","analytics","조직 내 관리자 대비 실무자 비율(관리 스팬 지표)을 분석하는 목적은?",["조직 구조의 효율성과 관리 부담의 적정성을 점검한다","개별 직원의 성과 등급을 산정하기 위함이다","급여 총액을 계산하기 위함이다","채용 공고 문구를 작성하기 위함이다"],0,"관리자 대비 실무자 비율을 분석하면 조직이 지나치게 계층적이거나 관리 부담이 과도한지 등을 점검할 수 있습니다."],
+["Q155","perf","성과관리에서 목표의 정렬(Alignment)이 중요한 이유는?",["개인·팀 목표가 조직 전체 목표와 연결되어야 성과가 조직 성과로 이어진다","목표는 서로 무관하게 설정해도 무방하다","정렬은 임원 목표에만 해당하는 개념이다","목표 정렬은 평가 결과에 영향을 주지 않는다"],0,"개인과 팀의 목표가 조직 전체 목표와 정렬될 때, 개별 성과가 모여 조직의 성과로 이어질 수 있습니다."],
+["Q156","comp","호봉제와 직무급제의 차이는?",["호봉제는 근속연수를, 직무급제는 직무의 가치를 임금 결정의 주된 기준으로 삼는다","두 제도는 완전히 동일한 개념이다","직무급제는 근속연수만으로 임금을 결정하는 제도다","호봉제는 성과와 무관하게 절대 운영될 수 없다"],0,"호봉제는 근속연수에 따라 임금이 상승하는 구조이고, 직무급제는 수행하는 직무의 가치와 난이도를 기준으로 임금을 결정하는 구조입니다."],
+["Q157","culture","조직 내 갈등 관리에서 인사부서의 역할은?",["공정한 절차를 통해 갈등을 조정하고 재발 방지 방안을 마련한다","갈등이 발생하면 무조건 한쪽 편을 든다","갈등 상황을 외부에 즉시 공개한다","갈등 관리는 인사부서와 무관한 일이다"],0,"인사부서는 중립적이고 공정한 절차로 갈등을 조정하며, 유사한 문제의 재발을 막기 위한 제도적 보완도 함께 검토해야 합니다."],
+["Q158","labor","근로기준법상 근로자 명부에 일반적으로 기재하는 정보가 아닌 것은?",["근로자의 정치적 견해","성명 및 생년월일","고용 연월일","종사하는 업무의 종류"],0,"근로자 명부에는 성명, 생년월일, 고용 연월일, 업무 종류 등이 기재되며, 정치적 견해와 같은 민감정보는 해당하지 않습니다."],
+["Q159","org","직무평가(Job Evaluation)의 목적은?",["직무 간 상대적 가치를 비교해 등급·보상 체계의 근거를 마련한다","개별 직원의 성과를 평가하기 위함이다","채용 면접 질문지를 만들기 위함이다","퇴사자 명단을 정리하기 위함이다"],0,"직무평가는 조직 내 여러 직무의 상대적 가치를 비교·분석해 직무 등급 및 보상 체계 설계의 근거로 활용됩니다."],
+["Q160","analytics","조직 내 성과와 근속연수 데이터를 함께 분석할 때 유의할 점은?",["상관관계가 곧바로 인과관계를 의미하지 않는다는 점을 유의한다","상관관계가 나타나면 항상 인과관계로 단정한다","두 변수는 절대 함께 분석할 수 없다","근속연수 데이터는 분석 가치가 전혀 없다"],0,"두 변수 간 상관관계가 나타나더라도 그것이 곧 인과관계를 의미하지는 않으므로, 해석 시 신중한 접근이 필요합니다."]
 ];
 
 /* ---- 몬스터 ----
@@ -729,136 +589,182 @@ const BOSSES = {
 };
 
 /* =========================================================
-   몬스터 일러스트 (진짜 픽셀아트) — 저해상도 오프스크린 캔버스에
-   각지게 웅크린 몸/발톱/뾰족귀/그림자·하이라이트를 블록 단위로 그린 뒤
-   imageSmoothingEnabled=false 로 확대해 참고 이미지 같은 도트 느낌을 낸다.
+   몬스터 일러스트 (귀여운 치비 픽셀아트) — 머리 큰 SD 비율 +
+   둥근 실루엣(타원 프로파일) + 그림자/하이라이트 + 굵은 외곽선으로
+   업로드해주신 레퍼런스(고블린/슬라임) 느낌을 참고해 재구성.
+   저해상도 오프스크린 캔버스에 그린 뒤 nearest-neighbor로 확대한다.
    ========================================================= */
 const MONSTER_ART = {
-  m1:{skin:'#7fc25a', shadow:'#4d8a37', hi:'#b6e896', eye:'#ffe14d', variant:'slime'},
-  m2:{skin:'#5f9c4a', shadow:'#3a6b2c', hi:'#93c977', eye:'#ff3b30', variant:'goblin'},
-  m3:{skin:'#d98fc4', shadow:'#a4568f', hi:'#f0c2e2', eye:'#3a2a33', variant:'mushroom'},
-  m4:{skin:'#5b4a8f', shadow:'#372a5c', hi:'#8c76c4', eye:'#ff3b30', variant:'bat'},
-  m5:{skin:'#7a5a3a', shadow:'#4c3620', hi:'#a9824f', eye:'#ffd23b', variant:'wolf'},
-  m6:{skin:'#8a95a0', shadow:'#565f68', hi:'#c2ccd4', eye:'#5cd6ff', variant:'golem'},
-  m7:{skin:'#a8a8ba', shadow:'#6c6c7c', hi:'#dcdce8', eye:'#5cffb0', variant:'lich'},
-  m8:{skin:'#3f8a54', shadow:'#255a33', hi:'#78c48f', eye:'#ffd23b', variant:'hydra'},
-  m9:{skin:'#bcdcf0', shadow:'#7fa8c4', hi:'#eefaff', eye:'#3a2a33', variant:'ghost'},
-  b1:{skin:'#a85a30', shadow:'#6e3a1c', hi:'#d0895a', eye:'#ff3b30', variant:'goblin', boss:true},
-  b2:{skin:'#5c7a42', shadow:'#374d28', hi:'#8faf6a', eye:'#ff3b30', variant:'goblin', boss:true},
-  b3:{skin:'#a8382a', shadow:'#6e2018', hi:'#d47458', eye:'#ffd23b', variant:'dragon', boss:true}
+  m1:{skin:'#7fc25a', shadow:'#4d8a37', hi:'#b6e896', eye:'#2b2018', variant:'slime'},
+  m2:{skin:'#6bab52', shadow:'#3f7a34', hi:'#a3d488', eye:'#7a2020', variant:'goblin'},
+  m3:{skin:'#e2b6d6', shadow:'#b97fae', hi:'#f5dbef', eye:'#3a2a33', variant:'mushroom'},
+  m4:{skin:'#6f5aa8', shadow:'#453372', hi:'#a08cd4', eye:'#7a2020', variant:'bat'},
+  m5:{skin:'#a9835a', shadow:'#6b4d30', hi:'#d0af80', eye:'#3a2a33', variant:'wolf'},
+  m6:{skin:'#9aa6ad', shadow:'#69747b', hi:'#c9d2d8', eye:'#3a6ea5', variant:'golem'},
+  m7:{skin:'#c7c7d6', shadow:'#8f8fa0', hi:'#eaeaf2', eye:'#4a9c6e', variant:'lich'},
+  m8:{skin:'#5cae72', shadow:'#357a48', hi:'#93d4a4', eye:'#3a2a33', variant:'hydra'},
+  m9:{skin:'#cfe3f2', shadow:'#9db9cf', hi:'#eefaff', eye:'#3a2a33', variant:'ghost'},
+  b1:{skin:'#c98c50', shadow:'#8a5a29', hi:'#e0b57e', eye:'#7a2020', variant:'goblin', boss:true},
+  b2:{skin:'#7f9e6a', shadow:'#4f6b3d', hi:'#aecb92', eye:'#7a2020', variant:'goblin', boss:true},
+  b3:{skin:'#c9695a', shadow:'#8f2f22', hi:'#e29a8c', eye:'#3a2a33', variant:'dragon', boss:true}
 };
 const _mCache = {};
-function _mBlock(g,x,y,w,h,skin,shadow){
-  if(w<=0||h<=0) return;
-  g.fillStyle=shadow; g.fillRect(x,y,w,h);
-  if(w>2 && h>2) { g.fillStyle=skin; g.fillRect(x+1,y+1,w-2,h-2); }
+const _mOutline='#2b2018';
+const _mBrowVariants={goblin:1,wolf:1,dragon:1};
+/* 타원(원형) 실루엣을 1px 행 단위로 채우는 기본 도형 — 라운드한 치비 몸통/머리용 */
+function _ovalRow(rows, r, maxW){
+  const mid=(rows-1)/2;
+  const t=(r-mid)/(rows/2);
+  const ratio=Math.sqrt(Math.max(0,1-t*t));
+  return Math.max(1, Math.round(maxW*ratio));
+}
+function _ovalShape(g,cx,yTop,rows,maxW,skin,shadow){
+  g.fillStyle=_mOutline;
+  for(let r=-1;r<=rows;r++){
+    const w=_ovalRow(rows+2, r+1, maxW+2);
+    g.fillRect(cx-Math.floor(w/2), yTop+r, w, 1);
+  }
+  for(let r=0;r<rows;r++){
+    const w=_ovalRow(rows, r, maxW);
+    g.fillStyle=skin;
+    g.fillRect(cx-Math.floor(w/2), yTop+r, w, 1);
+  }
+  for(let r=Math.ceil(rows*0.5); r<rows; r++){
+    const w=_ovalRow(rows, r, maxW);
+    const shW=Math.round(w*0.5);
+    g.fillStyle=shadow;
+    g.fillRect(cx-Math.floor(w/2)+ (w-shW), yTop+r, shW, 1);
+  }
 }
 function _mStair(g,x0,y0,rows,w0,dw,dir,skin,shadow){
-  // 계단식으로 폭이 변하는 픽셀 삼각형 (귀/날개/꼬리용)
   for(let i=0;i<rows;i++){
     const w=Math.max(1,Math.round(w0+dw*i));
     const x = dir<0 ? x0-w : x0;
-    _mBlock(g,x,y0+i,w,1,skin,shadow);
+    g.fillStyle=_mOutline; g.fillRect(x-1,y0+i,w+2,1);
+  }
+  for(let i=0;i<rows;i++){
+    const w=Math.max(1,Math.round(w0+dw*i));
+    const x = dir<0 ? x0-w : x0;
+    g.fillStyle= i>rows*0.5 ? shadow : skin;
+    g.fillRect(x,y0+i,w,1);
   }
 }
+function _mFace(g, art, cx, eyeY, small){
+  const ew = small?5:6, eh=small?6:8, gap=small?6:9;
+  g.fillStyle='#ffffff';
+  g.fillRect(cx-gap-ew, eyeY, ew, eh); g.fillRect(cx+gap, eyeY, ew, eh);
+  g.fillStyle=_mOutline;
+  g.fillRect(cx-gap-ew, eyeY, ew, 1); g.fillRect(cx+gap, eyeY, ew, 1);
+  g.fillStyle=art.eye;
+  g.fillRect(cx-gap-ew+1, eyeY+3, ew-2, eh-3); g.fillRect(cx+gap+1, eyeY+3, ew-2, eh-3);
+  g.fillStyle='#ffffff';
+  g.fillRect(cx-gap-ew+1, eyeY+3, 1, 1); g.fillRect(cx+gap+1, eyeY+3, 1, 1);
+  g.fillStyle='rgba(232,120,110,.55)';
+  g.fillRect(cx-gap-ew-3, eyeY+eh-2, 3, 2); g.fillRect(cx+gap+ew+2, eyeY+eh-2, 3, 2);
+  g.fillStyle=_mOutline;
+  g.fillRect(cx-3, eyeY+eh+2, 6, 2);
+}
+/* 화난/야성적인 몬스터용 눈썹 - 소소풍 순둥한 눈과 대비되는 각진 액센트 */
+function _mBrow(g,cx,eyeY,gap,ew){
+  g.fillStyle=_mOutline;
+  g.fillRect(cx-gap-ew-1, eyeY-4, ew+2, 2);
+  g.fillRect(cx+gap-1, eyeY-4, ew+2, 2);
+}
 function _paintMonster(g, art){
-  const skin=art.skin, shadow=art.shadow, hi=art.hi;
-  const cx=13;
-  // 다리 (벌어진 자세)
-  _mBlock(g,8,20,4,9,skin,shadow);
-  _mBlock(g,15,20,4,9,skin,shadow);
-  g.fillStyle=shadow; g.fillRect(8,27,4,2); g.fillRect(15,27,4,2); // 발
-  // 몸통 (웅크린 형태 - 위가 넓고 아래가 좁음)
-  _mBlock(g,6,11,15,10,skin,shadow);
-  g.fillStyle=hi; g.fillRect(7,12,2,7); // 하이라이트 라인(좌측)
-  // 팔 (아래로 처진 형태 + 발톱)
-  _mBlock(g,2,12,4,10,skin,shadow);
-  _mBlock(g,21,12,4,10,skin,shadow);
-  g.fillStyle=shadow;
-  g.fillRect(1,21,5,2); g.fillRect(20,21,5,2); // 발톱 실루엣
-  g.fillStyle='#efe7d8';
-  g.fillRect(1,21,1,2); g.fillRect(4,21,1,2); g.fillRect(24,21,1,2); g.fillRect(21,21,1,2);
-  // 머리 (턱 좁아지는 각진 형태)
-  _mBlock(g,8,2,10,7,skin,shadow);
-  _mBlock(g,9,9,8,2,skin,shadow);
-  g.fillStyle=hi; g.fillRect(9,3,2,4);
-
+  const cx=20;
+  if(art.variant==='slime'){
+    _ovalShape(g,cx,9,33,33,art.skin,art.shadow);
+    g.fillStyle=art.hi; g.fillRect(cx-11,14,6,5);
+    _mFace(g, art, cx, 23, false);
+    return;
+  }
+  if(art.variant==='mushroom'){
+    _ovalShape(g,cx,26,17,21,'#ecdfd2','#cdbca8'); // 줄기
+    g.fillStyle=art.skin;
+    for(let r=0;r<17;r++){ const w=_ovalRow(30,r,39); g.fillRect(cx-Math.floor(w/2), r, w, 1); }
+    g.fillStyle=art.shadow; g.fillRect(0,14,39,3);
+    g.fillStyle=_mOutline; g.fillRect(0,15,39,2);
+    g.fillStyle=art.hi; [-12,0,12].forEach(o=>g.fillRect(cx+o-2,5,5,5));
+    _mFace(g, art, cx, 30, true);
+    return;
+  }
+  const hasLegs = art.variant!=='ghost';
+  if(hasLegs){
+    _ovalShape(g,cx-6,36,8,9,art.skin,art.shadow);
+    _ovalShape(g,cx+6,36,8,9,art.skin,art.shadow);
+  }
+  _ovalShape(g,cx-15,26,12,11,art.skin,art.shadow);
+  _ovalShape(g,cx+15,26,12,11,art.skin,art.shadow);
+  if(art.variant==='ghost'){
+    g.globalAlpha=0.78;
+    _ovalShape(g,cx,21,20,26,art.skin,art.shadow);
+    g.globalAlpha=1;
+    g.clearRect(0,36,40,10);
+    g.globalAlpha=0.78;
+    for(let i=0;i<5;i++){
+      const wy=36+((i%2)*3);
+      _ovalShape(g, cx-12+i*6, wy, 9-((i%2)*3), 8, art.skin, art.shadow);
+    }
+    g.globalAlpha=1;
+  } else {
+    _ovalShape(g,cx,23,17,23,art.skin,art.shadow);
+  }
   switch(art.variant){
     case 'goblin':
-      _mStair(g,8,0,4,4,-0.6,-1,skin,shadow);
-      _mStair(g,18,0,4,4,-0.6,1,skin,shadow);
-      g.fillStyle='#efe7d8'; g.fillRect(10,10,1,1); g.fillRect(15,10,1,1); // 송곳니
+      _mStair(g,11,-2,11,8,-0.55,-1,art.skin,art.shadow);
+      _mStair(g,29,-2,11,8,-0.55,1,art.skin,art.shadow);
       break;
     case 'wolf':
-      _mStair(g,9,-1,5,3,-0.5,-1,skin,shadow);
-      _mStair(g,17,-1,5,3,-0.5,1,skin,shadow);
-      _mStair(g,6,17,6,3,-0.4,-1,skin,shadow); // 꼬리
-      break;
-    case 'golem':
-      // 각진 바위 재질 - 귀 대신 균열 라인
-      g.fillStyle=shadow;
-      g.fillRect(9,13,7,1); g.fillRect(12,14,1,4); g.fillRect(16,17,4,1);
-      g.fillStyle=hi; g.fillRect(9,2,10,1);
-      break;
-    case 'lich':
-      // 후드 실루엣 - 머리 위로 확장
-      _mBlock(g,7,0,12,4,shadow,shadow);
-      g.fillStyle='#0e0b08'; g.fillRect(9,5,2,3); g.fillRect(15,5,2,3); // 움푹 팬 눈구멍
-      break;
-    case 'hydra':
-      // 보조 머리 하나 추가
-      _mBlock(g,1,7,7,6,skin,shadow);
-      g.fillStyle=art.eye; g.fillRect(3,9,1,1);
+      _mStair(g,12,-5,12,6,-0.4,-1,art.skin,art.shadow);
+      _mStair(g,27,-5,12,6,-0.4,1,art.skin,art.shadow);
+      _mStair(g,6,30,9,6,-0.35,-1,art.skin,art.shadow);
       break;
     case 'bat':
-      _mStair(g,2,8,10,7,0.9,-1,skin,shadow);
-      _mStair(g,24,8,10,7,0.9,1,skin,shadow);
-      _mStair(g,9,-1,4,2,-0.3,-1,skin,shadow);
-      _mStair(g,17,-1,4,2,-0.3,1,skin,shadow);
+      _mStair(g,3,15,15,12,0.9,-1,art.skin,art.shadow);
+      _mStair(g,36,15,15,12,0.9,1,art.skin,art.shadow);
+      _mStair(g,14,-2,9,5,-0.35,-1,art.skin,art.shadow);
+      _mStair(g,26,-2,9,5,-0.35,1,art.skin,art.shadow);
       break;
     case 'dragon':
-      _mStair(g,1,6,12,9,1.0,-1,skin,shadow);
-      _mStair(g,25,6,12,9,1.0,1,skin,shadow);
-      _mStair(g,6,20,7,3,-0.35,-1,skin,shadow); // 꼬리
-      _mStair(g,9,0,2,2,-0.4,-1,hi,shadow);
-      _mStair(g,17,0,2,2,-0.4,1,hi,shadow);
+      _mStair(g,0,12,20,15,1.0,-1,art.skin,art.shadow);
+      _mStair(g,40,12,20,15,1.0,1,art.skin,art.shadow);
+      _mStair(g,5,33,9,6,-0.3,-1,art.skin,art.shadow);
+      _mStair(g,14,-3,5,5,-0.5,-1,art.hi,art.shadow);
+      _mStair(g,26,-3,5,5,-0.5,1,art.hi,art.shadow);
       break;
-    case 'ghost':
-      g.globalAlpha=0.72;
-      // 다리 지우고 물결 치마로 대체
-      g.clearRect(6,18,15,12);
-      for(let i=0;i<5;i++){
-        const wy=22+((i%2)*2);
-        _mBlock(g, 6+i*3, wy, 3, 30-wy, skin, shadow);
-      }
+    case 'golem':
+      g.fillStyle=art.shadow;
+      g.fillRect(14,21,1,8); g.fillRect(24,26,6,1); g.fillRect(17,30,1,5);
       break;
-    case 'mushroom':
-      g.clearRect(0,0,26,30);
-      _mBlock(g,9,18,8,10,'#e9dcd0','#c7b6a3'); // 줄기
-      g.fillStyle=skin; g.beginPath();
-      g.moveTo(3,16); g.quadraticCurveTo(13,2,23,16); g.closePath(); g.fill();
-      g.fillStyle=shadow; g.fillRect(3,15,20,2);
-      g.fillStyle='#fff';
-      [6,12,18].forEach(x=>g.fillRect(x,7,2,2));
-      g.fillStyle='#3a2a33'; g.fillRect(10,21,1,1); g.fillRect(15,21,1,1);
+    case 'lich':
+      _ovalShape(g,cx,-3,30,36,art.shadow,art.shadow);
       break;
-    default: break; // slime 등은 기본 몸통만
+    case 'hydra':
+      _ovalShape(g,5,14,17,17,art.skin,art.shadow);
+      g.fillStyle=art.eye; g.fillRect(3,18,3,3);
+      break;
+    default: break;
   }
-
-  // 눈 (공통 - 발광 컬러)
-  g.fillStyle=art.eye;
-  if(art.variant!=='lich' && art.variant!=='mushroom'){
-    g.fillRect(10,5,2,2); g.fillRect(15,5,2,2);
+  _ovalShape(g,cx,0,26,30,art.skin,art.shadow);
+  if(art.hi) { g.fillStyle=art.hi; g.fillRect(cx-11,5,6,5); }
+  if(art.variant==='goblin'){
+    g.fillStyle='#f5f0e6'; g.fillRect(cx-4,18,1,3); g.fillRect(cx+3,18,1,3);
+  }
+  if(art.variant==='lich'){
+    g.fillStyle='#14100c'; g.fillRect(cx-11,12,8,8); g.fillRect(cx+3,12,8,8);
+    g.fillStyle=art.eye; g.fillRect(cx-8,15,1,1); g.fillRect(cx+6,15,1,1);
+  } else {
+    _mFace(g, art, cx, 12, false);
+    if(_mBrowVariants[art.variant]) _mBrow(g, cx, 12, 9, 6);
   }
 }
 function drawMonster(ctx, id){
   const art = MONSTER_ART[id] || MONSTER_ART.m1;
-  const GW=26, GH=30;
-  const key=id;
-  let off=_mCache[key];
+  const GW=40, GH=46;
+  let off=_mCache[id];
   if(!off){
     off=document.createElement('canvas'); off.width=GW; off.height=GH;
-    _mCache[key]=off;
+    _mCache[id]=off;
   }
   const g=off.getContext('2d');
   g.imageSmoothingEnabled=false;
@@ -866,14 +772,16 @@ function drawMonster(ctx, id){
   _paintMonster(g, art);
   if(art.boss){
     g.globalAlpha=1; g.fillStyle='#e8a93c';
-    g.fillRect(9,0,2,3); g.fillRect(12,-1,2,4); g.fillRect(15,0,2,3);
+    g.fillRect(14,-2,3,5); g.fillRect(18,-3,3,6); g.fillRect(23,-2,3,5);
+    g.fillStyle=_mOutline;
+    g.fillRect(12,-3,15,1);
   }
   const W=120,H=120;
   ctx.clearRect(0,0,W,H);
   ctx.imageSmoothingEnabled=false;
-  const scale = art.boss ? 3.95 : 3.9;
+  const scale = art.boss ? 2.55 : 2.5;
   const dw=GW*scale, dh=GH*scale;
-  const dy = Math.max(0, H-dh-4);
+  const dy = Math.max(2, H-dh-2);
   ctx.drawImage(off, (W-dw)/2, dy, dw, dh);
 }
 
@@ -917,7 +825,8 @@ function pickRewardItems(n){
    게임 톤에 맞춰 절차적으로 생성한다.
    ========================================================= */
 const SND = (function(){
-  let ctx=null, master=null, muted=false, currentBgm=null, bgmTimer=null, curAct=1;
+  let ctx=null, master=null, muted=false, currentBgm=null, bgmTimer=null, curAct=1, started=false;
+  let bgmNodes=[];
   function ensureCtx(){
     if(!ctx){
       const AC = window.AudioContext||window.webkitAudioContext;
@@ -949,12 +858,13 @@ const SND = (function(){
     }
     osc.connect(g); last.connect(master);
     osc.start(ctx.currentTime+start); osc.stop(ctx.currentTime+start+dur+0.02);
+    if(opt.reg) opt.reg.push(osc);
   }
   /* 살짝 디튠된 오실레이터 3개를 겹쳐 현악/합창처럼 두툼하게 만드는 코드 톤 (보스전용) */
-  function chordTone(freq, start, dur, gain=0.09, lowpass=null){
-    [-6,0,6].forEach(det=>tone(freq,start,dur,'sawtooth',gain/3,{detune:det, attack:0.12, lowpass, q:0.6}));
+  function chordTone(freq, start, dur, gain=0.09, lowpass=null, reg=null){
+    [-6,0,6].forEach(det=>tone(freq,start,dur,'sawtooth',gain/3,{detune:det, attack:0.12, lowpass, q:0.6, reg}));
   }
-  function noiseBurst(start, dur, gain=0.14, lowpass=null){
+  function noiseBurst(start, dur, gain=0.14, lowpass=null, reg=null){
     if(!ctx) return;
     const n=Math.max(1,Math.floor(ctx.sampleRate*dur));
     const buf=ctx.createBuffer(1,n,ctx.sampleRate);
@@ -968,6 +878,7 @@ const SND = (function(){
     if(lowpass){ const f=ctx.createBiquadFilter(); f.type='lowpass'; f.frequency.value=lowpass; last.connect(f); last=f; }
     src.connect(g); last.connect(master);
     src.start(ctx.currentTime+start);
+    if(reg) reg.push(src);
   }
   /* ---- 효과음 (기존 유지) ---- */
   function sfxSelect(){ if(muted||!ensureCtx()) return; tone(520,0,0.06,'square',0.10); tone(760,0.05,0.07,'square',0.09); }
@@ -978,25 +889,14 @@ const SND = (function(){
   function sfxDefeat(){ if(muted||!ensureCtx()) return; [392,330,262,196].forEach((f,i)=>tone(f,i*0.16,0.22,'sawtooth',0.13)); }
   function sfxImpactLight(){ if(muted||!ensureCtx()) return; noiseBurst(0,0.06,0.12); tone(300,0,0.06,'square',0.08); }
   function sfxImpactHeavy(){ if(muted||!ensureCtx()) return; noiseBurst(0,0.1,0.18); tone(120,0,0.12,'square',0.12); }
-  /* ---- 배경음: 탐험(로파이) ---- */
-  // 재즈풍 2-5-1 코드(더 낮은 옥타브)를 저역통과 필터로 뭉근하게, 스윙감 있는 리듬
-  const lofiChords=[
-    {notes:[220,261.6,329.6,392], len:2},   // Am7
-    {notes:[196,246.9,293.7,349.2], len:2}, // Dm7
-    {notes:[164.8,207.7,246.9,311.1], len:2}, // G7
-    {notes:[174.6,220,261.6,329.6], len:2}  // Cmaj7
-  ];
+  /* ---- 배경음: 탐험/대기 화면 (밝은 칩튠 멜로디) ---- */
+  const introMelody=[[523,1],[659,1],[784,1],[659,1],[587,1],[698,1],[880,2],[659,1],[784,1],[988,1],[784,1],[698,1],[880,1],[1047,2]];
+  const introBass=[196,196,220,196];
   function scheduleIntro(){
     if(muted||currentBgm!=='intro'||!ensureCtx()) return;
-    const beat=0.5; let t=0;
-    lofiChords.forEach(ch=>{
-      ch.notes.forEach((f,i)=>tone(f, t+i*0.03, beat*ch.len*0.95, 'triangle', 0.045, {attack:0.25, lowpass:900}));
-      t += beat*ch.len;
-    });
-    // 은은한 로파이 크래클(비닐 노이즈) 랜덤 팝
-    for(let i=0;i<10;i++){
-      if(Math.random()<0.6) noiseBurst(Math.random()*t, 0.02, 0.02, 3500);
-    }
+    const beat=0.32; let t=0;
+    introMelody.forEach(([f,len])=>{ tone(f,t,beat*len*0.9,'triangle',0.09,{reg:bgmNodes}); t+=beat*len; });
+    introBass.forEach((f,i)=>tone(f,i*(t/introBass.length),(t/introBass.length)*0.85,'sine',0.05,{reg:bgmNodes}));
     bgmTimer=setTimeout(scheduleIntro, t*1000);
   }
   /* ---- 배경음: 전투 (저음 압박감, ACT에 따라 강도↑) ---- */
@@ -1010,10 +910,10 @@ const SND = (function(){
     const pulses=8;
     for(let i=0;i<pulses;i++){
       // 심장박동처럼 낮은 드론 + 타격감 있는 펄스
-      tone(bassFreq, t, beat*0.9, 'sine', bassGain, {attack:0.02});
-      tone(bassFreq*1.5, t, beat*0.5, 'triangle', bassGain*0.5, {attack:0.02});
-      noiseBurst(t, 0.04, 0.06+ (act-1)*0.02, 800);
-      if(i%2===1) noiseBurst(t+beat*0.5, 0.03, 0.035, 5000); // 하이햇 느낌의 째깍임
+      tone(bassFreq, t, beat*0.9, 'sine', bassGain, {attack:0.02, reg:bgmNodes});
+      tone(bassFreq*1.5, t, beat*0.5, 'triangle', bassGain*0.5, {attack:0.02, reg:bgmNodes});
+      noiseBurst(t, 0.04, 0.06+ (act-1)*0.02, 800, bgmNodes);
+      if(i%2===1) noiseBurst(t+beat*0.5, 0.03, 0.035, 5000, bgmNodes); // 하이햇 느낌의 째깍임
       t += beat;
     }
     bgmTimer=setTimeout(scheduleBattle, t*1000);
@@ -1024,27 +924,39 @@ const SND = (function(){
     if(muted||currentBgm!=='boss'||!ensureCtx()) return;
     const beat=0.85; let t=0;
     bossProg.forEach((f,i)=>{
-      chordTone(f, t, beat*1.9, 0.16, 1400);           // 디튠 3중 합창 코드 (현악 느낌)
-      tone(f/2, t, beat*1.9, 'sine', 0.14, {attack:0.05}); // 묵직한 저음 베이스
-      if(i%2===0) tone(f*2, t+beat*0.15, 0.22, 'sawtooth', 0.06, {attack:0.01, lowpass:2200, sweepTo:600}); // 브라스풍 스탭
-      noiseBurst(t, 0.08, 0.09, 700); // 팀파니 느낌의 저역 타격
+      chordTone(f, t, beat*1.9, 0.17, 1400, bgmNodes);           // 디튠 3중 합창 코드 (현악 느낌 = 웅장함)
+      tone(f/2, t, beat*1.9, 'sine', 0.15, {attack:0.05, reg:bgmNodes}); // 묵직한 저음 베이스
+      if(i%2===0) tone(f*2, t+beat*0.15, 0.22, 'sawtooth', 0.065, {attack:0.01, lowpass:2200, sweepTo:600, reg:bgmNodes}); // 브라스풍 스탭
+      noiseBurst(t, 0.08, 0.1, 700, bgmNodes); // 팀파니 느낌의 저역 타격
+      // 급박한 8분음표 저음 펄스 (긴장감) - 코드 위에 겹쳐서 압박감 추가
+      for(let p=0;p<4;p++){
+        tone(f/4, t+p*(beat/2), beat/2*0.6, 'square', 0.045, {attack:0.005, reg:bgmNodes});
+      }
       t += beat*2;
     });
     bgmTimer=setTimeout(scheduleBoss, t*1000);
   }
-  function stopBgmTimer(){ if(bgmTimer){ clearTimeout(bgmTimer); bgmTimer=null; } }
-  function playIntro(){ if(!ensureCtx()||currentBgm==='intro') return; stopBgmTimer(); currentBgm='intro'; scheduleIntro(); }
-  function playBattle(act){ curAct=act||1; if(!ensureCtx()||currentBgm==='battle'){ curAct=act||curAct; return; } stopBgmTimer(); currentBgm='battle'; scheduleBattle(); }
-  function playBoss(){ if(!ensureCtx()||currentBgm==='boss') return; stopBgmTimer(); currentBgm='boss'; scheduleBoss(); }
+  function stopBgmTimer(){
+    if(bgmTimer){ clearTimeout(bgmTimer); bgmTimer=null; }
+    if(bgmNodes.length){
+      bgmNodes.forEach(n=>{ try{n.stop(0);}catch(e){} try{n.disconnect();}catch(e){} });
+      bgmNodes=[];
+    }
+  }
+  function playIntro(){ if(!ensureCtx()||currentBgm==='intro') return; started=true; stopBgmTimer(); currentBgm='intro'; scheduleIntro(); }
+  function playBattle(act){ curAct=act||1; if(!ensureCtx()){ return; } started=true; if(currentBgm==='battle'){ return; } stopBgmTimer(); currentBgm='battle'; scheduleBattle(); }
+  function playBoss(){ if(!ensureCtx()||currentBgm==='boss') return; started=true; stopBgmTimer(); currentBgm='boss'; scheduleBoss(); }
   function setMuted(v){
     muted=v;
     if(muted){ stopBgmTimer(); }
     else if(currentBgm==='intro'){ scheduleIntro(); }
     else if(currentBgm==='battle'){ scheduleBattle(); }
     else if(currentBgm==='boss'){ scheduleBoss(); }
+    else { playIntro(); } // 아직 아무 테마도 재생된 적 없으면 탐험 테마부터 시작
   }
   function isMuted(){ return muted; }
-  return { ensureCtx, playIntro, playBattle, playBoss, setMuted, isMuted,
+  function hasStarted(){ return started; }
+  return { ensureCtx, playIntro, playBattle, playBoss, setMuted, isMuted, hasStarted,
     sfxSelect, sfxCorrect, sfxWrong, sfxTick, sfxVictory, sfxDefeat, sfxImpactLight, sfxImpactHeavy };
 })();
 
@@ -2080,12 +1992,25 @@ function openLeadForm(opt={}){
    ========================================================= */
 document.getElementById('soundToggleBtn').onclick=()=>{
   SND.ensureCtx();
+  const btn=document.getElementById('soundToggleBtn');
+  if(!SND.hasStarted()){
+    SND.setMuted(false);
+    SND.playIntro();
+    btn.textContent='🔊'; btn.classList.remove('muted');
+    return;
+  }
   const nowMuted = !SND.isMuted();
   SND.setMuted(nowMuted);
-  const btn=document.getElementById('soundToggleBtn');
   btn.textContent = nowMuted?'🔇':'🔊';
   btn.classList.toggle('muted', nowMuted);
 };
+function _unlockAudioOnce(){
+  if(!SND.hasStarted()) SND.playIntro();
+  document.removeEventListener('click', _unlockAudioOnce);
+  document.removeEventListener('touchstart', _unlockAudioOnce);
+}
+document.addEventListener('click', _unlockAudioOnce, {once:true});
+document.addEventListener('touchstart', _unlockAudioOnce, {once:true});
 newGame();
 renderTitle();
 </script>
