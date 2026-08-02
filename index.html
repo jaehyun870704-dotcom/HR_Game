@@ -240,6 +240,7 @@ button:focus-visible{ outline:3px solid var(--gold); outline-offset:2px; }
   animation:popUp .8s ease forwards; z-index:10; font-family:'Press Start 2P',monospace;
 }
 .dmg-pop.miss{ color:#aaa; }
+.dmg-pop.heal{ color:#4fc76b; }
 @keyframes popUp{ 0%{opacity:0; transform:translateY(0) scale(.6);} 15%{opacity:1; transform:translateY(-10px) scale(1.1);} 100%{opacity:0; transform:translateY(-52px) scale(1);} }
 .hit-flash{ position:absolute; inset:0; border-radius:50%; background:rgba(217,42,42,.45); pointer-events:none; z-index:6; animation:hitFlashFade .35s ease forwards; }
 @keyframes hitFlashFade{ 0%{opacity:1;} 100%{opacity:0;} }
@@ -567,25 +568,25 @@ const QUESTIONS = [
    (1막=쉬움: 채용/교육육성, 2막=보통: 성과관리/보상/조직문화, 3막=어려움: 노동법/조직설계/피플애널리틱스) */
 const MONSTERS = {
   1:[
-    {id:'m1',name:'이력서 슬라임',icon:'🟢',hp:30,atk:5,topics:ACT_TOPICS[1]},
-    {id:'m2',name:'노쇼 고블린',icon:'👺',hp:40,atk:7,topics:ACT_TOPICS[1]},
-    {id:'m3',name:'온보딩 버섯',icon:'🍄',hp:35,atk:6,topics:ACT_TOPICS[1]},
+    {id:'m1',name:'이력서 슬라임',icon:'🟢',hp:32,atk:4,topics:ACT_TOPICS[1]},
+    {id:'m2',name:'노쇼 고블린',icon:'👺',hp:42,atk:5,topics:ACT_TOPICS[1]},
+    {id:'m3',name:'온보딩 버섯',icon:'🍄',hp:36,atk:5,topics:ACT_TOPICS[1]},
   ],
   2:[
-    {id:'m4',name:'평가편향 박쥐',icon:'🦇',hp:60,atk:12,topics:ACT_TOPICS[2]},
-    {id:'m5',name:'연봉협상 늑대',icon:'🐺',hp:70,atk:14,topics:ACT_TOPICS[2]},
-    {id:'m6',name:'사일로 골렘',icon:'🗿',hp:75,atk:13,topics:ACT_TOPICS[2]},
+    {id:'m4',name:'평가편향 박쥐',icon:'🦇',hp:70,atk:7,topics:ACT_TOPICS[2]},
+    {id:'m5',name:'연봉협상 늑대',icon:'🐺',hp:82,atk:8,topics:ACT_TOPICS[2]},
+    {id:'m6',name:'사일로 골렘',icon:'🗿',hp:88,atk:8,topics:ACT_TOPICS[2]},
   ],
   3:[
-    {id:'m7',name:'취업규칙 리치',icon:'💀',hp:90,atk:20,topics:ACT_TOPICS[3]},
-    {id:'m8',name:'조직도 히드라',icon:'🐍',hp:100,atk:22,topics:ACT_TOPICS[3]},
-    {id:'m9',name:'데이터 유령',icon:'👻',hp:110,atk:24,topics:ACT_TOPICS[3]},
+    {id:'m7',name:'취업규칙 리치',icon:'💀',hp:120,atk:12,topics:ACT_TOPICS[3]},
+    {id:'m8',name:'조직도 히드라',icon:'🐍',hp:135,atk:13,topics:ACT_TOPICS[3]},
+    {id:'m9',name:'데이터 유령',icon:'👻',hp:145,atk:13,topics:ACT_TOPICS[3]},
   ]
 };
 const BOSSES = {
-  1:{id:'b1',name:'채용왕 오크',icon:'👑',hp:80,atk:10,topics:['recruit','ld'],boss:true},
-  2:{id:'b2',name:'무임승차 트롤',icon:'👑',hp:130,atk:18,topics:['perf','comp','culture'],boss:true},
-  3:{id:'b3',name:'이직률 드래곤',icon:'🐉',hp:200,atk:28,topics:['labor','org','analytics'],boss:true}
+  1:{id:'b1',name:'채용왕 오크',icon:'👑',hp:110,atk:9,topics:['recruit','ld'],boss:true},
+  2:{id:'b2',name:'무임승차 트롤',icon:'👑',hp:175,atk:14,topics:['perf','comp','culture'],boss:true},
+  3:{id:'b3',name:'이직률 드래곤',icon:'🐉',hp:260,atk:20,topics:['labor','org','analytics'],boss:true}
 };
 
 /* =========================================================
@@ -595,210 +596,226 @@ const BOSSES = {
    저해상도 오프스크린 캔버스에 그린 뒤 nearest-neighbor로 확대한다.
    ========================================================= */
 const MONSTER_ART = {
-  m1:{skin:'#7fc25a', shadow:'#4d8a37', hi:'#b6e896', eye:'#2b2018', variant:'slime'},
-  m2:{skin:'#6bab52', shadow:'#3f7a34', hi:'#a3d488', eye:'#7a2020', variant:'goblin'},
-  m3:{skin:'#e2b6d6', shadow:'#b97fae', hi:'#f5dbef', eye:'#3a2a33', variant:'mushroom'},
-  m4:{skin:'#6f5aa8', shadow:'#453372', hi:'#a08cd4', eye:'#7a2020', variant:'bat'},
-  m5:{skin:'#a9835a', shadow:'#6b4d30', hi:'#d0af80', eye:'#3a2a33', variant:'wolf'},
-  m6:{skin:'#9aa6ad', shadow:'#69747b', hi:'#c9d2d8', eye:'#3a6ea5', variant:'golem'},
-  m7:{skin:'#c7c7d6', shadow:'#8f8fa0', hi:'#eaeaf2', eye:'#4a9c6e', variant:'lich'},
-  m8:{skin:'#5cae72', shadow:'#357a48', hi:'#93d4a4', eye:'#3a2a33', variant:'hydra'},
-  m9:{skin:'#cfe3f2', shadow:'#9db9cf', hi:'#eefaff', eye:'#3a2a33', variant:'ghost'},
-  b1:{skin:'#c98c50', shadow:'#8a5a29', hi:'#e0b57e', eye:'#7a2020', variant:'goblin', boss:true},
-  b2:{skin:'#7f9e6a', shadow:'#4f6b3d', hi:'#aecb92', eye:'#7a2020', variant:'goblin', boss:true},
-  b3:{skin:'#c9695a', shadow:'#8f2f22', hi:'#e29a8c', eye:'#3a2a33', variant:'dragon', boss:true}
+  m1:{skin:'#8fd6c4', shadow:'#5fa896', hi:'#ffffff', cloth:'#5fa896', eye:'#12100e', variant:'slime'},
+  m2:{skin:'#7fb85e', shadow:'#4d8038', hi:'#a9d68c', cloth:'#c2703c', eye:'#12100e', variant:'orc'},
+  m3:{skin:'#e0a8cf', shadow:'#b0729e', hi:'#f6d8ee', cloth:'#e8dcc8', eye:'#12100e', variant:'mushroom'},
+  m4:{skin:'#7a63b8', shadow:'#4a3880', hi:'#a894dc', cloth:'#4a3880', eye:'#e04a3a', variant:'bat'},
+  m5:{skin:'#a07a4e', shadow:'#6a4c2c', hi:'#c6a074', cloth:'#6a4c2c', eye:'#e8b93a', variant:'beast'},
+  m6:{skin:'#96a2ac', shadow:'#626e78', hi:'#c4ced6', cloth:'#626e78', eye:'#5ec8e8', variant:'golem'},
+  m7:{skin:'#cfcfe0', shadow:'#8e8ea2', hi:'#eeeef8', cloth:'#4a4260', eye:'#5cffb0', variant:'lich'},
+  m8:{skin:'#5aa86e', shadow:'#357246', hi:'#8ccb9c', cloth:'#357246', eye:'#e8b93a', variant:'hydra'},
+  m9:{skin:'#cfe3f2', shadow:'#9ab6cc', hi:'#ffffff', cloth:'#9ab6cc', eye:'#12100e', variant:'ghost'},
+  b1:{skin:'#8fbf6a', shadow:'#5a8440', hi:'#b4dc94', cloth:'#b0673a', eye:'#12100e', variant:'orc', weapon:'club', boss:true},
+  b2:{skin:'#7d9c60', shadow:'#4e6a38', hi:'#a4c284', cloth:'#8a6a42', eye:'#12100e', variant:'orc', weapon:'shield', boss:true},
+  b3:{skin:'#c05a48', shadow:'#822f22', hi:'#e08a74', cloth:'#822f22', eye:'#e8b93a', variant:'dragon', boss:true}
 };
 const _mCache = {};
-const _mOutline='#2b2018';
-const _mBrowVariants={goblin:1,wolf:1,dragon:1};
-/* 타원(원형) 실루엣을 1px 행 단위로 채우는 기본 도형 — 라운드한 치비 몸통/머리용 */
-function _ovalRow(rows, r, maxW){
-  const mid=(rows-1)/2;
-  const t=(r-mid)/(rows/2);
-  const ratio=Math.sqrt(Math.max(0,1-t*t));
-  return Math.max(1, Math.round(maxW*ratio));
-}
-function _ovalShape(g,cx,yTop,rows,maxW,skin,shadow){
-  g.fillStyle=_mOutline;
-  for(let r=-1;r<=rows;r++){
-    const w=_ovalRow(rows+2, r+1, maxW+2);
-    g.fillRect(cx-Math.floor(w/2), yTop+r, w, 1);
-  }
-  for(let r=0;r<rows;r++){
-    const w=_ovalRow(rows, r, maxW);
-    g.fillStyle=skin;
-    g.fillRect(cx-Math.floor(w/2), yTop+r, w, 1);
-  }
-  for(let r=Math.ceil(rows*0.5); r<rows; r++){
-    const w=_ovalRow(rows, r, maxW);
-    const shW=Math.round(w*0.5);
-    g.fillStyle=shadow;
-    g.fillRect(cx-Math.floor(w/2)+ (w-shW), yTop+r, shW, 1);
+const _MW=30, _MH=36, _MOUT='#20180f';
+function _mkGrid(){ const g=[]; for(let y=0;y<_MH;y++) g.push(new Array(_MW).fill(null)); return g; }
+function _r(px,x,y,w,h,c){
+  for(let j=y;j<y+h;j++){
+    if(j<0||j>=_MH) continue;
+    for(let i=x;i<x+w;i++){ if(i<0||i>=_MW) continue; px[j][i]=c; }
   }
 }
-function _mStair(g,x0,y0,rows,w0,dw,dir,skin,shadow){
-  for(let i=0;i<rows;i++){
-    const w=Math.max(1,Math.round(w0+dw*i));
-    const x = dir<0 ? x0-w : x0;
-    g.fillStyle=_mOutline; g.fillRect(x-1,y0+i,w+2,1);
+/* 채워진 픽셀에 인접한 빈 픽셀을 외곽선으로 칠해, 도트 스프라이트 특유의 또렷한 테두리를 만든다 */
+function _mOutlinePass(px){
+  const add=[];
+  for(let y=0;y<_MH;y++) for(let x=0;x<_MW;x++){
+    if(px[y][x]) continue;
+    if((y>0&&px[y-1][x])||(y<_MH-1&&px[y+1][x])||(x>0&&px[y][x-1])||(x<_MW-1&&px[y][x+1])) add.push([x,y]);
   }
-  for(let i=0;i<rows;i++){
-    const w=Math.max(1,Math.round(w0+dw*i));
-    const x = dir<0 ? x0-w : x0;
-    g.fillStyle= i>rows*0.5 ? shadow : skin;
-    g.fillRect(x,y0+i,w,1);
-  }
+  add.forEach(([x,y])=>{ px[y][x]=_MOUT; });
 }
-function _mFace(g, art, cx, eyeY, small){
-  const ew = small?5:6, eh=small?6:8, gap=small?6:9;
-  g.fillStyle='#ffffff';
-  g.fillRect(cx-gap-ew, eyeY, ew, eh); g.fillRect(cx+gap, eyeY, ew, eh);
-  g.fillStyle=_mOutline;
-  g.fillRect(cx-gap-ew, eyeY, ew, 1); g.fillRect(cx+gap, eyeY, ew, 1);
-  g.fillStyle=art.eye;
-  g.fillRect(cx-gap-ew+1, eyeY+3, ew-2, eh-3); g.fillRect(cx+gap+1, eyeY+3, ew-2, eh-3);
-  g.fillStyle='#ffffff';
-  g.fillRect(cx-gap-ew+1, eyeY+3, 1, 1); g.fillRect(cx+gap+1, eyeY+3, 1, 1);
-  g.fillStyle='rgba(232,120,110,.55)';
-  g.fillRect(cx-gap-ew-3, eyeY+eh-2, 3, 2); g.fillRect(cx+gap+ew+2, eyeY+eh-2, 3, 2);
-  g.fillStyle=_mOutline;
-  g.fillRect(cx-3, eyeY+eh+2, 6, 2);
-}
-/* 화난/야성적인 몬스터용 눈썹 - 소소풍 순둥한 눈과 대비되는 각진 액센트 */
-function _mBrow(g,cx,eyeY,gap,ew){
-  g.fillStyle=_mOutline;
-  g.fillRect(cx-gap-ew-1, eyeY-4, ew+2, 2);
-  g.fillRect(cx+gap-1, eyeY-4, ew+2, 2);
-}
-function _paintMonster(g, art){
-  const cx=20;
-  if(art.variant==='slime'){
-    _ovalShape(g,cx,9,33,33,art.skin,art.shadow);
-    g.fillStyle=art.hi; g.fillRect(cx-11,14,6,5);
-    _mFace(g, art, cx, 23, false);
-    return;
+/* ---- 직립 인간형 몬스터 (오크/고블린/야수/마법사 등 공통 골격) ---- */
+function _paintHumanoid(px, art){
+  const S=art.skin, SH=art.shadow, HI=art.hi, CL=art.cloth, EY=art.eye;
+  const v=art.variant;
+  const robe = (v==='lich');
+  // 뿔 / 귀
+  if(v==='orc'||v==='hydra'){
+    _r(px,6,5,2,4,S); _r(px,5,6,1,2,S);
+    _r(px,22,5,2,4,S); _r(px,24,6,1,2,S);
+  } else if(v==='beast'){
+    _r(px,7,2,3,4,S); _r(px,8,1,2,2,S);
+    _r(px,20,2,3,4,S); _r(px,20,1,2,2,S);
+  } else if(v==='dragon'){
+    _r(px,8,1,2,4,HI); _r(px,20,1,2,4,HI);
+  } else if(v==='bat'){
+    _r(px,9,1,2,3,S); _r(px,19,1,2,3,S);
   }
-  if(art.variant==='mushroom'){
-    _ovalShape(g,cx,26,17,21,'#ecdfd2','#cdbca8'); // 줄기
-    g.fillStyle=art.skin;
-    for(let r=0;r<17;r++){ const w=_ovalRow(30,r,39); g.fillRect(cx-Math.floor(w/2), r, w, 1); }
-    g.fillStyle=art.shadow; g.fillRect(0,14,39,3);
-    g.fillStyle=_mOutline; g.fillRect(0,15,39,2);
-    g.fillStyle=art.hi; [-12,0,12].forEach(o=>g.fillRect(cx+o-2,5,5,5));
-    _mFace(g, art, cx, 30, true);
-    return;
+  // 머리
+  _r(px,8,3,14,10,S);
+  _r(px,19,4,3,9,SH);
+  _r(px,9,4,2,4,HI);
+  if(robe){ _r(px,7,2,16,7,CL); _r(px,9,9,12,4,'#1c1810'); }
+  // 눈
+  if(robe){
+    _r(px,11,9,3,2,EY); _r(px,16,9,3,2,EY);
+  } else {
+    _r(px,10,6,3,1,SH); _r(px,17,6,3,1,SH);   // 사나운 눈썹
+    _r(px,10,7,3,2,EY); _r(px,17,7,3,2,EY);
   }
-  const hasLegs = art.variant!=='ghost';
-  if(hasLegs){
-    _ovalShape(g,cx-6,36,8,9,art.skin,art.shadow);
-    _ovalShape(g,cx+6,36,8,9,art.skin,art.shadow);
+  // 입 / 엄니
+  if(!robe){
+    _r(px,12,11,6,1,'#3a2a20');
+    if(v==='orc'){ _r(px,12,10,1,2,'#f2ead8'); _r(px,17,10,1,2,'#f2ead8'); }
+    if(v==='beast'){ _r(px,12,11,1,2,'#f2ead8'); _r(px,17,11,1,2,'#f2ead8'); }
   }
-  _ovalShape(g,cx-15,26,12,11,art.skin,art.shadow);
-  _ovalShape(g,cx+15,26,12,11,art.skin,art.shadow);
-  if(art.variant==='ghost'){
-    g.globalAlpha=0.78;
-    _ovalShape(g,cx,21,20,26,art.skin,art.shadow);
-    g.globalAlpha=1;
-    g.clearRect(0,36,40,10);
-    g.globalAlpha=0.78;
-    for(let i=0;i<5;i++){
-      const wy=36+((i%2)*3);
-      _ovalShape(g, cx-12+i*6, wy, 9-((i%2)*3), 8, art.skin, art.shadow);
+  // 목
+  _r(px,13,13,4,1,SH);
+  // 몸통
+  _r(px,9,14,12,10,S);
+  _r(px,18,14,3,10,SH);
+  _r(px,10,15,2,4,HI);
+  if(v==='golem'){ _r(px,11,17,1,5,SH); _r(px,15,20,4,1,SH); _r(px,13,15,1,3,SH); }
+  // 팔
+  _r(px,5,14,4,11,S);  _r(px,5,14,1,11,HI);
+  _r(px,21,14,4,11,S); _r(px,23,14,2,11,SH);
+  // 의복 / 다리
+  if(robe){
+    _r(px,7,22,16,12,CL);
+    _r(px,18,22,5,12,SH);
+    for(let i=0;i<4;i++) _r(px,7+i*4,33,3,1,CL);
+  } else {
+    if(v!=='golem'&&v!=='beast'){ _r(px,9,20,12,4,CL); _r(px,9,22,12,2,SH); }
+    _r(px,9,24,5,8,(v==='golem'||v==='beast')?S:CL);
+    _r(px,16,24,5,8,(v==='golem'||v==='beast')?S:CL);
+    _r(px,12,24,2,8,SH); _r(px,19,24,2,8,SH);
+    _r(px,8,32,6,3,'#4a3a28'); _r(px,16,32,6,3,'#4a3a28');
+  }
+  // 부속: 날개 / 꼬리 / 추가 머리
+  if(v==='bat'||v==='dragon'){
+    for(let i=0;i<9;i++){
+      _r(px,4-Math.floor(i/3),12+i,Math.max(1,4-Math.floor(i/2)),1,SH);
+      _r(px,25+Math.floor(i/3),12+i,Math.max(1,4-Math.floor(i/2)),1,SH);
     }
-    g.globalAlpha=1;
-  } else {
-    _ovalShape(g,cx,23,17,23,art.skin,art.shadow);
+    _r(px,2,12,3,7,SH); _r(px,25,12,3,7,SH);
   }
-  switch(art.variant){
-    case 'goblin':
-      _mStair(g,11,-2,11,8,-0.55,-1,art.skin,art.shadow);
-      _mStair(g,29,-2,11,8,-0.55,1,art.skin,art.shadow);
-      break;
-    case 'wolf':
-      _mStair(g,12,-5,12,6,-0.4,-1,art.skin,art.shadow);
-      _mStair(g,27,-5,12,6,-0.4,1,art.skin,art.shadow);
-      _mStair(g,6,30,9,6,-0.35,-1,art.skin,art.shadow);
-      break;
-    case 'bat':
-      _mStair(g,3,15,15,12,0.9,-1,art.skin,art.shadow);
-      _mStair(g,36,15,15,12,0.9,1,art.skin,art.shadow);
-      _mStair(g,14,-2,9,5,-0.35,-1,art.skin,art.shadow);
-      _mStair(g,26,-2,9,5,-0.35,1,art.skin,art.shadow);
-      break;
-    case 'dragon':
-      _mStair(g,0,12,20,15,1.0,-1,art.skin,art.shadow);
-      _mStair(g,40,12,20,15,1.0,1,art.skin,art.shadow);
-      _mStair(g,5,33,9,6,-0.3,-1,art.skin,art.shadow);
-      _mStair(g,14,-3,5,5,-0.5,-1,art.hi,art.shadow);
-      _mStair(g,26,-3,5,5,-0.5,1,art.hi,art.shadow);
-      break;
-    case 'golem':
-      g.fillStyle=art.shadow;
-      g.fillRect(14,21,1,8); g.fillRect(24,26,6,1); g.fillRect(17,30,1,5);
-      break;
-    case 'lich':
-      _ovalShape(g,cx,-3,30,36,art.shadow,art.shadow);
-      break;
-    case 'hydra':
-      _ovalShape(g,5,14,17,17,art.skin,art.shadow);
-      g.fillStyle=art.eye; g.fillRect(3,18,3,3);
-      break;
-    default: break;
+  if(v==='beast'||v==='dragon'){
+    _r(px,23,26,4,2,S); _r(px,26,24,2,3,S);
   }
-  _ovalShape(g,cx,0,26,30,art.skin,art.shadow);
-  if(art.hi) { g.fillStyle=art.hi; g.fillRect(cx-11,5,6,5); }
-  if(art.variant==='goblin'){
-    g.fillStyle='#f5f0e6'; g.fillRect(cx-4,18,1,3); g.fillRect(cx+3,18,1,3);
+  if(v==='hydra'){
+    _r(px,2,8,7,6,S); _r(px,3,10,2,2,EY); _r(px,2,13,5,2,SH);
   }
-  if(art.variant==='lich'){
-    g.fillStyle='#14100c'; g.fillRect(cx-11,12,8,8); g.fillRect(cx+3,12,8,8);
-    g.fillStyle=art.eye; g.fillRect(cx-8,15,1,1); g.fillRect(cx+6,15,1,1);
-  } else {
-    _mFace(g, art, cx, 12, false);
-    if(_mBrowVariants[art.variant]) _mBrow(g, cx, 12, 9, 6);
+  // 무기 (보스 전용)
+  if(art.weapon==='club'){
+    _r(px,24,10,2,14,'#7a5a34');
+    _r(px,22,4,6,6,'#9a7442');
+    _r(px,21,6,1,2,'#c0a070'); _r(px,28,6,1,2,'#c0a070');
+    _r(px,24,3,2,1,'#c0a070'); _r(px,24,10,2,1,'#c0a070');
+  } else if(art.weapon==='shield'){
+    _r(px,1,14,7,11,'#9a7442');
+    _r(px,1,14,7,2,'#c0a070');
+    _r(px,3,18,3,3,'#d8c090');
   }
+}
+/* ---- 슬라임: 납작한 돔 + 각진 눈, 상단 하이라이트 ---- */
+function _paintSlime(px, art){
+  const rows=[6,12,16,20,22,24,24,26,26,26,26,26,26,26,26,26,26,26,26,26];
+  const cx=15;
+  rows.forEach((w,i)=>{ _r(px, cx-Math.floor(w/2), 12+i, w, 1, art.skin); });
+  _r(px,cx+5,20,8,11,art.shadow);
+  _r(px,cx-11,15,3,2,art.hi); _r(px,cx-8,13,4,2,art.hi);
+  _r(px,cx-12,19,2,3,art.hi);
+  _r(px,10,19,3,6,art.eye); _r(px,18,19,3,6,art.eye);
+}
+function _paintMushroom(px, art){
+  const rows=[8,14,18,22,24,26,26,26];
+  const cx=15;
+  rows.forEach((w,i)=>{ _r(px, cx-Math.floor(w/2), 4+i, w, 1, art.skin); });
+  _r(px,cx+3,8,10,4,art.shadow);
+  _r(px,7,6,4,3,art.hi); _r(px,17,5,3,3,art.hi); _r(px,12,9,3,2,art.hi);
+  _r(px,10,12,10,18,art.cloth);
+  _r(px,17,12,3,18,art.shadow);
+  _r(px,12,17,2,3,art.eye); _r(px,16,17,2,3,art.eye);
+  _r(px,13,23,4,1,art.shadow);
+}
+function _paintGhost(px, art){
+  const rows=[8,14,18,20,22,22,24,24,24,24,24,24,24,24,24,24,24];
+  const cx=15;
+  rows.forEach((w,i)=>{ _r(px, cx-Math.floor(w/2), 4+i, w, 1, art.skin); });
+  _r(px,cx+4,10,8,11,art.shadow);
+  _r(px,8,7,3,3,art.hi);
+  _r(px,10,12,3,5,art.eye); _r(px,18,12,3,5,art.eye);
+  _r(px,13,20,4,2,art.eye);
+  for(let i=0;i<4;i++){ _r(px, 3+i*6, 21, 5, 4+((i%2)*3), art.skin); }
+  _r(px,3,26,24,2,null);
+}
+function _paintMonsterGrid(art){
+  const px=_mkGrid();
+  const v=art.variant;
+  if(v==='slime') _paintSlime(px, art);
+  else if(v==='mushroom') _paintMushroom(px, art);
+  else if(v==='ghost') _paintGhost(px, art);
+  else _paintHumanoid(px, art);
+  if(art.boss){
+    _r(px,10,1,2,3,'#e8a93c'); _r(px,14,1,2,3,'#e8a93c'); _r(px,18,1,2,3,'#e8a93c');
+    _r(px,10,3,10,2,'#e8a93c');
+  }
+  _mOutlinePass(px);
+  return px;
 }
 function drawMonster(ctx, id){
   const art = MONSTER_ART[id] || MONSTER_ART.m1;
-  const GW=40, GH=46;
   let off=_mCache[id];
   if(!off){
-    off=document.createElement('canvas'); off.width=GW; off.height=GH;
+    const px=_paintMonsterGrid(art);
+    // 실제로 그려진 영역만 잘라내야 박스 안에서 여백이 균등해진다
+    let minX=_MW, maxX=-1, minY=_MH, maxY=-1;
+    for(let y=0;y<_MH;y++) for(let x=0;x<_MW;x++){
+      if(!px[y][x]) continue;
+      if(x<minX)minX=x; if(x>maxX)maxX=x;
+      if(y<minY)minY=y; if(y>maxY)maxY=y;
+    }
+    if(maxX<0){ minX=0;maxX=_MW-1;minY=0;maxY=_MH-1; }
+    const cw=maxX-minX+1, ch=maxY-minY+1;
+    off=document.createElement('canvas'); off.width=cw; off.height=ch;
+    const g=off.getContext('2d');
+    g.clearRect(0,0,cw,ch);
+    for(let y=minY;y<=maxY;y++) for(let x=minX;x<=maxX;x++){
+      const c=px[y][x];
+      if(!c) continue;
+      g.fillStyle=c; g.fillRect(x-minX, y-minY, 1, 1);
+    }
     _mCache[id]=off;
   }
-  const g=off.getContext('2d');
-  g.imageSmoothingEnabled=false;
-  g.clearRect(0,0,GW,GH); g.globalAlpha=1;
-  _paintMonster(g, art);
-  if(art.boss){
-    g.globalAlpha=1; g.fillStyle='#e8a93c';
-    g.fillRect(14,-2,3,5); g.fillRect(18,-3,3,6); g.fillRect(23,-2,3,5);
-    g.fillStyle=_mOutline;
-    g.fillRect(12,-3,15,1);
-  }
-  const W=120,H=120;
+  const W=120,H=120,PAD=4;
   ctx.clearRect(0,0,W,H);
   ctx.imageSmoothingEnabled=false;
-  const scale = art.boss ? 2.55 : 2.5;
-  const dw=GW*scale, dh=GH*scale;
-  const dy = Math.max(2, H-dh-2);
-  ctx.drawImage(off, (W-dw)/2, dy, dw, dh);
+  ctx.globalAlpha = (art.variant==='ghost') ? 0.82 : 1;
+  // 모든 몬스터가 같은 도트 크기로 보이도록 배율을 3배로 통일(안 들어가면 축소)
+  const scale = Math.max(1, Math.min(3,
+    Math.floor((W-PAD*2)/off.width), Math.floor((H-PAD*2)/off.height)));
+  const dw=off.width*scale, dh=off.height*scale;
+  ctx.drawImage(off, Math.round((W-dw)/2), Math.round((H-dh)/2), dw, dh);
+  ctx.globalAlpha = 1;
 }
 
 /* ---- 아이템 ---- */
+const BAG_SIZE = 8; // 후반 성장 체감을 위해 가방 확대
 const ITEMS = [
-  {id:'i_mug',name:'소소의 머그컵',icon:'☕',rarity:'common',kind:'passive',type:'atk_flat',val:3,desc:'공격력 +3 (영구)'},
-  {id:'i_leave',name:'연차 휴가',icon:'🌴',rarity:'common',kind:'passive',type:'heal_on_win',val:10,desc:'전투 승리 시 HP +10 회복'},
-  {id:'i_hint',name:"멘토의 조언",icon:'🤝',rarity:'common',kind:'active',type:'hint',desc:'전투당 1회, 힌트로 정답 표시'},
-  {id:'i_bonus',name:'성과급 봉투',icon:'💰',rarity:'common',kind:'instant',type:'heal_instant',val:15,desc:'즉시 HP +15 회복'},
-  {id:'i_edu',name:'교육 이수증',icon:'🎓',rarity:'rare',kind:'passive',type:'crit',val:0.25,desc:'정답 시 25% 확률로 추가타(2배 데미지)'},
-  {id:'i_graph',name:'성과 그래프',icon:'📈',rarity:'rare',kind:'passive',type:'combo_bonus',val:0.5,desc:'콤보 3 이상일 때 데미지 +50%'},
-  {id:'i_checklist',name:'채용 체크리스트',icon:'📋',rarity:'rare',kind:'passive',type:'dmg_reduction',val:0.3,desc:'받는 피해 -30%'},
-  {id:'i_contract',name:'근로계약서',icon:'📜',rarity:'rare',kind:'auto_charge',type:'negate_wrong',desc:'전투당 1회, 오답 피해를 무효화'},
-  {id:'i_dashboard',name:'데이터 대시보드',icon:'📊',rarity:'rare',kind:'active',type:'eliminate',desc:'전투당 1회, 오답 보기 2개 제거'},
-  {id:'i_flex',name:'유연근무제',icon:'⏱️',rarity:'rare',kind:'passive',type:'extra_time',val:5,desc:'제한시간 +5초 (영구)'},
-  {id:'i_reorg',name:'조직개편안',icon:'🏢',rarity:'legendary',kind:'passive',type:'boss_dmg_reduction',val:0.5,desc:'보스전 받는 피해 -50%'},
-  {id:'i_okr',name:'OKR 정렬표',icon:'🎯',rarity:'legendary',kind:'passive',type:'combo_shield',val:5,desc:'콤보 5 이상 유지 시 몬스터 공격 무효화'},
+  /* 전부 '조건만 맞으면 자동 발동'하는 패시브. 같은 아이템을 여러 개 모으면 효과가 누적되어
+     후반부에 강해진 체감이 나도록 설계했다. 정답 보상형 위주. */
+  // --- common: 기본 성장 ---
+  {id:'i_mug',name:'소소의 머그컵',icon:'☕',rarity:'common',kind:'passive',type:'atk_flat',val:4,desc:'공격력 +4 (누적)'},
+  {id:'i_leave',name:'연차 휴가',icon:'🌴',rarity:'common',kind:'passive',type:'heal_on_win',val:12,desc:'전투 승리 시 HP +12 회복 (누적)'},
+  {id:'i_welfare',name:'복지 포인트',icon:'🎁',rarity:'common',kind:'passive',type:'max_hp',val:15,desc:'최대 HP +15, 즉시 +15 회복 (누적)'},
+  {id:'i_snack',name:'탕비실 간식',icon:'🍪',rarity:'common',kind:'passive',type:'heal_on_correct',val:2,desc:'정답마다 HP +2 회복 (누적)'},
+  {id:'i_bonus',name:'성과급 봉투',icon:'💰',rarity:'common',kind:'instant',type:'heal_instant',val:20,desc:'즉시 HP +20 회복'},
+  {id:'i_flex',name:'유연근무제',icon:'⏱️',rarity:'common',kind:'passive',type:'extra_time',val:5,desc:'문제 제한시간 +5초 (누적)'},
+  // --- rare: 보상 증폭 ---
+  {id:'i_edu',name:'교육 이수증',icon:'🎓',rarity:'rare',kind:'passive',type:'crit',val:0.2,desc:'정답 시 20% 확률로 치명타(2배) (누적)'},
+  {id:'i_graph',name:'성과 그래프',icon:'📈',rarity:'rare',kind:'passive',type:'combo_bonus',val:0.4,desc:'콤보 3 이상일 때 데미지 +40% (누적)'},
+  {id:'i_promo',name:'승진 발령장',icon:'🏅',rarity:'rare',kind:'passive',type:'atk_pct',val:0.2,desc:'공격력 +20% (누적)'},
+  {id:'i_streak',name:'연속 무결점 기록',icon:'🔥',rarity:'rare',kind:'passive',type:'combo_heal',val:6,desc:'콤보 3마다 HP +6 회복 (누적)'},
+  {id:'i_onboard',name:'온보딩 키트',icon:'🧰',rarity:'rare',kind:'passive',type:'first_hit',val:0.5,desc:'전투 첫 정답 데미지 +50% (누적)'},
+  {id:'i_checklist',name:'채용 체크리스트',icon:'📋',rarity:'rare',kind:'passive',type:'dmg_reduction',val:0.25,desc:'받는 피해 -25% (누적)'},
+  {id:'i_contract',name:'근로계약서',icon:'📜',rarity:'rare',kind:'auto_charge',type:'negate_wrong',desc:'전투당 1회, 오답 피해 자동 무효화'},
+  // --- legendary: 판을 뒤집는 효과 ---
+  {id:'i_okr',name:'OKR 정렬표',icon:'🎯',rarity:'legendary',kind:'passive',type:'combo_shield',val:4,desc:'콤보 4 이상이면 몬스터 공격 무효화'},
+  {id:'i_reorg',name:'조직개편안',icon:'🏢',rarity:'legendary',kind:'passive',type:'boss_dmg_reduction',val:0.4,desc:'보스전 받는 피해 -40% (누적)'},
+  {id:'i_talent',name:'핵심인재 인증',icon:'💎',rarity:'legendary',kind:'passive',type:'overkill',val:0.3,desc:'정답 시 몬스터 최대HP의 3%만큼 추가 피해 (누적)'},
   {id:'i_rehire',name:'재입사 제안서',icon:'🔄',rarity:'legendary',kind:'passive',type:'revive',desc:'전투불능 시 1회, HP 50%로 부활'},
 ];
 function pickRewardItems(n){
@@ -968,7 +985,7 @@ function newGame(){
   G = {
     screen:'title',
     act:1,
-    player:{hp:50,maxHp:50,baseAtk:10,combo:0},
+    player:{hp:100,maxHp:100,baseAtk:16,combo:0},
     items:[], // held passive/active/auto items
     usedQuestionIds:new Set(),
     revived:false,
@@ -991,6 +1008,7 @@ function itemSum(type){ return G.items.filter(i=>i.type===type).reduce((s,i)=>s+
 function currentAtk(){
   let base = G.player.baseAtk;
   base += itemSum('atk_flat'); // 머그컵 여러 개 장착 시 공격력이 계속 누적
+  base *= (1 + itemSum('atk_pct')); // 승진 발령장: 비율 증가도 누적
   return base;
 }
 function currentTimer(){ return ACT_TIME[G.act] + itemSum('extra_time'); }
@@ -1051,8 +1069,8 @@ function weightedTypeExcl(exclList){
   exclList.forEach(k=>delete weights[k]);
   return weightedType(weights);
 }
-/* 몬스터를 최소 3회 조우하기 전에는 보물(아이템) 노드가 나오지 않도록 단계별 타입을
-   실제로 도달했을 때 결정한다(안개 해제). 항상 전투 1개는 보장한다. */
+/* 기본 리듬: 몬스터 3회 처치 → 보상(보물/휴식/미지) 층 등장 → 다시 전투.
+   각 층의 노드 종류는 도달 시점에 랜덤으로 결정되므로 매판 경로가 달라진다. */
 function ensureLevelRevealed(act){
   const map=G.maps[act]; const prog=G.progress[act];
   const rowIdx=prog.level;
@@ -1060,12 +1078,17 @@ function ensureLevelRevealed(act){
   const row=map.levels[rowIdx];
   if(!row.some(n=>n.type==='fog')) return;
   const kills = prog.kills||0;
-  const allowTreasure = kills>=3;
+  const taken = prog.rewardsTaken||0;
   const count=row.length;
-  let types=['battle'];
-  types.push(allowTreasure ? 'treasure' : weightedTypeExcl(['treasure']));
-  for(let i=2;i<count;i++){
-    types.push(weightedTypeExcl(allowTreasure?[]:['treasure']));
+  let types;
+  if(Math.floor(kills/3) > taken){
+    // 3연전을 마쳤으니 보상 층: 무엇을 고를지는 플레이어의 선택
+    types=['treasure','rest'];
+    for(let i=2;i<count;i++) types.push(weightedType({treasure:35, rest:35, unknown:30}));
+  } else {
+    // 전투 층: 최소 1개는 전투, 나머지는 전투/미지 섞임
+    types=['battle'];
+    for(let i=1;i<count;i++) types.push(weightedType({battle:70, unknown:30}));
   }
   types=types.sort(()=>Math.random()-0.5);
   row.forEach((n,i)=>{ n.type=types[i]; });
@@ -1109,9 +1132,9 @@ function renderTitle(){
 function startAct(act){
   G.act=act;
   if(!G.maps[act]) G.maps[act]=generateMap(act);
-  if(!G.progress[act]) G.progress[act]={level:0, visited:[], kills:0};
-  if(act===2) G.player.baseAtk += 5;
-  if(act===3) G.player.baseAtk += 7;
+  if(!G.progress[act]) G.progress[act]={level:0, visited:[], kills:0, rewardsTaken:0};
+  if(act===2) G.player.baseAtk += 11;
+  if(act===3) G.player.baseAtk += 16;
   G.screen='map';
   renderMap();
 }
@@ -1133,7 +1156,7 @@ function renderMap(){
     <div class="map-legend">
       <span>💀전투</span><span>❓미지</span><span>📦보물</span><span>☕휴식</span><span>👑보스</span>
     </div>
-    <div class="kills-hint">몬스터 처치 ${prog.kills||0}회 ${(prog.kills||0)<3?`· 보물은 ${3-(prog.kills||0)}회 더 처치 후 등장`:'· 보물 등장 중'}</div>
+    <div class="kills-hint">몬스터 처치 ${prog.kills||0}회 ${(()=>{const left=3-((prog.kills||0)-((prog.rewardsTaken||0)*3)); return left>0?`· 보상은 ${left}회 더 처치 후 등장`:'· 보상 층 등장 중';})()}</div>
     <div class="map-scroll" id="mapScroll">
       <svg class="map-svg" id="mapSvg"></svg>
       ${map.levels.map((row,lv)=>{
@@ -1263,14 +1286,22 @@ function enterNode(nodeId, level){
     startBattle({...b}, ()=>{ markVisited(nodeId,level); onBossDefeated(); });
   } else if(node.type==='treasure'){
     markVisited(nodeId,level);
+    countReward();
     showTreasure(()=>afterNodeResolved());
   } else if(node.type==='rest'){
     markVisited(nodeId,level);
+    countReward();
     showRest(()=>afterNodeResolved());
   } else if(node.type==='unknown'){
     markVisited(nodeId,level);
     resolveUnknown(()=>afterNodeResolved());
   }
+}
+/* 보상 층을 소비했음을 기록 → 다시 3회 전투해야 다음 보상 층이 열린다 */
+function countReward(){
+  const prog=G.progress[G.act];
+  const kills=prog.kills||0;
+  if(Math.floor(kills/3) > (prog.rewardsTaken||0)) prog.rewardsTaken=(prog.rewardsTaken||0)+1;
 }
 function afterNodeResolved(){
   G.screen='map'; renderMap();
@@ -1280,7 +1311,7 @@ function onBossDefeated(){
     // 확정 재입사 제안서 지급 (가방이 가득 차 있어도 절대 누락되지 않도록 처리)
     if(!G.items.find(i=>i.id==='i_rehire')){
       const it=ITEMS.find(i=>i.id==='i_rehire');
-      if(G.items.length<6){
+      if(G.items.length<BAG_SIZE){
         G.items.push(it);
       } else {
         const commonIdx = G.items.findIndex(i=>i.rarity==='common');
@@ -1396,15 +1427,19 @@ function applyPickedItem(it, cb){
     if(cb) cb();
     return;
   }
-  if(G.items.length<6){
+  if(G.items.length<BAG_SIZE){
     G.items.push(it);
+    if(it.type==='max_hp'){ // 복지 포인트: 최대 HP를 올리고 그만큼 즉시 회복
+      G.player.maxHp += it.val;
+      G.player.hp = Math.min(G.player.maxHp, G.player.hp + it.val);
+    }
     toast(`${it.icon} ${it.name} 획득!`);
     if(cb) cb();
     return;
   }
   // 가방이 가득 찼을 때 : 예전 아이템이 임의로(자동) 사라지지 않도록 직접 선택하게 한다
   showPanel({
-    title:'🎒 가방이 가득 찼어요 (6/6)',
+    title:`🎒 가방이 가득 찼어요 (${BAG_SIZE}/${BAG_SIZE})`,
     desc:`새 아이템 ${it.icon} <b>${it.name}</b>을(를) 얻으려면<br>기존 아이템 하나와 교체해야 합니다.<br>교체하지 않으면 새 아이템은 포기됩니다.`,
     custom:`<div class="reward-grid">${G.items.map((held,idx)=>`
       <div class="reward-card" data-idx="${idx}">
@@ -1412,7 +1447,16 @@ function applyPickedItem(it, cb){
       </div>`).join('')}</div>`,
     buttons:[{label:'새 아이템 포기하기', cls:'panel-btn secondary', onClick:()=>{ closePanel(); if(cb) cb(); }}],
     onCustomClick:(idx)=>{
+      const removed=G.items[idx];
+      if(removed && removed.type==='max_hp'){ // 버린 복지 포인트만큼 최대 HP 원복
+        G.player.maxHp=Math.max(1, G.player.maxHp-removed.val);
+        G.player.hp=Math.min(G.player.hp, G.player.maxHp);
+      }
       G.items.splice(idx,1,it);
+      if(it.type==='max_hp'){
+        G.player.maxHp += it.val;
+        G.player.hp = Math.min(G.player.maxHp, G.player.hp + it.val);
+      }
       toast(`${it.icon} ${it.name}(으)로 교체했습니다!`);
       closePanel(); if(cb) cb();
     }
@@ -1448,13 +1492,13 @@ function shuffleQuestionOptions(q){
 /* 같은 막 안에서 몬스터를 조우할수록(=처치할수록) 몬스터 체력이 점점 늘어난다 */
 function scaledMonsterHp(baseHp, isBoss){
   const kills = (G.progress[G.act] && G.progress[G.act].kills) || 0;
-  const growth = isBoss ? Math.min(kills*0.05, 0.4) : Math.min(kills*0.12, 0.7);
+  const growth = isBoss ? Math.min(kills*0.05, 0.4) : Math.min(kills*0.06, 0.4);
   return Math.round(baseHp * (1+growth));
 }
 /* 처치할수록(=단계가 올라갈수록) 몬스터 공격력도 서서히 증가한다 */
 function scaledMonsterAtk(baseAtk, isBoss){
   const kills = (G.progress[G.act] && G.progress[G.act].kills) || 0;
-  const growth = isBoss ? Math.min(kills*0.04, 0.3) : Math.min(kills*0.08, 0.5);
+  const growth = isBoss ? Math.min(kills*0.04, 0.3) : Math.min(kills*0.04, 0.25);
   return Math.max(1, Math.round(baseAtk * (1+growth)));
 }
 function startBattle(monster, onWin){
@@ -1509,8 +1553,6 @@ function updateTimerUI(total){
 function renderBattle(){
   const app=document.getElementById('app');
   const b=G.battle; const m=b.monster; const q=b.q;
-  const hintUsed=b.chargesUsed.hint, elimUsed=b.chargesUsed.eliminate;
-  const hasHint=hasItem('hint'), hasElim=hasItem('eliminate');
   app.innerHTML=`
   <div class="screen battle-screen">
     <div class="battle-topbar">
@@ -1556,8 +1598,6 @@ function renderBattle(){
     </div>
     <div class="explain-box" id="explainBox"></div>
     <div class="dock-actions">
-      <button class="skill-btn" id="hintBtn" ${(!hasHint||hintUsed)?'disabled':''}>🤝 힌트</button>
-      <button class="skill-btn" id="elimBtn" ${(!hasElim||elimUsed)?'disabled':''}>📊 오답제거</button>
       <button class="next-btn hidden" id="nextBtn">다음 ▶</button>
     </div>
   </div>`;
@@ -1566,29 +1606,6 @@ function renderBattle(){
   document.querySelectorAll('.opt-btn').forEach(btn=>{
     btn.onclick=()=>{ SND.sfxSelect(); handleAnswer(parseInt(btn.dataset.idx)); };
   });
-  const hintBtn=document.getElementById('hintBtn');
-  if(hintBtn) hintBtn.onclick=()=>{
-    if(b.chargesUsed.hint) return;
-    SND.sfxSelect();
-    b.chargesUsed.hint=true;
-    hintBtn.disabled=true;
-    document.querySelectorAll('.opt-btn')[q[4]].style.boxShadow='0 0 0 3px var(--moss-dark)';
-    toast('🤝 정답에 힌트 표시!');
-  };
-  const elimBtn=document.getElementById('elimBtn');
-  if(elimBtn) elimBtn.onclick=()=>{
-    if(b.chargesUsed.eliminate) return;
-    SND.sfxSelect();
-    b.chargesUsed.eliminate=true;
-    elimBtn.disabled=true;
-    const wrongIdx=[0,1,2,3].filter(i=>i!==q[4]);
-    const toRemove=wrongIdx.sort(()=>Math.random()-0.5).slice(0,2);
-    toRemove.forEach(i=>{
-      const el=document.querySelectorAll('.opt-btn')[i];
-      el.classList.add('eliminated'); el.disabled=true;
-    });
-    toast('📊 오답 2개 제거!');
-  };
 }
 function handleAnswer(idx){
   const b=G.battle; if(b.answered) return; b.answered=true;
@@ -1602,22 +1619,33 @@ function handleAnswer(idx){
   const explainBox=document.getElementById('explainBox');
   if(q[5]){ explainBox.textContent='💡 '+q[5]; explainBox.classList.add('show'); }
   document.getElementById('nextBtn').classList.remove('hidden');
-  document.getElementById('hintBtn').disabled=true;
-  document.getElementById('elimBtn').disabled=true;
 
   if(correct){
     b.combo++;
+    b.correctCount=(b.correctCount||0)+1;
     const mult = b.combo>=5?2.0:b.combo>=3?1.5:1.0;
     let dmg = currentAtk()*mult;
     let crit=false;
     const critChance = Math.min(0.9, itemSum('crit'));
     if(critChance>0 && Math.random()<critChance){ dmg*=2; crit=true; }
     if(b.combo>=3){ dmg*= (1+itemSum('combo_bonus')); } // 성과 그래프 여러 개면 배율도 누적
+    if(b.correctCount===1){ dmg*= (1+itemSum('first_hit')); } // 온보딩 키트: 전투 첫 정답에 자동 발동
     dmg=Math.round(dmg);
+    // 핵심인재 인증: 몬스터 최대 HP 비례 추가 피해(강한 적일수록 유효)
+    const ovk=itemSum('overkill');
+    if(ovk>0) dmg += Math.max(1, Math.round(b.monster.maxHp*0.03*(ovk/0.3)));
     b.monster.hp=Math.max(0,b.monster.hp-dmg);
     animateAttack(dmg, crit);
     updateComboUI(b.combo);
     updateMonsterHp();
+    // 정답 보상 회복(탕비실 간식) + 콤보 3마다 회복(연속 무결점 기록)
+    let heal = itemSum('heal_on_correct');
+    if(b.combo>0 && b.combo%3===0) heal += itemSum('combo_heal');
+    if(heal>0 && G.player.hp<G.player.maxHp){
+      G.player.hp=Math.min(G.player.maxHp, G.player.hp+heal);
+      updatePlayerHud();
+      spawnDmgPop('+'+heal, document.getElementById('sosoCanvas'), 'heal');
+    }
     setTimeout(()=>{
       if(b.monster.hp<=0){ onMonsterDefeated(); }
     }, 550);
